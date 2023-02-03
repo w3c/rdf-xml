@@ -19,15 +19,19 @@
       previousMaturity:     "REC",
       prevRecShortname:     "rdf-syntax-grammar",
 
-      editors:  [
-         { name: "Fabien Gandon", url: "http://fabien.info/",
-            company: "INRIA", companyURL: "http://www.inria.fr",
-          },
-         { name: "Guus Schreiber", url: "http://www.cs.vu.nl/~guus/",
-            company: "VU University Amsterdam", companyURL: "http://www.vu.nl",
-          },
+      editors: [
+        { name: "Gregg Kellogg", w3cid: "44770" },
       ],
-      previousEditors: [
+
+      formerEditors:  [
+        { name: "Fabien Gandon" },
+        { name: "Guus Schreiber" },
+        { name: "Dave Beckett"},
+        { name: "Ora Lassilla"},
+        { name: "Ralph Swick"},
+      ],
+
+      authors: [
         { name: "Dave Beckett"}
       ],
 
@@ -3426,24 +3430,11 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
 <!-- TENTH PART : Acknowledgments -->
 <section id="section-Acknowledgments" class="appendix informative">
-    <h2>Acknowledgments</h2>
+  <h2>Acknowledgments</h2>
 
-    <p>Gavin Carothers provided the RDF 1.1 update for the <a
-    href="#parseTypeLiteralPropertyElt">Production
-    parseTypeLiteralPropertyElt</a>. Ivan Herman provided valuable
-    comments and reworked Figs 1 and 2. </p>
+  <section class="informative">
+    <h3>Acknowledgments the original specification</h3>
 
-    <p>This specification is a product of extended deliberations by the
-    members of the RDFcore Working Group and the RDF and RDF Schema Working Group.</p>
-
-    <p>The following people provided valuable contributions to the document:</p>
-
-    <ul>
-      <li>Dan Brickley, W3C/ILRT</li>
-      <li>Jeremy Carroll, HP Labs, Bristol</li>
-      <li>Graham Klyne, Nine by Nine</li>
-      <li>Bijan Parsia, MIND Lab at University of Maryland at College Park</li>
-    </ul>
 
     <p>This document is a product of extended deliberations by the RDF
     Core working group, whose members have included: Art Barstow (W3C)
@@ -3483,18 +3474,45 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     Naohiko Uramoto (IBM), Charles Wicksteed (Reuters Ltd.), Misha Wolf
     (Reuters Ltd.), Lauren Wood (SoftQuad).
     </p>
+  </section>
+
+  <section class="informative">
+    <h3>Acknowledgments for RDF 1.1</h3>
+
+    <p>Gavin Carothers provided the RDF 1.1 update for the <a
+    href="#parseTypeLiteralPropertyElt">Production
+    parseTypeLiteralPropertyElt</a>. Ivan Herman provided valuable
+    comments and reworked Figs 1 and 2. </p>
+
+    <p>This specification is a product of extended deliberations by the
+    members of the RDFcore Working Group and the RDF and RDF Schema Working Group.</p>
+
+    <p>The following people provided valuable contributions to the document:</p>
+
+    <ul>
+      <li>Dan Brickley, W3C/ILRT</li>
+      <li>Jeremy Carroll, HP Labs, Bristol</li>
+      <li>Graham Klyne, Nine by Nine</li>
+      <li>Bijan Parsia, MIND Lab at University of Maryland at College Park</li>
+    </ul>
+  </section>
+
+  <section class="informative">
+    <h3>Acknowledgments for RDF 1.2</h3>
+
+    <p>In addition to the editors, the following people have contributed to this specification:
+      <span id="gh-contributors"></span>
+    </p>
+
+    <p data-include="common/participants.html"></p>
+
+    <p class="ednote">Recognize members of the Task Force? Not an easy to find list of contributors.</p>
+  </section>
 </section>
 
 <section id="changes-rdf11" class="appendix informative">
-  <h2>Changes since 2004 Recommendation</h2>
-  <p>Changes for RDF 1.1 Recommendation</p>
+  <h2>Changes for RDF 1.1 Recommendation</h2>
   <ul>
-    <li>No changes.</li>
-  </ul>
-
-  <p>Changes for RDF 1.1 Proposed Edited Recommendation:</p>
-  <ol>
-    <li>Conversion to ReSpec.</li>
     <li>RDF 2004 errata handling:
       <ol>
         <li>Replaced hard-coded reference to XML and Unicode versions
@@ -3516,30 +3534,38 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     line with other RDF 1.1 document titles</li>
     <li>Updated references to other documents</li>
     <li>Changed links in Sec. 2 examples from relative URI to
-  absolute URI; same for RELAX schema in Appendix.</li>
+      absolute URI; same for RELAX schema in Appendix.</li>
     <li>Added note to section on plain-literal event</li>
     <li>Updated link to QName definition in XML-NAMES</li>
     <li>Added diff with 2004 Recommendation</li>
     <li>Sections concerning <code>rdf:XMLLiteral</code>
-    (<a href="#section-Syntax-XML-literals">Sec. 2.8</a>
-    and <a href="#parseTypeLiteralPropertyElt">Sec. 7.2.17</a>)
-    marked as non-normative.</li>
+      (<a href="#section-Syntax-XML-literals">Sec. 2.8</a>
+      and <a href="#parseTypeLiteralPropertyElt">Sec. 7.2.17</a>)
+      marked as non-normative.</li>
     <li>Adapted  <a
-  href="#parseTypeLiteralPropertyElt">Production
-  parseTypeLiteralPropertyElt</a> to cater for the non-normative
-  status of <code>rdf:XMLLiteral</code>.</li>
-    <li>Improved version of Figs. 1 and 2 (with same
-  content)</li>
-  <li>Removed old changes section</li>
-  <lI>Informative notes at start of Sec. 5.1 removed, as these
-  have become irrelevant.</li>
-  <li>Added new datatype <code>rdf:HTML</code> to the list of things that
-  cannot be serialized in RDF/XML.</li>
-  <li>Replaced the link to 2004 N-Triples <code>nodeID</code> production to
-  the RDF 1.1 N-Triples <code>BLANK_NODE_LABEL</code>
-  production.</li>
-      </ol>
+      href="#parseTypeLiteralPropertyElt">Production
+      parseTypeLiteralPropertyElt</a> to cater for the non-normative
+      status of <code>rdf:XMLLiteral</code>.</li>
+        <li>Improved version of Figs. 1 and 2 (with same
+      content)</li>
+      <li>Removed old changes section</li>
+      <lI>Informative notes at start of Sec. 5.1 removed, as these
+      have become irrelevant.</li>
+      <li>Added new datatype <code>rdf:HTML</code> to the list of things that
+      cannot be serialized in RDF/XML.</li>
+      <li>Replaced the link to 2004 N-Triples <code>nodeID</code> production to
+      the RDF 1.1 N-Triples <code>BLANK_NODE_LABEL</code>
+      production.
+    </li>
+  </ul>
+</section>
 
+<section class="appendix informative" id="changes-12">
+  <h2>Changes between RDF 1.1 and RDF 1.2</h2>
+
+  <ul>
+    
+  </ul>
 </section>
 
 <!-- TWELVETH PART : Syntax Schemas -->
