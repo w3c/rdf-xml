@@ -80,7 +80,7 @@
     section. Since the edits to this document do not invalidate
     previous implementations the Director decided no new implementation report was required. </p>
 
-  <section id="related" data-include="./common//related.html"></section>
+  <section id="related" data-include="./common/related.html"></section>
  </section>
 
 <section id="section-Introduction">
@@ -1055,7 +1055,7 @@
     formed from relative IRI <code>#triple</code> against the base URI.
     Each (<code>rdf:ID</code> attribute value, base URI)
     pair has to be unique in an RDF/XML document,
-    see <a href="#constraint-id">constraint-id</a>.
+    see <a>constraint-id</a>.
     </p>
 
     <p><a href="#example20">Example 20</a> shows a <code>rdf:ID</code>
@@ -1366,7 +1366,7 @@
     <h3>Constraints</h3>
 
     <dl>
-    <dt><dfn id="constraint-id">constraint-id</dfn></dt>
+    <dt><dfn>constraint-id</dfn></dt>
     <dd><p>Each application of production <a href="#idAttr">idAttr</a>
     matches an attribute.  The pair formed by the
     <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
@@ -2112,11 +2112,11 @@ representation of an RDF graph;
     <td>The terms in A excluding all the terms in B.</td>
     </tr>
     <tr>
-    <td><dfn id="anyURI">anyURI</dfn>.</td>
+    <td><dfn>anyURI</dfn>.</td>
     <td>Any URI.</td>
     </tr>
     <tr>
-    <td><dfn id="anyString">anyString</dfn>.</td>
+    <td><dfn>anyString</dfn>.</td>
 
     <td>Any string.</td>
     </tr>
@@ -2261,15 +2261,15 @@ representation of an RDF graph;
 
     </tr>
     <tr>
-    <td><a href="#nodeElementURIs">7.2.5</a> <a href="#nodeElementURIs">nodeElementURIs</a></td> <td><a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#nodeElementURIs">7.2.5</a> <a href="#nodeElementURIs">nodeElementURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyElementURIs">7.2.6</a> <a href="#propertyElementURIs">propertyElementURIs</a></td> <td><a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#propertyElementURIs">7.2.6</a> <a href="#propertyElementURIs">propertyElementURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyAttributeURIs">7.2.7</a> <a href="#propertyAttributeURIs">propertyAttributeURIs</a></td> <td><a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#propertyAttributeURIs">7.2.7</a> <a href="#propertyAttributeURIs">propertyAttributeURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
@@ -2385,7 +2385,7 @@ representation of an RDF graph;
     </tr>
     <tr>
     <td><a href="#propertyAttr">7.2.25</a> <a href="#propertyAttr">propertyAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#anyString">anyString</a>)</td>
+    <a href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a>)</td>
 
     </tr>
     <tr>
@@ -2416,7 +2416,7 @@ representation of an RDF graph;
     <td><a href="#parseOther">7.2.31</a> <a href="#parseOther">parseOther</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
 
     <a
-    href="#eventterm-attribute-string-value">string-value</a> == <a href="#anyString">anyString</a> - ("Resource" | "Literal" | "Collection") )</td>
+    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )</td>
     </tr>
     <tr>
     <td><a href="#URI-reference">7.2.32</a> <a href="#URI-reference">URI-reference</a></td> <td>An IRI.</td>
@@ -2535,7 +2535,7 @@ representation of an RDF graph;
     <h4>Production nodeElementURIs</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    <a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
+    <a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
 
     </p></div></div>
 
@@ -2547,7 +2547,7 @@ representation of an RDF graph;
     <h4>Production propertyElementURIs</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    <a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )
+    <a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )
 
     </p></div></div>
 
@@ -2559,7 +2559,7 @@ representation of an RDF graph;
     <h4>Production propertyAttributeURIs</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    <a href="#anyURI">anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
+    <a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
 
     </p></div></div>
 
@@ -3181,7 +3181,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)
     </p></div></div>
 
-    <p><strong>Constraint:</strong>: <a href="#constraint-id">constraint-id</a>
+    <p><strong>Constraint:</strong>: <a>constraint-id</a>
     applies to the values of <code>rdf:ID</code> attributes</p>
     </section>
 
@@ -3213,7 +3213,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#anyString">anyString</a>)
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a>)
 
     </p></div></div>
     </section>
@@ -3280,7 +3280,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a
-    href="#eventterm-attribute-string-value">string-value</a> == <a href="#anyString">anyString</a> - ("Resource" | "Literal" | "Collection") )
+    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )
 
     </p></div></div>
     </section>
