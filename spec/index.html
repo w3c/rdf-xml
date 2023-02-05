@@ -8,7 +8,17 @@
   <script src="./common/fixup.js" class="remove"></script>
   <script class='remove'>
     var respecConfig = {
-      localBiblio:          localBibliography,
+      localBiblio:          {...localBibliography,
+        /// Hack temporary bib entry for SAX
+        ...{
+          SAX: {
+            title: "SAX: The Simple API for XML",
+            href: "http://www.megginson.com/downloads/SAX/",
+            authors: ["D. Megginson", "et al."],
+            date: "May 1998",
+          }
+        }
+      },
       specStatus:           "ED",
       edDraftURI:           "https://w3c.github.io/rdf-xml/spec/",
       shortName:            "rdf12-xml",
@@ -1395,10 +1405,9 @@
 
 <section id="section-Data-Model">
 
-    <h2>Syntax Data Model</h2>
+  <h2>Syntax Data Model</h2>
 
-    <div>
-    <p>This document specifies the syntax of RDF/XML as a grammar on an
+  <p>This document specifies the syntax of RDF/XML as a grammar on an
     alphabet of symbols. The symbols are called <em>events</em> in the
     style of the XPATH &#160;
     <a data-cite="XPATH#infoset">Information Set Mapping</a>.
@@ -1411,50 +1420,48 @@
     the grammar to determine whether they are or are not syntactically
     well-formed RDF/XML.</p>
 
-    <p>The grammar productions may include actions which fire when the
+  <p>The grammar productions may include actions which fire when the
     production is recognized.  Taken together these actions define a
     transformation from any syntactically well-formed RDF/XML sequence of
     events into an RDF graph represented in the N-Triples [[RDF12-N-TRIPLES]]
     language.</p>
 
-    <p>The model given here illustrates one way to create a representation of
+  <p>The model given here illustrates one way to create a representation of
     an RDF Graph
     from an RDF/XML document.  It does not mandate any implementation
     method &mdash; any other method that results in a representation of the same
     RDF Graph may be used.</p>
 
-    <p>In particular:</p>
-    <ul>
+  <p>In particular:</p>
+  <ul>
     <li>This specification permits any
-representation of an RDF graph;
-    in particular, it does not require the use of N-Triples [[RDF12-N-TRIPLES]].</li>
+      representation of an RDF graph;
+      in particular, it does not require the use of N-Triples [[RDF12-N-TRIPLES]].</li>
     <li>This specification does not require the use of
-    [[XPATH]] or [[SAX]]</li>
+      [[XPATH]] or [[SAX]]</li>
     <li>This specification places no constraints on the order in which
-    software transforming RDF/XML into a representation of a graph,
-    constructs the representation of the graph.</li>
+      software transforming RDF/XML into a representation of a graph,
+      constructs the representation of the graph.</li>
     <li>Software transforming RDF/XML into a representation of a graph
-    MAY eliminate duplicate predicate arcs.</li>
-    </ul>
+      MAY eliminate duplicate predicate arcs.</li>
+  </ul>
 
-    <p>The syntax does not support non-well-formed XML documents, nor
+  <p>The syntax does not support non-well-formed XML documents, nor
     documents that otherwise do not have an XML Information Set; for
     example, that do not conform to
-    Namespaces in XML [[XML-NAMES]].
-    </p>
+    Namespaces in XML [[XML-NAMES]].</p>
 
-    <p>The Infoset requires support for
+  <p>The Infoset requires support for
     XML Base [[XMLBASE]].
     RDF/XML uses the information item property [base URI], discussed in
-    <a href="#section-baseURIs">section 5.3</a>
-    </p>
+    <a href="#section-baseURIs" class="sectionRef"></a></p>
 
-    <p>This specification requires an
+  <p>This specification requires an
     XML Information Set [[XML-INFOSET]]
     which supports at least the following information items and
     properties for RDF/XML:</p>
 
-    <dl>
+  <dl>
     <dt><a data-cite="XML-INFOSET#infoitem.document">document information item</a></dt>
     <dd>[document element], [children], [base URI]</dd>
 
@@ -1466,10 +1473,10 @@ representation of an RDF graph;
 
     <dt><a data-cite="XML-INFOSET#infoitem.character">character information item</a></dt>
     <dd>[character code]</dd>
-    </dl>
+  </dl>
 
-    <p>There is no mapping of the following items to data model events:</p>
-    <ul>
+  <p>There is no mapping of the following items to data model events:</p>
+  <ul>
     <li><a data-cite="XML-INFOSET#infoitem.pi">processing instruction information item</a></li>
     <li><a data-cite="XML-INFOSET#infoitem.rse">unexpanded entity reference information item</a></li>
     <li><a data-cite="XML-INFOSET#infoitem.comment">comment information item</a></li>
@@ -1478,762 +1485,742 @@ representation of an RDF graph;
     <li><a data-cite="XML-INFOSET#infoitem.entity.unparsed">unparsed entity information item</a></li>
     <li><a data-cite="XML-INFOSET#infoitem.notation">notation information item</a></li>
     <li><a data-cite="XML-INFOSET#infoitem.namespace">namespace information item</a></li>
-    </ul>
+  </ul>
 
-    <p>Other information items and properties have no mapping to
-    syntax data model events.
-    </p>
+  <p>Other information items and properties have no mapping to
+    syntax data model events.</p>
 
-    <p>Element information items with reserved XML Names
+  <p>Element information items with reserved XML Names
     (See <a data-cite="XML10#dt-name">Name</a> in [[[XML10]]])
-    are not mapped to data model element events.  These are all those
-    with property [prefix] beginning with <code>xml</code> (case
-    independent comparison) and all those with [prefix] property
+    are not mapped to data model element events.
+    These are all those with property [prefix] beginning with <code>xml</code>
+    (case independent comparison) and all those with [prefix] property
     having no value and which have [local name] beginning with
-    <code>xml</code> (case independent comparison).
-    </p>
+    <code>xml</code> (case independent comparison).</p>
 
-    <p>All information items contained inside XML elements matching the
+  <p>All information items contained inside XML elements matching the
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a>
-    production form
-    XML literals
-    and do not follow this mapping.  See
-    <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a>
+    production form XML literals and do not follow this mapping.
+    See <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a>
     for further information.</p>
 
-    <p>This section is intended to satisfy the requirements for
+  <p>This section is intended to satisfy the requirements for
     <a data-cite="XML-INFOSET#conformance">Conformance</a>
     in the [[XML-INFOSET]] specification.
     It specifies the information items and properties that are needed
-    to implement this specification.
-    </p>
-    </div>
+    to implement this specification.</p>
 
-    <!-- events -->
-    <section id="section-Nodes">
+  <!-- events -->
+  <section id="section-Nodes">
     <h3>Events</h3>
 
     <p>There are nine types of event defined in the following subsections.
-    Most events are constructed from an Infoset information item (except
-    for <a href="#section-identifier-node">IRI</a>,
-    <a href="#section-blank-nodeid-event">blank node</a>,
-    <a href="#section-literal-node">plain literal</a> and
-    <a href="#section-typed-literal-node">typed literal</a>).  The effect
-    of an event constructor is to create a new event with a unique identity,
-    distinct from all other events.  Events have accessor operations on them
-    and most have the <em>string-value</em> accessor that may be a static value
-    or computed.</p>
+      Most events are constructed from an Infoset information item (except
+      for <a href="#section-identifier-node">IRI</a>,
+      <a href="#section-blank-nodeid-event">blank node</a>,
+      <a href="#section-literal-node">plain literal</a> and
+      <a href="#section-typed-literal-node">typed literal</a>).  The effect
+      of an event constructor is to create a new event with a unique identity,
+      distinct from all other events.  Events have accessor operations on them
+      and most have the <em>string-value</em> accessor that may be a static value
+      or computed.</p>
 
     <!-- root event -->
     <section id="section-root-node">
-    <h3>Root Event</h3>
+      <h3>Root Event</h3>
 
-    <p>Constructed from a
-    <a data-cite="XML-INFOSET#infoitem.document">document information item</a>
-    and takes the following accessors and values.</p>
+      <p>Constructed from a
+        <a data-cite="XML-INFOSET#infoitem.document">document information item</a>
+        and takes the following accessors and values.</p>
 
-    <dl>
-    <dt id="eventterm-root-document-element">document-element</dt>
-    <dd>Set to the value of document information item property [document-element].</dd>
-    <dt id="eventterm-root-children">children</dt>
-    <dd>Set to the value of document information item property [children].</dd>
-    <dt id="eventterm-root-base-uri">base-uri</dt>
-    <dd>Set to the value of document information item property [base URI].</dd>
-    <dt id="eventterm-root-language">language</dt>
-    <dd>Set to the empty string.</dd>
-    </dl>
+      <dl>
+      <dt id="eventterm-root-document-element">document-element</dt>
+      <dd>Set to the value of document information item property [document-element].</dd>
+      <dt id="eventterm-root-children">children</dt>
+      <dd>Set to the value of document information item property [children].</dd>
+      <dt id="eventterm-root-base-uri">base-uri</dt>
+      <dd>Set to the value of document information item property [base URI].</dd>
+      <dt id="eventterm-root-language">language</dt>
+      <dd>Set to the empty string.</dd>
+      </dl>
     </section>
 
     <!-- root event -->
     <section id="section-element-node">
-    <h3>Element Event</h3>
+      <h3>Element Event</h3>
 
-    <p>Constructed from an
-    <a data-cite="XML-INFOSET#infoitem.element">element information item</a>
-    and takes the following accessors and values:
-    </p>
+      <p>Constructed from an
+      <a data-cite="XML-INFOSET#infoitem.element">element information item</a>
+      and takes the following accessors and values:</p>
 
+      <dl>
+        <dt id="eventterm-element-local-name">local-name</dt>
+        <dd>Set to the value of element information item property [local name].</dd>
 
-    <dl>
-      <dt id="eventterm-element-local-name">local-name</dt>
-      <dd>Set to the value of element information item property [local name].</dd>
+        <dt id="eventterm-element-namespace-name">namespace-name</dt>
+        <dd>Set to the value of element information item property [namespace name].</dd>
 
-      <dt id="eventterm-element-namespace-name">namespace-name</dt>
-      <dd>Set to the value of element information item property [namespace name].</dd>
+        <dt id="eventterm-element-children">children</dt>
+        <dd>Set to the value of element information item property [children].</dd>
 
-      <dt id="eventterm-element-children">children</dt>
-      <dd>Set to the value of element information item property [children].</dd>
+        <dt id="eventterm-element-parent">parent</dt>
+        <dd>Set to the value of element information item property [parent].</dd>
 
-      <dt id="eventterm-element-parent">parent</dt>
-      <dd>Set to the value of element information item property [parent].</dd>
+        <dt id="eventterm-element-base-uri">base-uri</dt>
+        <dd>Set to the value of element information item property [base URI].</dd>
 
-      <dt id="eventterm-element-base-uri">base-uri</dt>
-      <dd>Set to the value of element information item property [base URI].</dd>
+        <dt id="eventterm-element-attributes">attributes</dt>
+        <dd>
+          <p>Made from the value of element information item
+            property [attributes] which is a set of attribute
+            information items.</p>
 
-      <dt id="eventterm-element-attributes">attributes</dt>
-      <dd><p>Made from the value of element information item
-      property [attributes] which is a set of attribute
-      information items.</p>
+          <p>If this set contains an attribute information item
+            <code>xml:lang</code> ([namespace name] property with the value
+            "http://www.w3.org/XML/1998/namespace" and
+            [local name] property value "lang")
+            it is removed from the set of attribute information items and the
+            <a href="#eventterm-element-language" class="termref">
+              <span class="arrow">·</span>language<span class="arrow">·</span></a>
+              accessor is set to the [normalized-value] property of the
+              attribute information item.</p>
 
-      <p>If this set contains an attribute information item <code>xml:lang</code> (
-      [namespace name] property with the value
-      "http://www.w3.org/XML/1998/namespace" and
-      [local name] property value "lang")
-      it is removed from the set of attribute information items and the
-     <a href="#eventterm-element-language" class="termref"><span class="arrow">·</span>language<span class="arrow">·</span></a> accessor is set to the
-      [normalized-value] property of the attribute information item.</p>
+          <p>All remaining reserved XML Names
+            (see <a data-cite="XML10#dt-name">Name</a> in [[[XML10]]])
+            are now removed from the set.
+            These are, all attribute information items in the set with property [prefix]
+            beginning with <code>xml</code>
+            (case independent comparison) and all attribute information items with [prefix]
+            property having no value and which have [local name] beginning with
+            <code>xml</code> (case independent comparison) are removed.
+            Note that the [base URI] accessor is computed by XML Base before any
+            <code>xml:base</code> attribute information item is deleted.</p>
 
-      <p>All remaining reserved XML Names
-      (see <a data-cite="XML10#dt-name">Name</a> in [[[XML10]]])
-      are now removed from the set.  These are, all
-      attribute information items in the set with property [prefix]
-      beginning with <code>xml</code> (case independent
-      comparison) and all attribute information items with [prefix]
-      property having no value and which have [local name] beginning with
-      <code>xml</code> (case independent comparison) are removed.
-      Note that the [base URI] accessor is computed by XML Base before any
-      <code>xml:base</code> attribute information item is deleted.</p>
+          <p>The remaining set of attribute information items are then used
+            to construct a new set of
+            <a href="#section-attribute-node">Attribute Events</a>
+            which is assigned as the value of this accessor.</p>
+        </dd>
 
-      <p>The remaining set of attribute information items are then used
-      to construct a new set of
-      <a href="#section-attribute-node">Attribute Events</a>
-      which is assigned as the value of this accessor.</p>
-      </dd>
+        <dt id="eventterm-element-URI">URI</dt>
+        <dd>Set to the string value of the concatenation of the
+          value of the namespace-name accessor and the value of the
+          local-name accessor.</dd>
 
-      <dt id="eventterm-element-URI">URI</dt>
-      <dd>Set to the string value of the concatenation of the
-      value of the namespace-name accessor and the value of the
-      local-name accessor.
-      </dd>
+        <dt id="eventterm-element-URI-string-value">URI-string-value</dt>
+        <dd>
+          <p>The value is the concatenation of the following in this order "&lt;",
+          the escaped value of the
+          <a href="#eventterm-element-URI" class="termref">
+            <span class="arrow">·</span>URI<span class="arrow">·</span>
+          </a>
+          accessor and "&gt;".</p>
 
-      <dt id="eventterm-element-URI-string-value">URI-string-value</dt>
-      <dd>
-    <p>The value is the concatenation of the following in this order "&lt;",
-    the escaped value of the
-    <a href="#eventterm-element-URI" class="termref"><span
-      class="arrow">·</span>URI<span class="arrow">·</span></a>
-    accessor and "&gt;".</p>
+          <p>The escaping of the
+            <a href="#eventterm-element-URI" class="termref">
+              <span class="arrow">·</span>URI<span class="arrow">·</span>
+            </a>
+            accessor uses the N-Triples escapes for
+            IRIs [[RDF12-N-TRIPLES]].</p>
 
-    <p>The escaping of the
-    <a href="#eventterm-element-URI" class="termref"><span
-    class="arrow">·</span>URI<span class="arrow">·</span></a>
-    accessor uses the N-Triples escapes for
-    IRIs [[RDF12-N-TRIPLES]].
-    </p>
+        </dd>
 
-      </dd>
+        <dt id="eventterm-element-liCounter">li-counter</dt>
+        <dd>Set to the integer value 1.</dd>
 
-      <dt id="eventterm-element-liCounter">li-counter</dt>
-      <dd>Set to the integer value 1.</dd>
+        <dt id="eventterm-element-language">language</dt>
+        <dd>Set from the
+          <a href="#eventterm-element-attributes"
+          class="termref"><span class="arrow">·</span>attributes<span
+          class="arrow">·</span></a>
+          as described above.
+          If no value is given from the attributes, the value is set to the value of
+          the language accessor on the parent event (either a
+          <a href="#section-root-node">Root Event</a> or an
+          <a href="#section-element-node">Element Event</a>), which may be the empty string.
+        </dd>
 
-      <dt id="eventterm-element-language">language</dt>
-      <dd>Set from the
-      <a href="#eventterm-element-attributes"
-      class="termref"><span class="arrow">·</span>attributes<span
-      class="arrow">·</span></a>
-      as described above.
-      If no value is given from the attributes, the value is set to the value of
-      the language accessor on the parent event (either a
-      <a href="#section-root-node">Root Event</a> or an
-      <a href="#section-element-node">Element Event</a>), which may be the empty string.
-      </dd>
+        <dt id="eventterm-element-subject">subject</dt>
+        <dd>Has no initial value.  Takes a value that is an
+          <a href="#section-identifier-node">Identifier</a> event.
+          This accessor is used on elements that deal with one node in the RDF graph,
+          this generally being the subject of a statement.
+        </dd>
 
-      <dt id="eventterm-element-subject">subject</dt>
-      <dd>Has no initial value.  Takes a value that is an
-      <a href="#section-identifier-node">Identifier</a> event.
-      This accessor is used on elements that deal with one node in the RDF graph,
-      this generally being the subject of a statement.</dd>
-
-    </dl>
+      </dl>
     </section>
-
-
     <!-- end element event -->
+
     <section id="section-end-element-node">
-    <h3>End Element Event</h3>
+      <h3>End Element Event</h3>
 
-    <p>Has no accessors.  Marks the end of the containing element in
-    the sequence.</p>
+      <p>Has no accessors.  Marks the end of the containing element in
+        the sequence.</p>
     </section>
-
 
     <!-- attribute event -->
     <section id="section-attribute-node">
-    <h3>Attribute Event</h3>
+      <h3>Attribute Event</h3>
 
-    <p>Constructed from an
-    <a data-cite="XML-INFOSET#infoitem.attribute">attribute information item</a>
-    and takes the following accessors and values:</p>
+      <p>Constructed from an
+        <a data-cite="XML-INFOSET#infoitem.attribute">attribute information item</a>
+        and takes the following accessors and values:</p>
 
-    <dl>
-      <dt id="eventterm-attribute-local-name">local-name</dt>
-      <dd>Set to the value of attribute information item property [local name].</dd>
+      <dl>
+        <dt id="eventterm-attribute-local-name">local-name</dt>
+        <dd>Set to the value of attribute information item property [local name].</dd>
 
-      <dt id="eventterm-attribute-namespace-name">namespace-name</dt>
-      <dd>Set to the value of attribute information item property [namespace name].</dd>
+        <dt id="eventterm-attribute-namespace-name">namespace-name</dt>
+        <dd>Set to the value of attribute information item property [namespace name].</dd>
 
-      <dt id="eventterm-attribute-string-value">string-value</dt>
-      <dd>Set to the value of the attribute information item
-      property [normalized value] as specified by [[XML10]] (if an attribute whose normalized
-      value is a zero-length string, then the string-value is also
-      a zero-length string).</dd>
+        <dt id="eventterm-attribute-string-value">string-value</dt>
+        <dd>Set to the value of the attribute information item
+          property [normalized value] as specified by [[XML10]] (if an attribute whose normalized
+          value is a zero-length string, then the string-value is also
+          a zero-length string).
+        </dd>
 
-      <dt id="eventterm-attribute-URI">URI</dt>
-      <dd><p>If <a href="#eventterm-attribute-namespace-name"
-      class="termref"><span
-      class="arrow">·</span>namespace-name<span
-      class="arrow">·</span></a> is present,
-      set to a string value of the concatenation of the value of the
-      <a href="#eventterm-attribute-namespace-name"
-      class="termref"><span
-      class="arrow">·</span>namespace-name<span
-      class="arrow">·</span></a> accessor
-      and the value of the
-      <a href="#eventterm-attribute-local-name"
-      class="termref"><span class="arrow">·</span>local-name<span
-      class="arrow">·</span></a> accessor.
-      Otherwise if <a href="#eventterm-attribute-local-name"
-      class="termref"><span class="arrow">·</span>local-name<span
-      class="arrow">·</span></a> is
-      <code>ID</code>, <code>about</code>, <code>resource</code>,
-      <code>parseType</code> or <code>type</code>, set to a string
-      value of the concatenation of the
-      <a href="#rdf-ns-uri" class="termref"><span
-      class="arrow">·</span>RDF namespace IRI<span
-      class="arrow">·</span></a>
-      and the value of the <a
-      href="#eventterm-attribute-local-name" class="termref"><span
-      class="arrow">·</span>local-name<span
-      class="arrow">·</span></a> accessor.   Other non-namespaced
-      <a href="#eventterm-attribute-local-name"
-      class="termref"><span class="arrow">·</span>local-name<span
-      class="arrow">·</span></a> accessor values are
-      forbidden.</p>
+        <dt id="eventterm-attribute-URI">URI</dt>
+        <dd>
+          <p>If <a href="#eventterm-attribute-namespace-name"
+            class="termref"><span
+            class="arrow">·</span>namespace-name<span
+            class="arrow">·</span></a> is present,
+            set to a string value of the concatenation of the value of the
+            <a href="#eventterm-attribute-namespace-name"
+            class="termref"><span
+            class="arrow">·</span>namespace-name<span
+            class="arrow">·</span></a> accessor
+            and the value of the
+            <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> accessor.
+            Otherwise if <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> is
+            <code>ID</code>, <code>about</code>, <code>resource</code>,
+            <code>parseType</code> or <code>type</code>, set to a string
+            value of the concatenation of the
+            <a href="#rdf-ns-uri" class="termref"><span
+            class="arrow">·</span>RDF namespace IRI<span
+            class="arrow">·</span></a>
+            and the value of the <a
+            href="#eventterm-attribute-local-name" class="termref"><span
+            class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> accessor.   Other non-namespaced
+            <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> accessor values are
+            forbidden.</p>
 
-       <p>The support for a limited set of non-namespaced names is
-       REQUIRED and intended to allow RDF/XML documents specified in
-       [[RDF-SYNTAX-GRAMMAR-19990222]] to remain valid; new documents
-       SHOULD NOT use these unqualified attributes and applications MAY
-       choose to warn when the unqualified form is seen in a document.</p>
+          <p>The support for a limited set of non-namespaced names is
+            REQUIRED and intended to allow RDF/XML documents specified in
+            [[RDF-SYNTAX-GRAMMAR-19990222]] to remain valid; new documents
+            SHOULD NOT use these unqualified attributes and applications MAY
+            choose to warn when the unqualified form is seen in a document.</p>
 
-       <p>The construction of IRIs from XML attributes can generate the same
-       IRIs from different XML attributes.  This can cause ambiguity in the
-       grammar when matching attribute events (such as when
-       <code>rdf:about</code> and <code>about</code> XML attributes are
-       both present).  Documents that have this are illegal.
-       </p>
+          <p>The construction of IRIs from XML attributes can generate the same
+            IRIs from different XML attributes.  This can cause ambiguity in the
+            grammar when matching attribute events (such as when
+            <code>rdf:about</code> and <code>about</code> XML attributes are
+            both present).  Documents that have this are illegal.
+          </p>
+        </dd>
 
-    </dd>
+        <dt id="eventterm-attribute-URI-string-value">URI-string-value</dt>
+        <dd>
+          <p>The value is the concatenation of the following in this order "&lt;",
+            the escaped value of the
+            <a href="#eventterm-attribute-URI" class="termref"><span
+              class="arrow">·</span>URI<span class="arrow">·</span></a>
+            accessor and "&gt;".</p>
 
-      <dt id="eventterm-attribute-URI-string-value">URI-string-value</dt>
-      <dd>
-    <p>The value is the concatenation of the following in this order "&lt;",
-    the escaped value of the
-    <a href="#eventterm-attribute-URI" class="termref"><span
-      class="arrow">·</span>URI<span class="arrow">·</span></a>
-    accessor and "&gt;".</p>
+          <p>The escaping of the
+            <a href="#eventterm-attribute-URI" class="termref"><span
+            class="arrow">·</span>URI<span class="arrow">·</span></a>
+            accessor uses the N-Triples escapes for
+            IRIs [[RDF12-N-TRIPLES]].
+          </p>
+        </dd>
 
-    <p>The escaping of the
-    <a href="#eventterm-attribute-URI" class="termref"><span
-    class="arrow">·</span>URI<span class="arrow">·</span></a>
-    accessor uses the N-Triples escapes for
-    IRIs [[RDF12-N-TRIPLES]].
-    </p>
-      </dd>
-
-    </dl>
+      </dl>
     </section>
 
 
     <!-- text event -->
     <section id="section-text-node">
-    <h3>Text Event</h3>
+      <h3>Text Event</h3>
 
-    <p>Constructed from a sequence of one or more consecutive
-    <a data-cite="XML-INFOSET#infoitem.character">character information items</a>.
-    Has the single accessor:</p>
+      <p>Constructed from a sequence of one or more consecutive
+        <a data-cite="XML-INFOSET#infoitem.character">character information items</a>.
+        Has the single accessor:</p>
 
-    <dl>
-      <dt id="eventterm-text-string-value">string-value</dt>
-      <dd>Set to the value of the string made from concatenating the
-      [<a
-      data-cite="XML-INFOSET#infoitem.character">character
-      code</a>] property of each of the character information
-      items.
-      </dd>
-    </dl>
+      <dl>
+        <dt id="eventterm-text-string-value">string-value</dt>
+        <dd>Set to the value of the string made from concatenating the
+          [<a data-cite="XML-INFOSET#infoitem.character">character code</a>]
+          property of each of the character information items.
+        </dd>
+      </dl>
     </section>
 
 
     <!-- uri reference event -->
     <section id="section-identifier-node">
-    <h3>IRI Event</h3>
+      <h3>IRI Event</h3>
 
-    <p id="eventterm-identifier-identifier-type">
-    An event for a IRIs which has the following accessors:</p>
+      <p id="eventterm-identifier-identifier-type">
+        An event for a IRIs which has the following accessors:</p>
 
-    <dl>
-      <dt id="eventterm-identifier-identifier">identifier</dt>
-      <dd>Takes a string value used as an IRI.</dd>
+      <dl>
+        <dt id="eventterm-identifier-identifier">identifier</dt>
+        <dd>Takes a string value used as an IRI.</dd>
 
-      <dt id="eventterm-identifier-string-value">string-value</dt>
-      <dd><p>The value is the concatenation of "&lt;", the escaped
-      value of the <a href="#eventterm-identifier-identifier"
-      class="termref"><span class="arrow">·</span>identifier<span
-      class="arrow">·</span></a> accessor and "&gt;"</p>
+        <dt id="eventterm-identifier-string-value">string-value</dt>
+        <dd>
+          <p>The value is the concatenation of "&lt;", the escaped
+            value of the <a href="#eventterm-identifier-identifier"
+            class="termref"><span class="arrow">·</span>identifier<span
+            class="arrow">·</span></a> accessor and "&gt;"</p>
 
-      <p>The escaping of the <a
-        href="#eventterm-identifier-identifier"
-        class="termref"><span
-        class="arrow">·</span>identifier<span
-        class="arrow">·</span></a> accessor value
-        uses the N-Triples escapes for IRIs [[RDF12-N-TRIPLES]]. </p>
+          <p>The escaping of the <a
+            href="#eventterm-identifier-identifier"
+            class="termref"><span
+            class="arrow">·</span>identifier<span
+            class="arrow">·</span></a> accessor value
+            uses the N-Triples escapes for IRIs [[RDF12-N-TRIPLES]]. </p>
 
-     </dd>
+        </dd>
 
-    </dl>
+      </dl>
 
-    <p>These events are constructed by giving a value for the
-    <a href="#eventterm-identifier-identifier"
-    class="termref"><span class="arrow">·</span>identifier<span
-    class="arrow">·</span></a> accessor.
-    </p>
+      <p>These events are constructed by giving a value for the
+        <a href="#eventterm-identifier-identifier"
+        class="termref"><span class="arrow">·</span>identifier<span
+        class="arrow">·</span></a> accessor.
+      </p>
 
-    <p>For further information on identifiers in the RDF graph, see
-    <a href="#section-Identifiers">section 5.2</a>.</p>
+      <p>For further information on identifiers in the RDF graph, see
+        <a href="#section-Identifiers">section 5.2</a>.</p>
     </section>
 
 
     <!-- blank node identifier event -->
     <section id="section-blank-nodeid-event">
-    <h3>Blank Node Identifier Event</h3>
+      <h3>Blank Node Identifier Event</h3>
 
-    <p>An event for a
-    blank node identifier
-     which has the following accessors:</p>
+      <p>An event for a blank node identifier
+        which has the following accessors:</p>
 
-    <dl>
-      <dt id="eventterm-blanknodeid-identifier">identifier</dt>
+      <dl>
+        <dt id="eventterm-blanknodeid-identifier">identifier</dt>
+        <dd>Takes a string value.</dd>
 
-      <dd>Takes a string value.</dd>
+        <dt id="eventterm-blanknodeid-string-value">string-value</dt>
+        <dd>The value is a function of the value of the
+          <a href="#eventterm-blanknodeid-identifier"
+          class="termref"><span class="arrow">·</span>identifier<span
+          class="arrow">·</span></a> accessor.
+          The value begins with "_:" and the entire value MUST match the
+          N-Triples
+          <a data-cite="RDF12-N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABELD</a> production.
+          The function MUST preserve distinct blank node identity as
+          discussed in in section <a href="#section-Identifiers" class="sectionRef"></a>.
+        </dd>
 
-      <dt id="eventterm-blanknodeid-string-value">string-value</dt>
-      <dd>The value is a function of the value of the
-    <a href="#eventterm-blanknodeid-identifier"
-      class="termref"><span class="arrow">·</span>identifier<span
-      class="arrow">·</span></a> accessor.
-    The value begins with "_:" and the entire value MUST match the
-    N-Triples
-    <a data-cite="RDF12-N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABELD</a> production.
-    The function MUST preserve distinct blank node identity as
-      discussed in in section <a href="#section-Identifiers">5.2
-      Identifiers</a>.</dd>
+      </dl>
 
-    </dl>
+      <p>These events are constructed by giving a value for the
+        <a href="#eventterm-blanknodeid-identifier"
+        class="termref"><span class="arrow">·</span>identifier<span
+        class="arrow">·</span></a> accessor.
+      </p>
 
-    <p>These events are constructed by giving a value for the
-    <a href="#eventterm-blanknodeid-identifier"
-    class="termref"><span class="arrow">·</span>identifier<span
-    class="arrow">·</span></a> accessor.
-    </p>
-
-    <p>For further information on identifiers in the RDF graph, see
-    <a href="#section-Identifiers">section 5.2</a>.</p>
+      <p>For further information on identifiers in the RDF graph, see
+        <a href="#section-Identifiers">section 5.2</a>.</p>
     </section>
 
 
     <!-- plain literal event -->
     <section id="section-literal-node">
-    <h3>Plain Literal Event</h3>
+      <h3>Plain Literal Event</h3>
 
-    <p class="note">RDF/XML plain literals are in RDF 1.2 treated as
-    syntactic sugar for a literal with datatype
-    <code>xsd:string</code> (in case no language tag is present)
-    or as a literal with datatype <code>rdf:langString</code> (in
-    case a language tag is present). The mapping to N-Triples as
-    defined in this subsection is not affected by this change. </p>
+      <p class="note">RDF/XML plain literals are in RDF 1.2 treated as
+        syntactic sugar for a literal with datatype
+        <code>xsd:string</code> (in case no language tag is present)
+        or as a literal with datatype <code>rdf:langString</code> (in
+        case a language tag is present). The mapping to N-Triples as
+        defined in this subsection is not affected by this change. </p>
 
-    <p>An event for a plain
-    literal which can have the following accessors:</p>
+      <p>An event for a plain literal which can have the following accessors:</p>
 
-    <dl>
-      <dt id="eventterm-literal-literal-value">literal-value</dt>
-      <dd>Takes a string value.</dd>
+      <dl>
+        <dt id="eventterm-literal-literal-value">literal-value</dt>
+        <dd>Takes a string value.</dd>
 
-      <dt id="eventterm-literal-literal-language">literal-language</dt>
-      <dd>Takes a string value used as a language tag in an RDF plain literal.</dd>
+        <dt id="eventterm-literal-literal-language">literal-language</dt>
+        <dd>Takes a string value used as a language tag in an RDF plain literal.</dd>
 
-      <dt id="eventterm-literal-string-value">string-value</dt>
-      <dd><p>The value is calculated from the other accessors as follows.</p>
+        <dt id="eventterm-literal-string-value">string-value</dt>
+        <dd>
+          <p>The value is calculated from the other accessors as follows.</p>
 
-      <p>If <a href="#eventterm-literal-literal-language"
-      class="termref"><span
-      class="arrow">·</span>literal-language<span
-      class="arrow">·</span></a> is the empty string
-      then the value is the concatenation of "&quot;" (1 double quote),
-      the escaped value of the
-      <a href="#eventterm-literal-literal-value"
-      class="termref"><span
-      class="arrow">·</span>literal-value<span
-      class="arrow">·</span></a> accessor
-      and "&quot;" (1 double quote).</p>
+          <p>If <a href="#eventterm-literal-literal-language"
+            class="termref"><span
+            class="arrow">·</span>literal-language<span
+            class="arrow">·</span></a> is the empty string
+            then the value is the concatenation of "&quot;" (1 double quote),
+            the escaped value of the
+            <a href="#eventterm-literal-literal-value"
+            class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor
+            and "&quot;" (1 double quote).</p>
 
-      <p>Otherwise the value is the concatenation of "&quot;" (1 double quote),
-      the escaped value of the
-      <a href="#eventterm-literal-literal-value"
-      class="termref"><span
-      class="arrow">·</span>literal-value<span
-      class="arrow">·</span></a> accessor
-     "&quot;@" (1 double quote and a '@'),
-      and the value of the
-      <a href="#eventterm-literal-literal-language"
-      class="termref"><span
-      class="arrow">·</span>literal-language<span
-      class="arrow">·</span></a> accessor.</p>
+          <p>Otherwise the value is the concatenation of "&quot;" (1 double quote),
+            the escaped value of the
+            <a href="#eventterm-literal-literal-value"
+            class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor
+           "&quot;@" (1 double quote and a '@'),
+            and the value of the
+            <a href="#eventterm-literal-literal-language"
+            class="termref"><span
+            class="arrow">·</span>literal-language<span
+            class="arrow">·</span></a> accessor.</p>
 
-     <p>The escaping of the <a
-     href="#eventterm-literal-literal-value" class="termref"><span
-     class="arrow">·</span>literal-value<span
-     class="arrow">·</span></a> accessor value uses the N-Triples
-      escapes for strings as described in [[RDF12-N-TRIPLES]]
-      for escaping certain characters such as &quot;. </p>
-      </dd>
-    </dl>
+          <p>The escaping of the <a
+            href="#eventterm-literal-literal-value" class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor value uses the N-Triples
+            escapes for strings as described in [[RDF12-N-TRIPLES]]
+            for escaping certain characters such as &quot;. </p>
+        </dd>
+      </dl>
 
-    <p>These events are constructed by giving values for the
-    <a href="#eventterm-literal-literal-value"
-    class="termref"><span class="arrow">·</span>literal-value<span
-    class="arrow">·</span></a> and
-    <a href="#eventterm-literal-literal-language"
-    class="termref"><span
-    class="arrow">·</span>literal-language<span
-    class="arrow">·</span></a> accessors.</p>
+      <p>These events are constructed by giving values for the
+        <a href="#eventterm-literal-literal-value"
+        class="termref"><span class="arrow">·</span>literal-value<span
+        class="arrow">·</span></a> and
+        <a href="#eventterm-literal-literal-language"
+        class="termref"><span
+        class="arrow">·</span>literal-language<span
+        class="arrow">·</span></a> accessors.</p>
 
-    <p class="note" id="literal-comb-char-note1">
-<strong>Interoperability Note (Informative):</strong>
-    Literals beginning with a Unicode combining character are
-    allowed however they may cause interoperability problems.
-    See [[CHARMOD]] for further information.
-    </p>
+      <p class="note" id="literal-comb-char-note1">
+        <strong>Interoperability Note (Informative):</strong>
+        Literals beginning with a Unicode combining character are
+        allowed however they may cause interoperability problems.
+        See [[CHARMOD]] for further information.
+      </p>
     </section>
 
 
     <!-- typed literal event -->
     <section id="section-typed-literal-node">
-    <h3>Typed Literal Event</h3>
+      <h3>Typed Literal Event</h3>
 
-    <p>An event for a typed literal which can have the following accessors:</p>
+      <p>An event for a typed literal which can have the following accessors:</p>
 
-    <dl>
-      <dt id="eventterm-typedliteral-literal-value">literal-value</dt>
-      <dd>Takes a string value.</dd>
+      <dl>
+        <dt id="eventterm-typedliteral-literal-value">literal-value</dt>
+        <dd>Takes a string value.</dd>
 
-      <dt id="eventterm-typedliteral-literal-datatype">literal-datatype</dt>
-      <dd>Takes a string value used as an IRI.</dd>
+        <dt id="eventterm-typedliteral-literal-datatype">literal-datatype</dt>
+        <dd>Takes a string value used as an IRI.</dd>
 
-      <dt id="eventterm-typedliteral-string-value">string-value</dt>
-      <dd><p>The value is the concatenation of the following in this order
-      "&quot;" (1 double quote),
-      the escaped value of the
-      <a href="#eventterm-typedliteral-literal-value"
-      class="termref"><span
-      class="arrow">·</span>literal-value<span
-      class="arrow">·</span></a> accessor,
-      "&quot;" (1 double quote),  "^^&lt;",
-      the escaped value of the
-      <a href="#eventterm-typedliteral-literal-datatype"
-      class="termref"><span
-      class="arrow">·</span>literal-datatype<span
-      class="arrow">·</span></a> accessor
-      and "&gt;".
+        <dt id="eventterm-typedliteral-string-value">string-value</dt>
+        <dd>
+          <p>The value is the concatenation of the following in this order
+            "&quot;" (1 double quote),
+            the escaped value of the
+            <a href="#eventterm-typedliteral-literal-value"
+            class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor,
+            "&quot;" (1 double quote),  "^^&lt;",
+            the escaped value of the
+            <a href="#eventterm-typedliteral-literal-datatype"
+            class="termref"><span
+            class="arrow">·</span>literal-datatype<span
+            class="arrow">·</span></a> accessor
+            and "&gt;".
+          </p>
+
+          <p>The escaping of the <a
+            href="#eventterm-typedliteral-literal-value"
+            class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor value
+            uses the N-Triples
+            escapes for strings [[RDF12-N-TRIPLES]]
+            for escaping certain characters such as &quot;.
+            The escaping of the <a
+            href="#eventterm-typedliteral-literal-datatype"
+            class="termref"><span
+            class="arrow">·</span>literal-datatype<span
+            class="arrow">·</span></a> accessor value
+            must use the N-Triples escapes for IRI [[RDF12-N-TRIPLES]].</p>
+
+        </dd>
+      </dl>
+
+      <p>These events are constructed by giving values for the
+        <a href="#eventterm-typedliteral-literal-value"
+        class="termref"><span class="arrow">·</span>literal-value<span
+        class="arrow">·</span></a>
+        and <a href="#eventterm-typedliteral-literal-datatype"
+        class="termref"><span
+        class="arrow">·</span>literal-datatype<span
+        class="arrow">·</span></a> accessors.</p>
+
+      <p id="literal-comb-char-note2" class="note">
+        <strong>Interoperability Note (Informative):</strong>
+        Literals beginning with a Unicode combining character are
+        allowed however they may cause interoperability problems.
+        See [[CHARMOD]] for further information.
       </p>
 
-      <p>The escaping of the <a
-      href="#eventterm-typedliteral-literal-value"
-      class="termref"><span
-      class="arrow">·</span>literal-value<span
-      class="arrow">·</span></a> accessor value
-      uses the N-Triples
-      escapes for strings [[RDF12-N-TRIPLES]]
-      for escaping certain characters such as &quot;.
-      The escaping of the <a
-      href="#eventterm-typedliteral-literal-datatype"
-      class="termref"><span
-      class="arrow">·</span>literal-datatype<span
-      class="arrow">·</span></a> accessor value
-      must use the N-Triples escapes for IRI [[RDF12-N-TRIPLES]].</p>
-
-    </dd>
-    </dl>
-
-    <p>These events are constructed by giving values for the
-    <a href="#eventterm-typedliteral-literal-value"
-    class="termref"><span class="arrow">·</span>literal-value<span
-    class="arrow">·</span></a>
-    and <a href="#eventterm-typedliteral-literal-datatype"
-    class="termref"><span
-    class="arrow">·</span>literal-datatype<span
-    class="arrow">·</span></a> accessors.</p>
-
-    <p id="literal-comb-char-note2" class="note">
-<strong>Interoperability Note (Informative):</strong>
-    Literals beginning with a Unicode combining character are
-    allowed however they may cause interoperability problems.
-    See [[CHARMOD]] for further information.
-    </p>
-
-    <p class="note" id="literal-white-space-normalization-note">
-<strong>Implementation Note (Informative): </strong>
-    In XML Schema (part 1) [[XMLSCHEMA-1]],
-    <a data-cite="XMLSCHEMA-1#section-White-Space-Normalization-during-Validation">
-      white space normalization
-    </a>
-    occurs during validation according to the value of the whiteSpace
-    facet.  The syntax mapping used in this document occurs after this,
-    so the whiteSpace facet formally has no further effect.
-    </p>
+      <p class="note" id="literal-white-space-normalization-note">
+        <strong>Implementation Note (Informative): </strong>
+        In XML Schema (part 1) [[XMLSCHEMA-1]],
+        <a data-cite="XMLSCHEMA-1#section-White-Space-Normalization-during-Validation">
+          white space normalization
+        </a>
+        occurs during validation according to the value of the whiteSpace
+        facet.  The syntax mapping used in this document occurs after this,
+        so the whiteSpace facet formally has no further effect.
+      </p>
     </section>
 
-    </section>
+  </section>
 
-    <!-- infoset mapping -->
-    <section id="section-Infoset-Mapping">
+  <!-- infoset mapping -->
+  <section id="section-Infoset-Mapping">
     <h3 id="section-Infoset-Conformance">Information Set Mapping</h3>
 
     <p>To transform the Infoset into the sequence of events
-    in <em>document order</em>, each
-    information item is transformed as described above to generate a
-    tree of events with accessors and values.  Each element event is
-    then replaced as described below to turn the tree of events
-    into a sequence in document order.</p>
+      in <em>document order</em>, each
+      information item is transformed as described above to generate a
+      tree of events with accessors and values.  Each element event is
+      then replaced as described below to turn the tree of events
+      into a sequence in document order.</p>
 
     <ol>
-    <li>The original <a href="#section-element-node">element event</a></li>
-    <li>The value of the
-    <a data-cite="XML-INFOSET#infoitem.element">children</a>
-    accessor recursively transformed, a possibly empty ordered list of events.</li>
-    <li>An <a href="#section-end-element-node">end element event</a></li>
+      <li>The original <a href="#section-element-node">element event</a></li>
+      <li>The value of the
+      <a data-cite="XML-INFOSET#infoitem.element">children</a>
+      accessor recursively transformed, a possibly empty ordered list of events.</li>
+      <li>An <a href="#section-end-element-node">end element event</a></li>
     </ol>
-    </section>
+  </section>
 
 
-    <!-- grammar notation -->
-    <section id="section-Infoset-Grammar-Notation">
+  <!-- grammar notation -->
+  <section id="section-Infoset-Grammar-Notation">
     <h3 id="section-Notation-Forms">Grammar Notation</h3>
 
     <p>The following notation is used to describe matching the sequence
-    of data model events as given in <a href="#section-Data-Model">Section 6</a>
-    and the actions to perform for the matches.
-    The RDF/XML grammar is defined in terms of mapping from these matched
-    data model events to triples, using notation of the form:</p>
+      of data model events as given in <a href="#section-Data-Model">Section 6</a>
+      and the actions to perform for the matches.
+      The RDF/XML grammar is defined in terms of mapping from these matched
+      data model events to triples, using notation of the form:</p>
 
     <blockquote>
-    <div class="productionOuter"><div class="productionInner"><p>
-    number <em>event-type</em> <em>event-content</em>
+      <div class="productionOuter">
+        <div class="productionInner">
+          <p>number <em>event-type</em> <em>event-content</em></p>
+        </div>
+      </div>
 
-    </p></div></div>
-
-    <div>
-    <em>action</em>...
-    <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code>
-    N-Triples
-    </code>
-    </p></div></div>
-    </div>
+      <div>
+        <em>action</em>...
+        <div class="ntripleOuter">
+          <div class="ntripleInner">
+            <p><code>N-Triples</code></p>
+          </div>
+        </div>
+      </div>
     </blockquote>
 
     <p>where the <em>event-content</em> is an expression matching
-
-    <em>event-types</em> (as defined in <a href="#section-Nodes">Section 6.1</a>),
-    using notation given in the following sections.
-    The number is used for reference purposes.
-    The grammar <em>action</em> may include generating
-    new triples to the graph, written in N-Triples [[RDF12-N-TRIPLES]]
-    format.
+      <em>event-types</em> (as defined in <a href="#section-Nodes">Section 6.1</a>),
+      using notation given in the following sections.
+      The number is used for reference purposes.
+      The grammar <em>action</em> may include generating
+      new triples to the graph, written in N-Triples [[RDF12-N-TRIPLES]]
+      format.
     </p>
 
     <p>The following sections describe the general notation used and that
-    for event matching and actions.</p>
-
+      for event matching and actions.</p>
 
     <!-- general grammar notation -->
     <section id="section-Infoset-Grammar-General">
-    <h4>Grammar General Notation</h4>
+      <h4>Grammar General Notation</h4>
 
-    <table>
-    <tr>
-    <th>Notation</th>
-    <th>Meaning</th>
-    </tr>
-    <tr>
-    <td><em>event</em>.<em>accessor</em></td>
+      <table>
+        <tr>
+        <th>Notation</th>
+        <th>Meaning</th>
+        </tr>
+        <tr>
+        <td><em>event</em>.<em>accessor</em></td>
 
-    <td>The value of an event accessor.</td>
-    </tr>
-    <tr>
-    <td><code>rdf:</code><em>X</em></td>
-    <td>A URI as defined in <a href="#section-Namespace">section 5.1</a>.</td>
-    </tr>
-    <tr>
-    <td>"ABC"</td>
-    <td>A string of characters A, B, C in order.</td>
+        <td>The value of an event accessor.</td>
+        </tr>
+        <tr>
+        <td><code>rdf:</code><em>X</em></td>
+        <td>A URI as defined in <a href="#section-Namespace">section 5.1</a>.</td>
+        </tr>
+        <tr>
+        <td>"ABC"</td>
+        <td>A string of characters A, B, C in order.</td>
 
-    </tr>
-    </table>
+        </tr>
+      </table>
     </section>
 
 
     <!-- grammar event matching notation -->
     <section id="section-Infoset-Grammar-Matching">
-    <h4>Grammar Event Matching Notation</h4>
+      <h4>Grammar Event Matching Notation</h4>
 
-    <table>
-    <tr>
-    <th>Notation</th>
-    <th>Meaning</th>
-
-    </tr>
-    <tr>
-    <td>A == B</td>
-    <td>Event accessor A matches expression B.</td>
-    </tr>
-    <tr>
-    <td>A != B</td>
-    <td>A is not equal to B.</td>
-    </tr>
-    <tr>
-    <td>A | B | ...</td>
-    <td>The A, B, ... terms are alternatives.</td>
-
-    </tr>
-    <tr>
-    <td>A - B</td>
-    <td>The terms in A excluding all the terms in B.</td>
-    </tr>
-    <tr>
-    <td><dfn>anyURI</dfn>.</td>
-    <td>Any URI.</td>
-    </tr>
-    <tr>
-    <td><dfn>anyString</dfn>.</td>
-
-    <td>Any string.</td>
-    </tr>
-    <tr>
-    <td>list(item1, item2, ...); list()</td>
-    <td>An ordered list of events. An empty list.</td>
-    </tr>
-    <tr>
-    <td>set(item1, item2, ...); set()</td>
-    <td>An unordered set of events.  An empty set.</td>
-    </tr>
-    <tr>
-    <td>*</td>
-
-    <td>Zero or more of preceding term.</td>
-    </tr>
-    <tr>
-    <td>?</td>
-    <td>Zero or one of preceding term.</td>
-    </tr>
-    <tr>
-    <td>+</td>
-    <td>One or more of preceding term.</td>
-    </tr>
-    <tr>
-    <td>root(acc1 == value1,<br />
-
-    &#160;&#160;&#160;&#160;acc2 == value2, ...)</td>
-    <td>Match a <a href="#section-root-node">Root Event</a> with accessors.
-    </td>
-    </tr>
-    <tr>
-    <td>start-element(acc1 == value1,<br />
-    &#160;&#160;&#160;&#160;acc2 == value2, ...)<br />
-    <em>children</em><br />
-    end-element()</td>
-
-    <td>Match a sequence of
-    <a href="#section-element-node">Element Event</a> with accessors,
-    a possibly empty list of events as element content and an
-    <a href="#section-end-element-node">End Element Event</a>.
-    </td>
-    </tr>
-    <tr>
-    <td>attribute(acc1 == value1,<br />
-    &#160;&#160;&#160;&#160;acc2 == value2, ...)</td>
-    <td>Match an <a href="#section-attribute-node">Attribute Event</a>
-    with accessors.</td>
-
-    </tr>
-    <tr>
-    <td>text()</td>
-    <td>Match a <a href="#section-text-node">Text Event</a>.</td>
-    </tr>
-    </table>
+      <table>
+        <tr>
+        <th>Notation</th>
+        <th>Meaning</th>
+        </tr>
+        <tr>
+        <td>A == B</td>
+        <td>Event accessor A matches expression B.</td>
+        </tr>
+        <tr>
+        <td>A != B</td>
+        <td>A is not equal to B.</td>
+        </tr>
+        <tr>
+        <td>A | B | ...</td>
+        <td>The A, B, ... terms are alternatives.</td>
+        </tr>
+        <tr>
+        <td>A - B</td>
+        <td>The terms in A excluding all the terms in B.</td>
+        </tr>
+        <tr>
+        <td><dfn>anyURI</dfn>.</td>
+        <td>Any URI.</td>
+        </tr>
+        <tr>
+        <td><dfn>anyString</dfn>.</td>
+        <td>Any string.</td>
+        </tr>
+        <tr>
+        <td>list(item1, item2, ...); list()</td>
+        <td>An ordered list of events. An empty list.</td>
+        </tr>
+        <tr>
+        <td>set(item1, item2, ...); set()</td>
+        <td>An unordered set of events.  An empty set.</td>
+        </tr>
+        <tr>
+        <td>*</td>
+        <td>Zero or more of preceding term.</td>
+        </tr>
+        <tr>
+        <td>?</td>
+        <td>Zero or one of preceding term.</td>
+        </tr>
+        <tr>
+        <td>+</td>
+        <td>One or more of preceding term.</td>
+        </tr>
+        <tr>
+        <td>root(acc1 == value1,<br />
+        &#160;&#160;&#160;&#160;acc2 == value2, ...)</td>
+        <td>Match a <a href="#section-root-node">Root Event</a> with accessors.
+        </td>
+        </tr>
+        <tr>
+        <td>start-element(acc1 == value1,<br />
+        &#160;&#160;&#160;&#160;acc2 == value2, ...)<br />
+        <em>children</em><br />
+        end-element()</td>
+        <td>Match a sequence of
+        <a href="#section-element-node">Element Event</a> with accessors,
+        a possibly empty list of events as element content and an
+        <a href="#section-end-element-node">End Element Event</a>.
+        </td>
+        </tr>
+        <tr>
+        <td>attribute(acc1 == value1,<br />
+        &#160;&#160;&#160;&#160;acc2 == value2, ...)</td>
+        <td>Match an <a href="#section-attribute-node">Attribute Event</a>
+        with accessors.</td>
+        </tr>
+        <tr>
+        <td>text()</td>
+        <td>Match a <a href="#section-text-node">Text Event</a>.</td>
+        </tr>
+      </table>
     </section>
 
 
     <!-- grammar action notation -->
     <section id="section-Infoset-Grammar-Action">
-    <h4>Grammar Action Notation</h4>
+      <h4>Grammar Action Notation</h4>
 
-    <table>
-    <tr>
-    <th>Notation</th>
-    <th>Meaning</th>
-    </tr>
-    <tr>
-    <td>A := B</td>
-    <td>Assigns A the value B.</td>
-    </tr>
-    <tr>
-    <td>concat(A, B, ..)</td>
-
-    <td>A string created by concatenating the terms in order.</td>
-    </tr>
-    <tr>
-    <td>resolve(<em>e</em>, <em>s</em>)</td>
-    <td>A string created by interpreting string <em>s</em> as a relative IRI to the
-    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"></a> <em>e</em>
-
-    as defined in <a href="#section-baseURIs">Section 5.3 Resolving URIs</a>.
-    The resulting string represents an
-    IRI.</td>
-    </tr>
-    <tr>
-    <td>generated-blank-node-id()</td>
-    <td>A string value for a new distinct generated
-    blank node identifier
-    as defined in <a href="#section-Identifiers">section 5.2 Identifiers</a>.
-    </td>
-
-    </tr>
-    <tr>
-    <td><em>event</em>.<em>accessor</em> := <em>value</em></td>
-    <td>Sets an event accessor to the given value.</td>
-    </tr>
-    <tr>
-    <td>uri(identifier := value)</td>
-    <td>Create a new <a href="#section-identifier-node">URI Reference Event</a>.</td>
-
-    </tr>
-    <tr>
-    <td>bnodeid(identifier := value)</td>
-    <td>Create a new <a href="#section-blank-nodeid-event">Blank Node Identifier Event</a>.  See also section <a href="#section-Identifiers">5.2 Identifiers</a>.</td>
-    </tr>
-    <tr>
-    <td>literal(literal-value := string,<br />
-    &#160;&#160;&#160;&#160;literal-language := language, ...)</td>
-    <td>Create a new <a href="#section-literal-node">Plain Literal Event</a>.</td>
-
-    </tr>
-    <tr>
-    <td>typed-literal(literal-value := string, ...)</td>
-    <td>Create a new <a href="#section-typed-literal-node">Typed Literal Event</a>.</td>
-    </tr>
-    </table>
+      <table>
+      <tr>
+      <th>Notation</th>
+      <th>Meaning</th>
+      </tr>
+      <tr>
+      <td>A := B</td>
+      <td>Assigns A the value B.</td>
+      </tr>
+      <tr>
+      <td>concat(A, B, ..)</td>
+      <td>A string created by concatenating the terms in order.</td>
+      </tr>
+      <tr>
+      <td>resolve(<em>e</em>, <em>s</em>)</td>
+      <td>A string created by interpreting string <em>s</em> as a relative IRI to the
+      <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"></a> <em>e</em>
+      as defined in <a href="#section-baseURIs">Section 5.3 Resolving URIs</a>.
+      The resulting string represents an
+      IRI.</td>
+      </tr>
+      <tr>
+      <td>generated-blank-node-id()</td>
+      <td>A string value for a new distinct generated
+      blank node identifier
+      as defined in <a href="#section-Identifiers">section 5.2 Identifiers</a>.
+      </td>
+      </tr>
+      <tr>
+      <td><em>event</em>.<em>accessor</em> := <em>value</em></td>
+      <td>Sets an event accessor to the given value.</td>
+      </tr>
+      <tr>
+      <td>uri(identifier := value)</td>
+      <td>Create a new <a href="#section-identifier-node">URI Reference Event</a>.</td>
+      </tr>
+      <tr>
+      <td>bnodeid(identifier := value)</td>
+      <td>Create a new <a href="#section-blank-nodeid-event">Blank Node Identifier Event</a>.  See also section <a href="#section-Identifiers">5.2 Identifiers</a>.</td>
+      </tr>
+      <tr>
+      <td>literal(literal-value := string,<br />
+      &#160;&#160;&#160;&#160;literal-language := language, ...)</td>
+      <td>Create a new <a href="#section-literal-node">Plain Literal Event</a>.</td>
+      </tr>
+      <tr>
+      <td>typed-literal(literal-value := string, ...)</td>
+      <td>Create a new <a href="#section-typed-literal-node">Typed Literal Event</a>.</td>
+      </tr>
+      </table>
     </section>
   </section>
 </section>
