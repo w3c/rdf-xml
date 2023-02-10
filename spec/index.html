@@ -73,23 +73,14 @@
 </section>
 
 <section id="sotd">
-  <p>This document is an edited version of the 2004 RDF XML Syntax
-    Specification Recommendation. The purpose of this revision is
-    to make this
-    document available as part of the RDF 1.2 document set. Changes are
-    limited to revised references, terminology updates, and adaptations to
-    the introduction.
-    The technical content of the document is unchanged, except for
-    the fact that the datatype XMLLiiteral is marked as
-    non-normative in RDF 1.2. The (non-normative) algorithm for
-    parsing XMLLiteral
-    (<a href="#parseTypeLiteralPropertyElt">Sec. 7.2.17</a>)
-    has been updated to be in line with
-    the current state of XML technology. Details of the changes
-    are listed in the <a href="#changes-rdf11">Changes</a>
-    section. Since the edits to this document do not invalidate
-    previous implementations the Director decided no new implementation report was required. </p>
+  <p>This document is a part of the RDF 1.2 document suite. The
+    document defines the RDF/XML syntax,
+    a concrete syntax for RDF [[RDF12-CONCEPTS]].</p>
 
+  <p>There have been no substantive changes to this document since [[rdf-syntax-grammar]].
+    Minor editorial changes, if any, are
+    detailed in <a href="#changes-12" class="sectionRef"></a>.</p>
+  
   <section id="related" data-include="./common/related.html"></section>
  </section>
 
@@ -139,9 +130,9 @@
    encodes RDF graphs and explains this with examples.  If there is any
    conflict between this informal description and the formal description
    of the syntax and grammar in sections
-   <a href="#section-Data-Model">6 Syntax Data Model</a> and
-   <a href="#section-Infoset-Grammar">7 RDF/XML Grammar</a>, the
-   latter two sections take precedence.
+   <a href="#section-Data-Model" class="sectionRef"></a> and
+   <a href="#section-Infoset-Grammar" class="sectionRef"></a>,
+   the latter two sections take precedence.
   </p>
 
     <!-- intro -->
@@ -214,8 +205,11 @@
     <h3>Node Elements and Property Elements</h3>
 
     <figure id="figure1">
-      <img src="figure1.png" alt="Graph for RDF/XML Example" />
-      <figcaption>Graph for RDF/XML Example (<a href="figure1.svg">SVG version</a>)</figcaption>
+      <!-- Source for this file is at https://docs.google.com/drawings/d/1IJuh-WWpk_jIgzNpnnZN6d-ezTFv9k03o59GQBIeo58 -->
+      <object data="figure1.svg" style="width: 100%" type="image/svg+xml" aria-describedby="figure1-alt">
+        <p id="figure1-alt">The image represents the graph described in <a href="#example4"></a>.</p>
+      </object>
+      <figcaption>Graph for RDF/XML Example</figcaption>
     </figure>
 
     <p>An RDF graph is given in <a href="#figure1">Figure 1</a>
@@ -227,8 +221,16 @@
       graph shown in <a href="#figure2">Figure 2</a>:</p>
 
     <figure id="figure2">
-      <img src="figure2.png" alt="One Path Through the Graph" />
-      <figcaption>One Path Through the Graph (<a href="figure2.svg">SVG version</a>)</figcaption>
+      <!-- Source for this file is at https://docs.google.com/drawings/d/1oQjG8DyfGr33UnaCrS7nC96JMt3NI7Jv2v5LfLUZcYE -->
+      <object data="figure2.svg" style="width: 100%" type="image/svg+xml" aria-describedby="figure2-alt">
+        <p id="figure2-alt">
+          The image represents the graph described in <a href="#example4"></a>
+          highlighting the path from `&lt;http://www.w3.org/TR/rdf-syntax-grammar>`
+          to `&lt;http://purl.org/net/dajobe>`.
+          Elements along the path are marked in <strong>bold text</strong>.
+        </p>
+      </object>
+      <figcaption>One Path Through the Graph</figcaption>
     </figure>
 
     <p>The left hand side of the <a href="#figure2">Figure 2</a>
@@ -296,8 +298,8 @@
       <a href="#example2">Example 2</a>
       gives the result in <a href="#example3">Example 3</a>
       (this example fails to show that the blank node is
-      shared between the two paths, see
-      <a href="#section-Syntax-blank-nodes">2.10</a>):</p>
+      shared between the two paths,
+      see <a href="#section-Syntax-blank-nodes" class="sectionRef"></a>):</p>
 
     <pre class="example rdf" id="example3"
        data-transform="updateExample"
@@ -421,8 +423,8 @@
     only if the property element name is not repeated
     (required by XML &mdash; attribute names are unique on an XML element)
     and any in-scope <code>xml:lang</code> on the
-    property element's string literal (if any) are the same (see
-    <a href="#section-Syntax-languages">Section 2.7</a>)
+    property element's string literal (if any) are the same
+    (see <a href="#section-Syntax-languages" class="sectionRef"></a>)
     This abbreviation is known as a <em>Property Attribute</em>
     and can be applied to any node element.</p>
 
@@ -950,7 +952,7 @@
     <a href="#example17">Example 17</a>.  There is an <code>rdf:li</code>
     special property element that is equivalent to
     <code>rdf:_1</code>, <code>rdf:_2</code> in order,
-    explained in detail in <a href="#section-List-Expand">section 7.4</a>.
+    explained in detail in <a href="#section-List-Expand" class="sectionRef"></a>.
     The mapping to the container membership properties is
     always done in the order that the <code>rdf:li</code> special
     property elements appear in XML &mdash; the document order is significant.
@@ -1011,7 +1013,7 @@
     nodes of the collection.  This syntax form corresponds to a set of
     triples connecting the collection of subject nodes, the exact triples
     generated are described in detail in
-    <a href="#parseTypeCollectionPropertyElt">Section 7.2.19 Production parseTypeCollectionPropertyElt</a>.
+    <a href="#parseTypeCollectionPropertyElt" class="sectionRef"></a>.
     The collection construction is always done in the order that the node
     elements appear in the XML document.  Whether the order of the
     collection of nodes is significant is an application issue and not
@@ -1053,7 +1055,7 @@
 
     <p>The <code>rdf:ID</code> attribute can be used on a property
     element to reify the triple that it generates (See
-    <a href="#section-Reification">section 7.3 Reification Rules</a> for the
+    <a href="#section-Reification" class="sectionRef"></a> for the
     full details).
     The identifier for the triple should be constructed as a
     IRI
@@ -1234,7 +1236,7 @@
     <ul>
     <li>given as XML attribute values interpreted as relative
     IRIs that are resolved against the in-scope base URI
-    as described in <a href="#section-baseURIs">section 5.3</a>
+    as described in <a href="#section-baseURIs" class="sectionRef"></a>
     to give absolute IRIs</li>
     <li>transformed from XML namespace-qualified element and attribute names
     (QNames)</li>
@@ -1258,7 +1260,7 @@
     IRIs
     by appending the attribute value to the result of appending
     "#" to the in-scope base URI which is defined in
-    <a href="#section-baseURIs">Section 5.3 Resolving IRIs</a></p>
+    <a href="#section-baseURIs" class="sectionRef"></a></p>
     </dd>
 
     <dt>Literal</dt>
@@ -1413,7 +1415,7 @@
     <a data-cite="XPATH#infoset">Information Set Mapping</a>.
     A sequence of events is normally derived from an XML document, in
     which case they are in document order as defined below in
-    <a href="#section-Infoset-Mapping">Section 6.2 Information Set Mapping</a>.
+    <a href="#section-Infoset-Mapping" class="sectionRef"></a>.
     The sequence these events form are intended to be similar to the sequence
     of events produced by the [[SAX]] XML API from
     the same XML document.  Sequences of events may be checked against
@@ -1801,7 +1803,7 @@
       </p>
 
       <p>For further information on identifiers in the RDF graph, see
-        <a href="#section-Identifiers">section 5.2</a>.</p>
+        <a href="#section-Identifiers" class="sectionRef"></a>.</p>
     </section>
 
 
@@ -1837,7 +1839,7 @@
       </p>
 
       <p>For further information on identifiers in the RDF graph, see
-        <a href="#section-Identifiers">section 5.2</a>.</p>
+        <a href="#section-Identifiers" class="sectionRef"></a>.</p>
     </section>
 
 
@@ -2022,7 +2024,7 @@
     <h3 id="section-Notation-Forms">Grammar Notation</h3>
 
     <p>The following notation is used to describe matching the sequence
-      of data model events as given in <a href="#section-Data-Model">Section 6</a>
+      of data model events as given in <a href="#section-Data-Model" class="sectionRef"></a>
       and the actions to perform for the matches.
       The RDF/XML grammar is defined in terms of mapping from these matched
       data model events to triples, using notation of the form:</p>
@@ -2045,7 +2047,7 @@
     </blockquote>
 
     <p>where the <em>event-content</em> is an expression matching
-      <em>event-types</em> (as defined in <a href="#section-Nodes">Section 6.1</a>),
+      <em>event-types</em> (as defined in <a href="#section-Nodes" class="sectionRef"></a>),
       using notation given in the following sections.
       The number is used for reference purposes.
       The grammar <em>action</em> may include generating
@@ -2072,7 +2074,7 @@
         </tr>
         <tr>
         <td><code>rdf:</code><em>X</em></td>
-        <td>A URI as defined in <a href="#section-Namespace">section 5.1</a>.</td>
+        <td>A URI as defined in <a href="#section-Namespace" class="sectionRef"></a>.</td>
         </tr>
         <tr>
         <td>"ABC"</td>
@@ -2187,8 +2189,8 @@
       <tr>
       <td>resolve(<em>e</em>, <em>s</em>)</td>
       <td>A string created by interpreting string <em>s</em> as a relative IRI to the
-      <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"></a> <em>e</em>
-      as defined in <a href="#section-baseURIs">Section 5.3 Resolving URIs</a>.
+      <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"><em>e</em></a>
+      as defined in <a href="#section-baseURIs" class="sectionRef"></a>.
       The resulting string represents an
       IRI.</td>
       </tr>
@@ -2196,7 +2198,7 @@
       <td>generated-blank-node-id()</td>
       <td>A string value for a new distinct generated
       blank node identifier
-      as defined in <a href="#section-Identifiers">section 5.2 Identifiers</a>.
+      as defined in <a href="#section-Identifiers" class="sectionRef"></a>.
       </td>
       </tr>
       <tr>
@@ -2209,7 +2211,8 @@
       </tr>
       <tr>
       <td>bnodeid(identifier := value)</td>
-      <td>Create a new <a href="#section-blank-nodeid-event">Blank Node Identifier Event</a>.  See also section <a href="#section-Identifiers">5.2 Identifiers</a>.</td>
+      <td>Create a new <a href="#section-blank-nodeid-event">Blank Node Identifier Event</a>.
+        See also section <a href="#section-Identifiers" class="sectionRef"></a>.</td>
       </tr>
       <tr>
       <td>literal(literal-value := string,<br />
@@ -2473,7 +2476,7 @@
     </p></div></div>
 
     <p>A subset of the syntax terms from the RDF vocabulary in
-    <a href="#section-Namespace">section 5.1</a>
+    <a href="#section-Namespace" class="sectionRef"></a>
     which are used in RDF/XML.
     </p>
     </section>
@@ -2488,7 +2491,7 @@
     </p></div></div>
 
     <p>All the syntax terms from the RDF vocabulary in
-    <a href="#section-Namespace">section 5.1</a>
+    <a href="#section-Namespace" class="sectionRef"></a>
     which are used in RDF/XML.
     </p>
     </section>
@@ -2718,7 +2721,7 @@
     <em>e</em>.<a href="#eventterm-element-URI">URI</a> =
     <code>rdf:li</code> then apply the list expansion rules on element <em>e</em>.parent in
 
-    <a href="#section-List-Expand">section 7.4</a>
+    <a href="#section-List-Expand" class="sectionRef"></a>
     to give a new URI <em>u</em> and
     <em>e</em>.<a href="#eventterm-element-URI">URI</a> := <em>u</em>.
     </p>
@@ -2760,7 +2763,7 @@
     <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
-    <a href="#section-Reification">section 7.3</a>
+    <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em></p>
     </section>
 
@@ -2800,7 +2803,7 @@
     <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
-    <a href="#section-Reification">section 7.3</a>
+    <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
     </section>
 
@@ -2821,7 +2824,7 @@
     <p>For element <em>e</em> and the literal <em>l</em>
     that is the <code>rdf:parseType="Literal"</code> content.
     <em>l</em> is not transformed by the syntax data model mapping into events
-    (as noted in section <a href="#section-Data-Model">6 Syntax Data Model</a>)
+    (as noted in section <a href="#section-Data-Model" class="sectionRef"></a>)
     but remains an XML Infoset of XML Information items.</p>
 
     <p><em>l</em> is transformed into the lexical form of an
@@ -2875,7 +2878,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
-    <a href="#section-Reification">section 7.3</a>
+    <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
     </section>
 
@@ -2914,7 +2917,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
-    <a href="#section-Reification">section 7.3</a>
+    <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
 
     <p>If the element content <em>c</em> is not empty, then use event
@@ -2974,7 +2977,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
-    <a href="#section-Reification">section 7.3</a>.
+    <a href="#section-Reification" class="sectionRef"></a>.
     </p>
 
     <p>If <em>s</em> is empty, no further work is performed.</p>
@@ -3053,7 +3056,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>and then if <em>i</em> is given, the above statement is reified with
     uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
-    <a href="#section-Reification">section 7.3</a>.</p>
+    <a href="#section-Reification" class="sectionRef"></a>.</p>
 
     <p class="note"><strong>Test:</strong>
     Indicated by
@@ -3147,7 +3150,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       reified with
       uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-string-value">string-value</a>)))
       using the reification rules in
-      <a href="#section-Reification">section 7.3</a>.</p>
+      <a href="#section-Reification" class="sectionRef"></a>.</p>
 
     </li>
 
@@ -3296,7 +3299,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     </p>
 
     <p>The string-value for the resulting event is discussed in
-    <a  href="#parseTypeLiteralPropertyElt">section 7.2.17</a>.</p>
+    <a  href="#parseTypeLiteralPropertyElt" class="sectionRef"></a>.</p>
 
     </div></div>
     </section>
@@ -3526,8 +3529,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>Updated link to QName definition in XML-NAMES</li>
     <li>Added diff with 2004 Recommendation</li>
     <li>Sections concerning <code>rdf:XMLLiteral</code>
-      (<a href="#section-Syntax-XML-literals">Sec. 2.8</a>
-      and <a href="#parseTypeLiteralPropertyElt">Sec. 7.2.17</a>)
+      (<a href="#section-Syntax-XML-literals" class="sectionRef"></a>
+      and <a href="#parseTypeLiteralPropertyElt" class="sectionRef"></a>)
       marked as non-normative.</li>
     <li>Adapted  <a
       href="#parseTypeLiteralPropertyElt">Production
