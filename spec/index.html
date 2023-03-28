@@ -1109,13 +1109,13 @@
 
   <dl>
   <dt>Definition:</dt>
-    <dd>An <dfn data-cite="RDF12-CONCEPTS#rdf-document">RDF Document</dfn> is a serialization of an
-    <a data-cite="RDF12-CONCEPTS#rdf-graph">RDF Graph</a>
+    <dd>An <dfn data-cite="RDF12-CONCEPTS#dfn-rdf-document">RDF Document</dfn> is a serialization of an
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF Graph</a>
     into a concrete syntax.</dd>
 
   <dt>Definition:<br /></dt>
     <dd>An <dfn>RDF/XML Document</dfn> is an
-    <a data-cite="RDF12-CONCEPTS#rdf-document">RDF Document</a> written in the
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-document">RDF Document</a> written in the
     XML syntax for RDF as defined in this document.</dd>
 
   <dt>Conformance:<br /></dt>
@@ -1160,11 +1160,11 @@
 
     <h3>The RDF Namespace and Vocabulary</h3>
 
-     <p>The <dfn data-cite="RDF12-CONCEPTS#namespace-iri" id="rdf-ns-uri">RDF namespace IRI</dfn> (or namespace name) is
+     <p>The <dfn data-cite="RDF12-CONCEPTS#dfn-namespace-iri" id="rdf-ns-uri">RDF namespace IRI</dfn> (or namespace name) is
     <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
     and is typically used in XML with the prefix <code>rdf</code>
     although other prefix strings may be used.
-    The <dfn data-cite="RDF12-CONCEPTS#rdf-vocabulary">RDF Vocabulary</dfn>
+    The <dfn data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</dfn>
     is identified by this namespace name and consists of the following names only:</p>
 
     <dl>
@@ -1232,7 +1232,7 @@
 <p>IRIs can act as node (both subject and object) and as
     predicate. </p>
 
-    <p><a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be either:</p>
+    <p><a data-cite="RDF12-CONCEPTS#dfn-dfn-iri">IRIs</a> can be either:</p>
     <ul>
     <li>given as XML attribute values interpreted as relative
     IRIs that are resolved against the in-scope base URI
@@ -1267,7 +1267,7 @@
     <dd>
 <p>Literals can only act as object nodes.</p>
 
-    <p><a data-cite="RDF12-CONCEPTS#literal">Literals</a> always have a datatype. Language-tagged strings get
+    <p><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> always have a datatype. Language-tagged strings get
     the datatype <code>rdf:langString</code>. When there is no
     language tag or datatype specified the literal is assumed to have the datatype
     <code>xsd:string</code>. </p>
@@ -1276,7 +1276,7 @@
     <dt>Blank Node</dt>
     <dd>
     <p>Blank nodes can act as subject node and as object node.</p>
-    <p><a data-cite="RDF12-CONCEPTS#blank-node">Blank nodes</a> have distinct identity in the RDF graph.
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the RDF graph.
     When the graph is written in a syntax such as RDF/XML, these
     blank nodes may need graph-local identifiers and a syntax
     in order to preserve this distinction.  These local identifiers are called
@@ -1987,7 +1987,7 @@
       <p class="note" id="literal-white-space-normalization-note">
         <strong>Implementation Note (Informative): </strong>
         In XML Schema (part 1) [[XMLSCHEMA-1]],
-        <a data-cite="XMLSCHEMA-1#section-White-Space-Normalization-during-Validation">
+        <a data-cite="XMLSCHEMA-1#d0e1654">
           white space normalization
         </a>
         occurs during validation according to the value of the whiteSpace
@@ -2828,7 +2828,7 @@
     but remains an XML Infoset of XML Information items.</p>
 
     <p><em>l</em> is transformed into the lexical form of an
-    <a data-cite="RDF12-CONCEPTS#rdf-xmlliteral">XML literal</a>
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-xmlliteral">XML literal</a>
     in the RDF graph <em>x</em> (a Unicode string)
     by the following algorithm.  This does not mandate any implementation
     method &mdash; any other method that gives the same result may be used.</p>
