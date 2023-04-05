@@ -1124,29 +1124,33 @@
     if it adheres to the specification defined in this document.</dd>
   </dl>
 
-</section>
+  <section id="section-MIME-Type">
+    <h2>RDF MIME Type, File Extension and Macintosh File Type</h2>
 
-<!-- THIRD PART : MIME Type -->
+    <p>The Internet media type / MIME type for RDF/XML is
+    <code>application/rdf+xml</code> &mdash; [[RFC3870]].
+    </p>
 
-<section id="section-MIME-Type">
-  <h2>RDF MIME Type, File Extension and Macintosh File Type</h2>
+    <p>It is recommended that RDF/XML files have the extension
+    <code>".rdf"</code> (all lowercase) on all platforms.</p>
 
-  <p>The Internet media type / MIME type for RDF/XML is
-  <code>application/rdf+xml</code> &mdash;
-  RFC 3023 [[RFC3023]], section 8.18.
-  </p>
+    <p>It is recommended that RDF/XML files stored on Macintosh HFS file
+    systems be given a file type of <code>"rdf&nbsp;"</code>
+    (all lowercase, with a space character as the fourth letter).</p>
+  </section>
 
-  <p class="note"><strong>(Informative): </strong>
-  For the state of the MIME type registration, consult
-  IANA MIME Media Types [[IANA-MEDIA-TYPES]]
-  </p>
+  <section class="informative" id="privacy-considerations">
+    <h2>Privacy Considerations</h2>
+    <p class="ednote">TODO</p>  
+  </section>
 
-  <p>It is recommended that RDF/XML files have the extension
-  <code>".rdf"</code> (all lowercase) on all platforms.</p>
+  <section class="informative" id="security">
+    <h2>Security Considerations</h2>
 
-  <p>It is recommended that RDF/XML files stored on Macintosh HFS file
-  systems be given a file type of <code>"rdf&nbsp;"</code>
-  (all lowercase, with a space character as the fourth letter).</p>
+    <p>See the <a data-cite="RFC3870#section-6">Security Considerations Section</a>
+      of [[RFC3870]].</p>
+  </section>
+
 </section>
 
 
@@ -3554,7 +3558,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
   <h2>Changes between RDF 1.1 and RDF 1.2</h2>
 
   <ul>
-    
+    <li>Adds <a href="#privacy-considerations"></a> and <a href="#security"></a>.</li>
   </ul>
 </section>
 
