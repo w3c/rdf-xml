@@ -1125,18 +1125,27 @@
   </dl>
 
   <section id="section-MIME-Type">
-    <h2>RDF MIME Type, File Extension and Macintosh File Type</h2>
+    <h2>RDF/XML Internet Media Type, File Extension, and Macintosh File Type</h2>
+    <dl>
+      <dt>Contact:</dt>
+      <dd>Dan Brickley</dd>
+      <dt>See also:</dt>
 
-    <p>The Internet media type / MIME type for RDF/XML is
-    <code>application/rdf+xml</code> &mdash; [[RFC3870]].
-    </p>
+      <dd><a href="http://www.w3.org/2002/06/registering-mediatype">How to Register a Media Type for a W3C Specification</a></dd>
+      <dd><a href="http://www.w3.org/2001/tag/2002/0129-mime">Internet Media Type registration, consistency of use</a><br />TAG Finding 3 June 2002 (Revised 4 September 2002)</dd>
+    </dl>
 
-    <p>It is recommended that RDF/XML files have the extension
-    <code>".rdf"</code> (all lowercase) on all platforms.</p>
+    <p>The Internet Media Type (formerly known as MIME Type) for RDF/XML is
+      <code>application/rdf+xml</code> &mdash; [[RFC3870]].</p>
+
+    <p>It is recommended that RDF/XML files have the extension &quot;.rdf&quot;
+      (all lowercase) on all platforms.</p>
 
     <p>It is recommended that RDF/XML files stored on Macintosh HFS file
-    systems be given a file type of <code>"rdf&nbsp;"</code>
-    (all lowercase, with a space character as the fourth letter).</p>
+      systems be given a file type of <code>"rdf&nbsp;"</code>
+      (all lowercase, with a space character as the fourth letter).</p>
+
+      <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
   </section>
 
   <section class="informative" id="privacy-considerations">
@@ -2448,7 +2457,7 @@
 
     <p>If the RDF/XML is a standalone XML document
     (identified by presentation as an
-    application/rdf+xml <a href="#section-MIME-Type">RDF MIME type</a> object,
+    `application/rdf+xml` <a href="#section-MIME-Type">RDF media type</a> object,
     or by some other means) then the grammar may start with
     production <a href="#doc">doc</a> or
     production <a href="#nodeElement">nodeElement</a>.</p>
