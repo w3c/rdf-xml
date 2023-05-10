@@ -886,7 +886,7 @@
 
     <p>RDF/XML allows further abbreviating IRIs in XML attributes in two
     ways.  The XML Infoset provides a base URI attribute <code>xml:base</code>
-    that sets the base URI for resolving relative IRIs, otherwise
+    that sets the base URI for resolving <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>, otherwise
     the base URI is that of the document.  The base URI applies to
     all RDF/XML attributes that deal with IRIs which are <code>rdf:about</code>,
     <code>rdf:resource</code>, <code>rdf:ID</code>
@@ -894,7 +894,7 @@
 
     <p>The <code>rdf:ID</code> attribute on a node element (not property
     element, that has another meaning) can be used instead of
-    <code>rdf:about</code> and gives a relative IRI equivalent to <code>#</code>
+    <code>rdf:about</code> and gives a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> equivalent to <code>#</code>
     concatenated with the <code>rdf:ID</code> attribute value.  So for
     example if <code>rdf:ID="name"</code>, that would be equivalent
     to <code>rdf:about="#name"</code>.  <code>rdf:ID</code> provides an additional
@@ -1059,12 +1059,12 @@
     full details).
     The identifier for the triple should be constructed as a
     IRI
-    made from the relative IRI
+    made from the <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a>
     <code>#</code> concatenated with the <code>rdf:ID</code> attribute
     value, resolved against the in-scope base URI.  So for example if
 
     <code>rdf:ID="triple"</code>, that would be equivalent to the IRI
-    formed from relative IRI <code>#triple</code> against the base URI.
+    formed from <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> <code>#triple</code> against the base URI.
     Each (<code>rdf:ID</code> attribute value, base URI)
     pair has to be unique in an RDF/XML document,
     see <a>constraint-id</a>.
@@ -1335,7 +1335,7 @@
     <a href="#section-element-node"><span
     class="arrow">·</span>element event<span
     class="arrow">·</span></a>.
-    Relative IRIs are resolved into
+    <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">Relative IRI references</a> are resolved into
     IRIs
     according to the algorithm specified in [[XMLBASE]] (and RFC 2396).
     These specifications do not specify an algorithm for resolving a
@@ -2201,7 +2201,7 @@
       </tr>
       <tr>
       <td>resolve(<em>e</em>, <em>s</em>)</td>
-      <td>A string created by interpreting string <em>s</em> as a relative IRI to the
+      <td>A string created by interpreting string <em>s</em> as a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a> to the
       <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"><em>e</em></a>
       as defined in <a href="#section-baseURIs" class="sectionRef"></a>.
       The resulting string represents an
