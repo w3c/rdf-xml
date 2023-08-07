@@ -3405,8 +3405,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       <a href="#syntaxTerms">syntaxTerms</a> production.
       </dd>
 
-      <dt>Use the <code>rdf:HTML</code> datatype</dt>
-      <dd>This datatype as introduced in RDF 1.1 [[RDF11-CONCEPTS]].</dd>
+      <dt>Use the <code>rdf:HTML</code> datatype along with <code>rdf:parseType="Literal"</code></dt>
+      <dd>This datatype as introduced in RDF 1.1 [[RDF11-CONCEPTS]] for representing
+        HTML <a data-cite="DOM4#interface-documentfragment"><code>DocumentFragment</code></a>
+        nodes as literal values using HTML markup.
+        Literals with datatype `rdf:HTML` can be represented as normal
+        <a href="#section-Syntax-datatyped-literals">typed literals</a>.</dd>
 
     </dl>
 
