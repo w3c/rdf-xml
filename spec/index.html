@@ -3381,7 +3381,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h2>Serializing an RDF Graph to RDF/XML</h2>
 
     <p>There are some RDF Graphs as defined in
-    [[RDF12-CONCEPTS]]that cannot be serialized in RDF/XML. These are those that:</p>
+    [[RDF12-CONCEPTS]] that cannot be serialized in RDF/XML. These are those that:</p>
 
     <dl>
       <dt>Use property names that cannot be turned into XML namespace-qualified names.<br /></dt>
@@ -3404,14 +3404,6 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       <dd>For example, a property with the same URI as any of the
       <a href="#syntaxTerms">syntaxTerms</a> production.
       </dd>
-
-      <dt>Use the <code>rdf:HTML</code> datatype along with <code>rdf:parseType="Literal"</code></dt>
-      <dd>This datatype as introduced in RDF 1.1 [[RDF11-CONCEPTS]] for representing
-        HTML <a data-cite="DOM#interface-documentfragment"><code>DocumentFragment</code></a>
-        nodes as literal values using HTML markup.
-        Literals with datatype `rdf:HTML` can be represented as normal
-        <a href="#section-Syntax-datatyped-literals">typed literals</a>.</dd>
-
     </dl>
 
     <p class="note"><strong>Implementation Note (Informative):</strong>
@@ -3529,6 +3521,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
   <ul>
     <li>Adds <a href="#privacy-considerations"></a> and <a href="#security"></a>.</li>
     <li>Updates reference for [[SAX]].</li>
+    <li>Removes the statement that the `rdf:HTML` datatype cannot be serialized in RDF/XML.</li>
   </ul>
 </section>
 
