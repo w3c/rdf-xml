@@ -146,7 +146,9 @@
     RDF triples
     where each triple contains a
     <em>subject node</em>, <em>predicate</em> and <em>object node</em>.
-    Nodes are IRIs, literals, or blank nodes.
+    Nodes are <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>,
+    <a data-cite="RDF12-CONCEPTS#dfn-literal">literals</a>, or
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a>.
     Blank nodes may be given
     a document-local identifier called a
     blank node identifier.
@@ -168,7 +170,7 @@
     or be declared with the default namespace declaration and have none (but
     still have a namespace name)</p>
 
-    <p>The IRI represented by a QName is determined by appending the
+    <p>The <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> represented by a <a data-cite="XML-NAMES#NT-QName">QName</a> is determined by appending the
     <a data-cite="XML-NAMES#NT-LocalPart">local name</a>
     part of the QName after the
     <a data-cite="XML-NAMES#dt-NSName">namespace name</a> (IRI) part of the QName.
@@ -176,7 +178,7 @@
     of all predicates and some nodes.
     IRIs identifying
     subject and object nodes can also be stored as XML attribute values.
-    RDF literals
+    <a data-cite="RDF12-CONCEPTS#dfn-literal">RDF Literals</a>
     which can only be object nodes,
     become either XML element text content or XML attribute values.</p>
 
@@ -616,8 +618,8 @@
 
     <p>RDF allows typed literals
     to be given as the object node of a predicate.  Typed literals consist of a literal
-    string and a datatype
-    IRI.  These are written in RDF/XML using
+    string and a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>.
+    These are written in RDF/XML using
     the same syntax for literal string nodes in the property element form
     (not property attribute) but with an additional
     <code>rdf:datatype="</code><em>datatypeURI</em><code>"</code>
@@ -664,11 +666,11 @@
   <section id="section-Syntax-blank-nodes">
     <h3>Identifying Blank Nodes: <code>rdf:nodeID</code></h3>
 
-    <p>Blank nodes in the RDF graph are distinct but have no
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> in the RDF graph are distinct but have no
     IRI identifier.
     It is sometimes required that the same graph blank node is referred to in the
     RDF/XML in multiple places, such as at the subject and object
-    of several RDF triples.  In this case, a blank node identifier
+    of several RDF triples.  In this case, a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
     can be given to the blank node for identifying it
     in the document.  Blank node identifiers in RDF/XML are scoped to the
     containing XML Information Set
@@ -718,7 +720,7 @@
   <section id="section-Syntax-parsetype-resource">
     <h3>Omitting Blank Nodes: <code>rdf:parseType="Resource"</code></h3>
 
-    <p>Blank nodes (not IRI nodes) in RDF graphs can be written
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not IRI nodes) in RDF graphs can be written
     in a form that allows the
     <code>&lt;rdf:Description&gt;</code>
     <code>&lt;/rdf:Description&gt;</code> pair to be omitted.
@@ -907,9 +909,7 @@
     <code>xml:base</code> of <code>http://example.org/here/</code> and
     an <code>rdf:ID</code> on the <code>rdf:Description</code> node element.
     The object node of the <code>ex:prop</code> predicate is an
-    absolute IRI
-
-    resolved from the <code>rdf:resource</code> XML attribute value
+    IRI resolved from the <code>rdf:resource</code> XML attribute value
     using the in-scope base URI to give the
     IRI <code>http://example.org/here/fruit/apple</code>.</p>
 
@@ -1053,8 +1053,8 @@
     element to reify the triple that it generates (See
     <a href="#section-Reification" class="sectionRef"></a> for the
     full details).
-    The identifier for the triple should be constructed as a
-    IRI
+    The identifier for the triple should be constructed as an
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     made from the <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a>
     <code>#</code> concatenated with the <code>rdf:ID</code> attribute
     value, resolved against the in-scope base URI.  So for example if
@@ -1253,22 +1253,22 @@
 
     <p><a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be either:</p>
     <ul>
-    <li>given as XML attribute values interpreted as relative
-    IRIs that are resolved against the in-scope base URI
+    <li>given as XML attribute values interpreted as <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>
+    that are resolved against the in-scope base URI
     as described in <a href="#section-baseURIs" class="sectionRef"></a>
-    to give absolute IRIs</li>
+    to give <a data-cite="RFC3986#section-5">resolved</a> IRIs</li>
     <li>transformed from XML namespace-qualified element and attribute names
-    (QNames)</li>
+    (<a data-cite="XML-NAMES#NT-QName">QNames</a>)</li>
     <li>transformed from <code>rdf:ID</code> attribute values.</li>
     </ul>
 
     <p>Within RDF/XML, XML QNames are transformed into
-    IRIs
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
     by appending the XML local name to the namespace name (IRI).
     For example, if the XML namespace prefix <code>foo</code> has
     namespace name (IRI)
 
-    <code>http://example.org/somewhere/</code> then the QName
+    <code>http://example.org/somewhere/</code> then the <a data-cite="XML-NAMES#NT-QName">QName</a>
     <code>foo:bar</code> would correspond to the IRI
     <code>http://example.org/somewhere/bar</code>.  Note that this
     restricts which
@@ -1276,7 +1276,7 @@
 
     <p>The <a href="#idAttr"><code>rdf:ID</code></a> values
     are transformed into
-    IRIs
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
     by appending the attribute value to the result of appending
     "#" to the in-scope base URI which is defined in
     <a href="#section-baseURIs" class="sectionRef"></a></p>
@@ -1286,7 +1286,8 @@
     <dd>
 <p>Literals can only act as object nodes.</p>
 
-    <p><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> always have a datatype. Language-tagged strings get
+    <p><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> always have a datatype.
+    <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">Language-tagged strings</a> get
     the datatype <code>rdf:langString</code>. When there is no
     language tag or datatype specified the literal is assumed to have the datatype
     <code>xsd:string</code>. </p>
@@ -1294,7 +1295,7 @@
 
     <dt>Blank Node</dt>
     <dd>
-    <p>Blank nodes can act as subject node and as object node.</p>
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> can act as subject node and as object node.</p>
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the RDF graph.
     When the graph is written in a syntax such as RDF/XML, these
     blank nodes may need graph-local identifiers and a syntax
@@ -1305,7 +1306,7 @@
     Blank node identifiers in RDF/XML are scoped to the XML Information Set
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.</p>
 
-    <p>If no blank node identifier is given explicitly as an
+    <p>If no <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> is given explicitly as an
     <code>rdf:nodeID</code> attribute value then one will need to be
     generated (using generated-blank-node-id,
     see <a href="#section-Infoset-Grammar-Action" class="sectionRef"></a>).
@@ -1342,8 +1343,7 @@
     class="arrow">·</span>element event<span
     class="arrow">·</span></a>.
     <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">Relative IRI references</a> are resolved into
-    IRIs
-    according to the algorithm specified in [[XMLBASE]] (and RFC 2396).
+    IRIs according to the algorithm specified in [[XMLBASE]] (and RFC 2396).
     These specifications do not specify an algorithm for resolving a
     fragment identifier alone, such as <code>#foo</code>, or the empty
     string <code>""</code> into an
