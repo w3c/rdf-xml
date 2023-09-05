@@ -83,7 +83,7 @@
 <section id="section-Introduction">
   <h2>Introduction</h2>
 
-  <p>This document defines the XML [[XML10]] syntax for RDF graphs. </p>
+  <p>This document defines the XML [[XML11]] syntax for RDF graphs. </p>
 
   <p>This document revises the original RDF/XML grammar [[RDF-SYNTAX-GRAMMAR-19990222]]
     in terms of XML Information Set [[XML-INFOSET]] information items which moves
@@ -518,8 +518,8 @@
     <h3>Languages: <code>xml:lang</code></h3>
 
     <p>RDF/XML permits the use of the <code>xml:lang</code> attribute as defined by
-    <a data-cite="XML10#sec-lang-tag">2.12 Language Identification</a>
-    of XML 1.0 [[XML10]]
+    <a data-cite="XML11#sec-lang-tag">2.12 Language Identification</a>
+    of XML 1.1 [[XML11]]
     to allow the identification of content language.
     The <code>xml:lang</code> attribute can be used on any node element or property element
     to indicate that the included content is in the given language.
@@ -1512,7 +1512,7 @@
     syntax data model events.</p>
 
   <p>Element information items with reserved XML Names
-    (See <a data-cite="XML10#dt-name">Name</a> in [[[XML10]]])
+    (See <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
     are not mapped to data model element events.
     These are all those with property [prefix] beginning with <code>xml</code>
     (case independent comparison) and all those with [prefix] property
@@ -1607,7 +1607,7 @@
               attribute information item.</p>
 
           <p>All remaining reserved XML Names
-            (see <a data-cite="XML10#dt-name">Name</a> in [[[XML10]]])
+            (see <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
             are now removed from the set.
             These are, all attribute information items in the set with property [prefix]
             beginning with <code>xml</code>
@@ -1696,7 +1696,7 @@
 
         <dt id="eventterm-attribute-string-value">string-value</dt>
         <dd>Set to the value of the attribute information item
-          property [normalized value] as specified by [[XML10]] (if an attribute whose normalized
+          property [normalized value] as specified by [[XML11]] (if an attribute whose normalized
           value is a zero-length string, then the string-value is also
           a zero-length string).
         </dd>
@@ -2307,11 +2307,11 @@
     <tr>
     <td><a href="#ws">7.2.12</a> <a href="#ws">ws</a></td> <td>A
     <a href="#section-text-node">text event</a> matching white
-    space defined by XML [[XML10]] definition <em>White Space</em>
+    space defined by XML [[XML11]] definition <em>White Space</em>
 
-    Rule [3] <a data-cite="XML10#NT-S">S</a>
+    Rule [3] <a data-cite="XML11#NT-S">S</a>
     in section
-    <a data-cite="XML10#sec-common-syn">Common Syntactic Constructs</a></td>
+    <a data-cite="XML11#sec-common-syn">Common Syntactic Constructs</a></td>
     </tr>
     <tr>
     <td><a href="#propertyEltList">7.2.13</a> <a href="#propertyEltList">propertyEltList</a></td> <td><a href="#ws">ws</a>* (<a href="#propertyElt">propertyElt</a> <a href="#ws">ws</a>* ) *</td>
@@ -2435,11 +2435,11 @@
     <td><a href="#literal">7.2.33</a> <a
     href="#literal">literal</a></td> <td>Any XML element content
     that is allowed according to
-    [[XML10]] definition <em>Content of Elements</em>
+    [[XML11]] definition <em>Content of Elements</em>
     Rule [43]
-    <a data-cite="XML10#NT-content">content</a>.
+    <a data-cite="XML11#NT-content">content</a>.
     in section
-    <a data-cite="XML10#sec-starttags">3.1 Start-Tags, End-Tags, and Empty-Element Tags</a></td>
+    <a data-cite="XML11#sec-starttags">3.1 Start-Tags, End-Tags, and Empty-Element Tags</a></td>
 
     </tr>
     <tr>
@@ -2705,10 +2705,10 @@
 
     <div class="productionOuter"><div class="productionInner"><p>
     A <a href="#section-text-node">text event</a> matching white space
-    defined by [[XML10]] definition <em>White Space</em>
-    Rule [3] <a data-cite="XML10#NT-S">S</a>
+    defined by [[XML11]] definition <em>White Space</em>
+    Rule [3] <a data-cite="XML11#NT-S">S</a>
     in section
-    <a data-cite="XML10#sec-common-syn">Common Syntactic Constructs</a>
+    <a data-cite="XML11#sec-common-syn">Common Syntactic Constructs</a>
     </p></div></div>
     </section>
 
@@ -3312,9 +3312,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     Any XML element content that is allowed according to
     XML definition <em>Content of Elements</em>
     Rule [43]
-    <a data-cite="XML10#NT-content">content</a>.
+    <a data-cite="XML11#NT-content">content</a>.
     in section
-    <a data-cite="XML10#sec-starttags">3.1 Start-Tags, End-Tags, and Empty-Element Tags</a>
+    <a data-cite="XML11#sec-starttags">3.1 Start-Tags, End-Tags, and Empty-Element Tags</a>
     </p>
 
     <p>The string-value for the resulting event is discussed in
@@ -3393,7 +3393,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       break a URI into a namespace name and a local name, split it after
       the last XML non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
       character, ensuring that the first character of the name is a
-      <a data-cite="XML10#NT-Letter">Letter</a> or '_'.
+      <a data-cite="XML11#NT-Letter">Letter</a> or '_'.
       If the URI ends in a
       non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
       character then throw a "this graph cannot be serialized in RDF/XML"
