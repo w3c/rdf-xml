@@ -61,11 +61,15 @@
 <body>
 
 <section id="abstract">
-  <p>This document defines an XML
-    syntax for RDF called RDF/XML in terms of
-    Namespaces in XML, the XML Information Set
-    and XML Base.</p>
-
+  <p>The Resource Description Framework
+    (<abbr title="Resource Description Framework">RDF</abbr>) is a
+    general-purpose language for representing information in the Web.</p>
+  <p>This document defines an XML syntax for RDF called RDF/XML
+    in terms of Namespaces in XML,
+    the XML Information Set [[XML-INFOSET]]
+    and XML Base [[XMLBASE]].</p>
+  <p>RDF 1.2 XML adds support for
+    <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
 </section>
 
 <section id="sotd" class="updateable-rec">
@@ -162,18 +166,18 @@
     and attribute values.
     RDF/XML uses XML <a data-cite="XML-NAMES#NT-QName">QNames</a>
     as defined in Namespaces in XML [[XML-NAMES]] to represent IRIs.
-    All QNames have a <a data-cite="XML-NAMES#dt-NSName">namespace name</a> which is an IRI
+    All QNames have a <dfn data-cite="XML-NAMES#dt-NSName">namespace name</dfn> which is an IRI
     and a short
     <a data-cite="XML-NAMES#NT-LocalPart">local name</a>.
     In addition, QNames can either have a short
     <a data-cite="XML-NAMES#NT-Prefix">prefix</a>
     or be declared with the default namespace declaration and have none (but
-    still have a namespace name)</p>
+    still have a <a>namespace name</a>)</p>
 
     <p>The <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> represented by a <a data-cite="XML-NAMES#NT-QName">QName</a> is determined by appending the
     <a data-cite="XML-NAMES#NT-LocalPart">local name</a>
     part of the QName after the
-    <a data-cite="XML-NAMES#dt-NSName">namespace name</a> (IRI) part of the QName.
+    <a>namespace name</a> (IRI) part of the QName.
     This is used to shorten the IRI
     of all predicates and some nodes.
     IRIs identifying
@@ -460,7 +464,7 @@
 
     <p>To create a complete RDF/XML document, the serialization of the
     graph into XML is usually contained inside an <code>rdf:RDF</code>
-    XML element which becomes the top-level XML document element.
+    XML element which becomes the <a>top-level XML document element</a>.
     Conventionally the <code>rdf:RDF</code> element is also used to
     declare the XML namespaces that are used, although that is not
     required.  When there is only one top-level node element inside
@@ -562,6 +566,61 @@
       </pre>
     </aside>
 
+  </section>
+
+  <!-- dir attribute -->
+  <section id="section-Syntax-base-direction" class="informative">
+    <h3>Base Direction: <code>its:dir</code></h3>
+
+    <p>RDF 1.2 introduces the concept of a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a> which can be used
+      to specify the initial text direction of <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">language-tagged strings</a>
+      to create a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.
+      This is specified by adding the `its:dir` attribute on any
+      node element or property element, where `its` is the typical prefix
+      used for the ITS namespace `http://www.w3.org/2005/11/its`.
+      The supported values for `its:dir` are `"ltr"`, and `"rtl"`
+      as required for <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
+
+    <p>Some examples of marking base direction for RDF properties are shown in
+      <a href="#example8a">Example 8a</a>:</p>
+
+    <aside class="example" id="example8a"
+         title="Complete example of xml:lang with its:dir">
+      <p><strong>Complete example of <code>its:dir</code>
+        (<a href="example08a.rdf">example08a.rdf</a>, output <a href="example08a.nt">example08a.nt</a>)</strong></p>
+
+      <pre class="rdf" data-transform="updateExample">
+        <!--
+        <?xml version="1.0" encoding="utf-8"?>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+                 xmlns:show="http://example.org/vocab/show/"
+                 xmlns:its="http://www.w3.org/2005/11/its"
+                 rdf:version="1.2"
+                 its:version="2.0">
+          <rdf:Description rdf:about="http://example.org/vocab/show/218">
+            <rdfs:label>That Seventies Show</rdfs:label>
+            <show:localName xml:lang="en">That Seventies Show</show:localName>
+            <show:unrelatedName xml:lang="he" its:dir="rtl">HTML היא שפת סימון.</show:unrelatedName>
+            <show:localName xml:lang="en-US" its:dir="ltr">That Seventies Show</show:localName>
+          </rdf:Description>
+        </rdf:RDF>
+        -->
+      </pre>
+    </aside>
+
+    <p class="note">The `its:dir` attribute is specifically tied to
+      version 2.0 of [[ITS]], as indicated by the `its:version="2.0"` on the
+      <a>top-level XML document element</a>.</p>
+
+    <div class="ednote">
+      The following terms should be defined and used within this spec:
+      <ul>
+        <li>node element,</li>
+        <li>property element, and</li>
+        <li>property attribute.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- XML Literal -->
@@ -1135,7 +1194,10 @@
       systems be given a file type of <code>"rdf&nbsp;"</code>
       (all lowercase, with a space character as the fourth letter).</p>
 
-      <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
+    <p>Features introduced in RDF 1.2 require a version announcement in the
+      <a>top-level XML document element</a> with an `rdf:version` attribute with the value `"1.2"`.</p>
+
+    <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
   </section>
 
   <section class="informative" id="privacy-considerations">
@@ -1178,13 +1240,13 @@
     and is typically used in XML with the prefix <code>rdf</code>
     although other prefix strings may be used.
     The <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
-    is identified by this namespace name and consists of the following names only:</p>
+    is identified by this <a>namespace name</a> and consists of the following names only:</p>
 
     <dl>
     <dt>Syntax names &mdash; not concepts</dt>
     <dd>
     <p>
-    <code>RDF Description ID about parseType resource li nodeID datatype</code>
+    <code>RDF Description ID about datatype li nodeID parseType resource version</code>
     </p>
     </dd>
 
@@ -1216,8 +1278,9 @@
     encountered, but should otherwise behave normally.</p>
 
     <p>Within RDF/XML documents it is not permitted to use XML namespaces
-    whose namespace name is the
+    whose <a>namespace name</a> is the
     <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
+
     concatenated with additional characters.</p>
 
     <p>Throughout this document the terminology <code>rdf:</code><em>name</em>
@@ -1257,7 +1320,7 @@
 
     <p>Within RDF/XML, XML QNames are transformed into
     <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
-    by appending the XML local name to the namespace name (IRI).
+    by appending the XML local name to the <a>namespace name</a> (IRI).
     For example, if the XML namespace prefix <code>foo</code> has
     namespace name (IRI)
 
@@ -1556,6 +1619,10 @@
       <dd>Set to the value of document information item property [base URI].</dd>
       <dt id="eventterm-root-language">language</dt>
       <dd>Set to the empty string.</dd>
+      <dt id="eventterm-root-direction">direction</dt>
+      <dd>Set to the empty string.</dd>
+      <dt id="eventterm-root-version">version</dt>
+      <dd>Set to the `rdf:version` attribute of the <a>top-level XML document element</a>.</dd>
       </dl>
     </section>
 
@@ -1591,13 +1658,34 @@
 
           <p>If this set contains an attribute information item
             <code>xml:lang</code> ([namespace name] property with the value
-            "http://www.w3.org/XML/1998/namespace" and
+            `"http://www.w3.org/XML/1998/namespace"` and
             [local name] property value "lang")
             it is removed from the set of attribute information items and the
             <a href="#eventterm-element-language" class="termref">
               <span class="arrow">·</span>language<span class="arrow">·</span></a>
-              accessor is set to the [normalized-value] property of the
-              attribute information item.</p>
+            accessor is set to the [normalized-value] property of the
+            attribute information item.</p>
+
+          <p>If this set contains an attribute information item
+            <code>its:dir</code> ([namespace name] property with the value
+            `"http://www.w3.org/2005/11/its"` and
+            [local name] property value "dir")
+            it is removed from the set of attribute information items and the
+            <a href="#eventterm-element-dir" class="termref">
+              <span class="arrow">·</span>direction<span class="arrow">·</span></a>
+            accessor is set to the [normalized-value] property of the
+            attribute information item,
+            which MUST be one or `"ltr"`, `"rtl"`, or the empty string.</p>
+
+          <p>If this set contains an attribute information item
+            <code>its:version</code> ([namespace name] property with the value
+            `"http://www.w3.org/2005/11/its"` and
+            [local name] property value "version")
+            it is removed from the set of attribute information items and the
+            <a href="#eventterm-element-its-version" class="termref">
+              <span class="arrow">·</span>its-version<span class="arrow">·</span></a>
+            accessor is set to the [normalized-value] property of the
+            attribute information item.</p>
 
           <p>All remaining reserved XML Names
             (see <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
@@ -1652,6 +1740,31 @@
           the language accessor on the parent event (either a
           <a href="#section-root-node">Root Event</a> or an
           <a href="#section-element-node">Element Event</a>), which may be the empty string.
+        </dd>
+
+        <dt id="eventterm-element-direction">direction</dt>
+        <dd>Set from the
+          <a href="#eventterm-element-attributes"
+          class="termref"><span class="arrow">·</span>attributes<span
+          class="arrow">·</span></a>
+          as described above.
+          If no value is given from the attributes, the value is set to the value of
+          the direction accessor on the parent event (either a
+          <a href="#section-root-node">Root Event</a> or an
+          <a href="#section-element-node">Element Event</a>), which may be the empty string.
+          The its-version accessor
+        </dd>
+
+        <dt id="eventterm-element-its-version">its-version</dt>
+        <dd>Set from the
+          <a href="#eventterm-element-attributes"
+          class="termref"><span class="arrow">·</span>attributes<span
+          class="arrow">·</span></a>
+          as described above.
+          If no value is given from the attributes, the value is set to the value of
+          the version accessor on the parent event (either a
+          <a href="#section-root-node">Root Event</a> or an
+          <a href="#section-element-node">Element Event</a>), which SHOULD be set to `"2.0"`.
         </dd>
 
         <dt id="eventterm-element-subject">subject</dt>
@@ -1712,8 +1825,9 @@
             Otherwise if <a href="#eventterm-attribute-local-name"
             class="termref"><span class="arrow">·</span>local-name<span
             class="arrow">·</span></a> is
-            <code>ID</code>, <code>about</code>, <code>resource</code>,
-            <code>parseType</code> or <code>type</code>, set to a string
+            <code>ID</code>, <code>about</code>,
+            <code>parseType</code>, <code>resource</code>, <code>type</code>,
+            or <code>version</code>, set to a string
             value of the concatenation of the
             <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
             and the value of the <a href="#eventterm-attribute-local-name">local-name</a> accessor.
@@ -1857,9 +1971,12 @@
 
       <p class="note">RDF/XML plain literals are in RDF 1.2 treated as
         syntactic sugar for a literal with datatype
-        <code>xsd:string</code> (in case no language tag is present)
-        or as a literal with datatype <code>rdf:langString</code> (in
-        case a language tag is present). The mapping to N-Triples as
+        <code>xsd:string</code> (in case no language tag is present),
+        as a literal with datatype <code>rdf:langString</code> (in
+        case a language tag is present and direction is not present),
+        or as a literal with datatype <code>rdf:dirLangString</code> (in
+        case both a language tag and adirection is present).
+        The mapping to N-Triples as
         defined in this subsection is not affected by this change. </p>
 
       <p>An event for a plain literal which can have the following accessors:</p>
@@ -1870,6 +1987,9 @@
 
         <dt id="eventterm-literal-literal-language">literal-language</dt>
         <dd>Takes a string value used as a language tag in an RDF plain literal.</dd>
+
+        <dt id="eventterm-literal-literal-direction">literal-direction</dt>
+        <dd>Takes a string value used as a direction tag in an RDF plain literal.</dd>
 
         <dt id="eventterm-literal-string-value">string-value</dt>
         <dd>
@@ -1887,7 +2007,11 @@
             class="arrow">·</span></a> accessor
             and "&quot;" (1 double quote).</p>
 
-          <p>Otherwise the value is the concatenation of "&quot;" (1 double quote),
+          <p>Otherwise, if the <a href="#eventterm-literal-literal-direction"
+            class="termref"><span
+            class="arrow">·</span>literal-direction<span
+            class="arrow">·</span></a> is the empty string,
+            the value is the concatenation of "&quot;" (1 double quote),
             the escaped value of the
             <a href="#eventterm-literal-literal-value"
             class="termref"><span
@@ -1898,6 +2022,24 @@
             <a href="#eventterm-literal-literal-language"
             class="termref"><span
             class="arrow">·</span>literal-language<span
+            class="arrow">·</span></a> accessor.</p>
+
+          <p>Otherwise the value is the concatenation of "&quot;" (1 double quote),
+            the escaped value of the
+            <a href="#eventterm-literal-literal-value"
+            class="termref"><span
+            class="arrow">·</span>literal-value<span
+            class="arrow">·</span></a> accessor
+           "&quot;@" (1 double quote and a '@'),
+            the value of the
+            <a href="#eventterm-literal-literal-language"
+            class="termref"><span
+            class="arrow">·</span>literal-language<span
+            class="arrow">·</span></a> accessor,
+            "--" (2 hyphen),
+            and the value of the <a href="#eventterm-literal-literal-direction"
+            class="termref"><span
+            class="arrow">·</span>literal-direction<span
             class="arrow">·</span></a> accessor.</p>
 
           <p>The escaping of the <a
@@ -1912,10 +2054,14 @@
       <p>These events are constructed by giving values for the
         <a href="#eventterm-literal-literal-value"
         class="termref"><span class="arrow">·</span>literal-value<span
-        class="arrow">·</span></a> and
+        class="arrow">·</span></a>,
         <a href="#eventterm-literal-literal-language"
         class="termref"><span
         class="arrow">·</span>literal-language<span
+        class="arrow">·</span></a>, and
+        <a href="#eventterm-literal-literal-direction"
+        class="termref"><span
+        class="arrow">·</span>literal-direction<span
         class="arrow">·</span></a> accessors.</p>
 
       <p class="note" id="literal-comb-char-note1">
@@ -2248,7 +2394,7 @@
     <div class="productionOuter"><div class="productionInner">
     <table>
     <tr>
-    <td><a href="#coreSyntaxTerms">7.2.2</a> <a href="#coreSyntaxTerms">coreSyntaxTerms</a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code></td>
+    <td><a href="#coreSyntaxTerms">7.2.2</a> <a href="#coreSyntaxTerms">coreSyntaxTerms</a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code></td>
 
     </tr>
     <tr>
@@ -2472,6 +2618,8 @@
     <a href="#section-root-node">Root Event</a>&#160; will be available.
     Note that if such embedding occurs, the grammar may be entered
     several times but no state is expected to be preserved.</p>
+
+    <p>The start node is referred to as the <dfn>top-level XML document element</dfn>.</p>
     </section>
 
     <!-- core syntax terms -->
@@ -2479,7 +2627,7 @@
     <h4>Production coreSyntaxTerms</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    <code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code>
+    <code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code>
 
     </p></div></div>
 
@@ -3379,7 +3527,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       has restrictions on the legal characters such that not all property URIs
       can be expressed as these names.
       It is recommended that implementors of RDF serializers, in order to
-      break a URI into a namespace name and a <a data-cite="XML-NAMES#NT-LocalPart">local name</a>, split it after
+      break a URI into a <a>namespace name</a> and a <a data-cite="XML-NAMES#NT-LocalPart">local name</a>, split it after
       the last XML non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
       character, ensuring that the first character of the name is a
       <a data-cite="XML11#NT-Letter">Letter</a> or '_'.
