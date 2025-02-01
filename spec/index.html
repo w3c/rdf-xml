@@ -80,7 +80,7 @@
   <section id="related" data-include="./common/related.html"></section>
  </section>
 
-<section id="section-Introduction">
+<section id="section-Introduction" class="informative">
   <h2>Introduction</h2>
 
   <p>This document defines the XML [[XML11]] syntax for RDF graphs. </p>
@@ -119,7 +119,7 @@
 
 <!-- FIRST PART : THE SYNTAX -->
 
-<section id="section-Syntax">
+<section id="section-Syntax" class="informative">
 
   <h2>An XML Syntax for RDF</h2>
   <p>This section introduces the RDF/XML syntax, describes how it
@@ -132,7 +132,7 @@
   </p>
 
     <!-- intro -->
-  <section id="section-Syntax-intro">
+  <section id="section-Syntax-intro" class="informative">
     <h3>Introduction</h3>
 
     <p>The RDF Concepts and Abstract Syntax document [[RDF12-CONCEPTS]]
@@ -199,7 +199,7 @@
   </section>
 
   <!-- node and property elements -->
-  <section id="section-Syntax-node-property-elements">
+  <section id="section-Syntax-node-property-elements" class="informative">
     <h3>Node Elements and Property Elements</h3>
 
     <figure id="figure1">
@@ -330,7 +330,7 @@
   </section>
 
   <!-- multiple properties -->
-  <section id="section-Syntax-multiple-property-elements" >
+  <section id="section-Syntax-multiple-property-elements" class="informative">
     <h3>Multiple Property Elements</h3>
 
     <p>There are several abbreviations that can be used to make common
@@ -373,7 +373,7 @@
   </section>
 
   <!-- empty property elements -->
-  <section id="section-Syntax-empty-property-elements">
+  <section id="section-Syntax-empty-property-elements" class="informative">
     <h3>Empty Property Elements</h3>
 
     <p>When a predicate arc in an RDF graph points to an object node which has no
@@ -411,7 +411,7 @@
   </section>
 
   <!-- empty property attributes -->
-  <section id="section-Syntax-property-attributes">
+  <section id="section-Syntax-property-attributes" class="informative">
     <h3>Property Attributes</h3>
 
     <p>When a property element's content is string literal,
@@ -455,7 +455,7 @@
   </section>
 
   <!-- complete rdf/xml document -->
-  <section id="section-Syntax-complete-document">
+  <section id="section-Syntax-complete-document" class="informative">
     <h3>Completing the Document: Document Element and XML Declaration</h3>
 
     <p>To create a complete RDF/XML document, the serialization of the
@@ -483,9 +483,9 @@
          title="Complete RDF/XML description of Figure 1">
 
       <p>Description of <a href="#figure1">Figure 1</a> graph
-        (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example07.rdf">example07.rdf</a>,
+        (<a href="example07.rdf">example07.rdf</a>,
         output
-        <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example07.nt">example07.nt</a>).</p>
+        <a href="example07.nt">example07.nt</a>).</p>
       <pre class="rdf" data-transform="updateExample">
        <!--
        <?xml version="1.0"?>
@@ -514,7 +514,7 @@
   </section>
 
   <!-- language attribute -->
-  <section id="section-Syntax-languages">
+  <section id="section-Syntax-languages" class="informative">
     <h3>Languages: <code>xml:lang</code></h3>
 
     <p>RDF/XML permits the use of the <code>xml:lang</code> attribute as defined by
@@ -537,7 +537,7 @@
     <aside class="example" id="example8"
          title="Complete example of xml:lang">
       <p><strong>Complete example of <code>xml:lang</code>
-        (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example08.rdf">example08.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example08.nt">example08.nt</a>)</strong></p>
+        (<a href="example08.rdf">example08.rdf</a>, output <a href="example08.nt">example08.nt</a>)</strong></p>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -589,7 +589,7 @@
 
     <aside class="example" id="example9" title="Complete example of rdf:parseType=Literal">
     <strong>Complete example of <code>rdf:parseType="Literal"</code>
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example09.rdf">example09.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example09.nt">example09.nt</a>)</strong>
+      (<a href="example09.rdf">example09.rdf</a>, output <a href="example09.nt">example09.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -613,7 +613,7 @@
   </section>
 
   <!-- datatyped literals -->
-  <section id="section-Syntax-datatyped-literals">
+  <section id="section-Syntax-datatyped-literals" class="informative">
     <h3>Typed Literals: <code>rdf:datatype</code></h3>
 
     <p>RDF allows typed literals
@@ -644,7 +644,7 @@
 
     <aside class="example" id="example10" title="Complete example of rdf:datatype">
       <strong>Complete example of <code>rdf:datatype</code>
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example10.rdf">example10.rdf</a>,  output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example10.nt">example10.nt</a>)</strong>
+      (<a href="example10.rdf">example10.rdf</a>,  output <a href="example10.nt">example10.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -663,7 +663,7 @@
   </section>
 
   <!-- blank nodes -->
-  <section id="section-Syntax-blank-nodes">
+  <section id="section-Syntax-blank-nodes" class="informative">
     <h3>Identifying Blank Nodes: <code>rdf:nodeID</code></h3>
 
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> in the RDF graph are distinct but have no
@@ -673,14 +673,13 @@
     of several RDF triples.  In this case, a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
     can be given to the blank node for identifying it
     in the document.  Blank node identifiers in RDF/XML are scoped to the
-    containing XML Information Set
+    containing XML Information Set [[XML-INFOSET]]
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.
     A blank node identifier is used
     on a node element to replace
     <code>rdf:about="</code><em>IRI</em><code>"</code>
     or on a property element to replace
     <code>rdf:resource="</code><em>IRI</em><code>"</code>
-
     with <code>rdf:nodeID="</code><em>blank node identifier</em><code>"</code>
     in both cases.</p>
 
@@ -717,7 +716,7 @@
   </section>
 
   <!-- parsetype resource -->
-  <section id="section-Syntax-parsetype-resource">
+  <section id="section-Syntax-parsetype-resource" class="informative">
     <h3>Omitting Blank Nodes: <code>rdf:parseType="Resource"</code></h3>
 
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not IRI nodes) in RDF graphs can be written
@@ -739,7 +738,7 @@
 
     <aside class="example" id="example12" title="Complete example using rdf:parseType=Resource">
     <strong>Complete example using <code>rdf:parseType="Resource"</code>
-    (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example12.rdf">example12.rdf</a>, output: <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example12.nt">example12.nt</a>)</strong>
+    (<a href="example12.rdf">example12.rdf</a>, output: <a href="example12.nt">example12.nt</a>)</strong>
     <pre class="rdf" data-transform="updateExample">
       <!--
       <?xml version="1.0"?>
@@ -761,7 +760,7 @@
   </section>
 
   <!-- attributes on property elements -->
-  <section id="section-Syntax-property-attributes-on-property-element">
+  <section id="section-Syntax-property-attributes-on-property-element" class="informative">
     <h3>Omitting Nodes: Property Attributes on an empty Property Element</h3>
 
     <p>If all of the property elements on a blank node element have
@@ -791,7 +790,7 @@
 
     <aside class="example" id="example13" title="Complete example of property attributes on an empty property element">
     <strong>Complete example of property attributes on an empty property element
-    (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example13.rdf">example13.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example13.nt">example13.nt</a>)</strong>
+    (<a href="xample13.rdf">example13.rdf</a>, output <a href="example13.nt">example13.nt</a>)</strong>
     <pre class="rdf">
       &lt;?xml version="1.0"?&gt;
       &lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -811,7 +810,7 @@
   </section>
 
   <!-- typed nodes -->
-  <section id="section-Syntax-typed-nodes">
+  <section id="section-Syntax-typed-nodes" class="informative">
     <h3>Typed Node Elements</h3>
 
     <p>It is common for RDF graphs to have <code>rdf:type</code> predicates
@@ -839,7 +838,7 @@
 
     <aside class="example" id="example14">
       <strong>Complete example with <code>rdf:type</code>
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example14.rdf">example14.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example14.nt">example14.nt</a>)</strong>
+      (<a href="example14.rdf">example14.rdf</a>, output <a href="example14.nt">example14.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -859,7 +858,7 @@
 
     <aside class="example" id="example15">
       <strong>Complete example using a typed node element to replace an <code>rdf:type</code>
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example15.rdf">example15.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example15.nt">example15.nt</a>)</strong>
+      (<a href="example15.rdf">example15.rdf</a>, output <a href="example15.nt">example15.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -879,7 +878,7 @@
   </section>
 
   <!-- xml base -->
-  <section id="section-Syntax-ID-xml-base">
+  <section id="section-Syntax-ID-xml-base" class="informative">
     <h3>Abbreviating URIs: <code>rdf:ID</code> and <code>xml:base</code></h3>
 
     <p>RDF/XML allows further abbreviating IRIs in XML attributes in two
@@ -915,7 +914,7 @@
 
     <aside class="example" id="example16" title="Complete example using rdf:ID> and xml:base">
       <strong>Complete example using <code>rdf:ID</code> and <code>xml:base</code> for shortening URIs
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example16.rdf">example16.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example16.nt">example16.nt</a>)</strong>
+      (<a href="example16.rdf">example16.rdf</a>, output <a href="example16.nt">example16.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -935,7 +934,7 @@
   </section>
 
   <!-- list elements -->
-  <section id="section-Syntax-list-elements">
+  <section id="section-Syntax-list-elements" class="informative">
     <h3>Container Membership Property Elements: <code>rdf:li</code> and <code>rdf:_</code><em>n</em></h3>
 
     <p>RDF has a set of container membership properties
@@ -958,7 +957,7 @@
 
     <aside class="example" id="example17" title="Complex example using RDF list properties">
     <strong>Complex example using RDF list properties
-    (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example17.rdf">example17.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example17.nt">example17.nt</a>)</strong>
+    (<a href="example17.rdf">example17.rdf</a>, output <a href="example17.nt">example17.nt</a>)</strong>
 
     <pre class="rdf" data-transform="updateExample">
       <!--
@@ -978,7 +977,7 @@
 
     <aside class="example" id="example18" title="Complete example using rdf:li">
     <strong>Complete example using <code>rdf:li</code> property element for list properties
-    (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example18.rdf">example18.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example18.nt">example18.nt</a>)</strong>
+    (<a href="example18.rdf">example18.rdf</a>, output <a href="example18.nt">example18.nt</a>)</strong>
 
     <pre class="rdf" data-transform="updateExample">
       <!--
@@ -999,7 +998,7 @@
   </section>
 
   <!-- parsetype collection -->
-  <section id="section-Syntax-parsetype-Collection">
+  <section id="section-Syntax-parsetype-Collection" class="informative">
     <h3>Collections: <code>rdf:parseType="Collection"</code></h3>
 
     <p>RDF/XML allows an <code>rdf:parseType="Collection"</code>
@@ -1022,7 +1021,7 @@
 
     <aside class="example" id="example19" title="Complete example of a RDF collection">
       <strong>Complete example of a RDF collection of nodes using <code>rdf:parseType="Collection"</code>
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example19.rdf">example19.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example19.nt">example19.nt</a>)</strong>
+      (<a href="example19.rdf">example19.rdf</a>, output <a href="example19.nt">example19.nt</a>)</strong>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -1046,7 +1045,7 @@
   </section>
 
   <!-- reification -->
-  <section id="section-Syntax-reifying">
+  <section id="section-Syntax-reifying" class="informative">
     <h3>Reifying Statements: <code>rdf:ID</code></h3>
 
     <p>The <code>rdf:ID</code> attribute can be used on a property
@@ -1073,7 +1072,7 @@
 
     <aside class="example" id="example20">
       <strong>Complete example of <code>rdf:ID</code> reifying a property element
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example20.rdf">example20.rdf</a>, output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example20.nt">example20.nt</a>)</strong>
+      (<a href="example20.rdf">example20.rdf</a>, output <a href="example20.nt">example20.nt</a>)</strong>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -1303,7 +1302,7 @@
     blank node identifiers
     and are used in RDF/XML as values of the <code>rdf:nodeID</code> attribute
     with the syntax given in <a href="#nodeIdAttr">Production nodeIdAttr</a>.
-    Blank node identifiers in RDF/XML are scoped to the XML Information Set
+    Blank node identifiers in RDF/XML are scoped to the XML Information Set [[XML-INFOSET]]
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.</p>
 
     <p>If no <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> is given explicitly as an
@@ -1468,7 +1467,7 @@
   </ul>
 
   <p>The syntax does not support non-well-formed XML documents, nor
-    documents that otherwise do not have an XML Information Set; for
+    documents that otherwise do not have an XML Information Set [[XML-INFOSET]]; for
     example, that do not conform to
     Namespaces in XML [[XML-NAMES]].</p>
 
@@ -1566,7 +1565,7 @@
       </dl>
     </section>
 
-    <!-- root event -->
+    <!-- element event -->
     <section id="section-element-node">
       <h3>Element Event</h3>
 
@@ -1933,7 +1932,7 @@
         <strong>Interoperability Note (Informative):</strong>
         Literals beginning with a Unicode combining character are
         allowed however they may cause interoperability problems.
-        See [[CHARMOD]] for further information.
+        See [[?CHARMOD]] for further information.
       </p>
     </section>
 
