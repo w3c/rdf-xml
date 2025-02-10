@@ -1971,11 +1971,11 @@
 
       <p class="note">RDF/XML plain literals are in RDF 1.2 treated as
         syntactic sugar for a literal with datatype
-        <code>xsd:string</code> (in case no language tag is present),
-        as a literal with datatype <code>rdf:langString</code> (in
-        case a language tag is present and direction is not present),
-        or as a literal with datatype <code>rdf:dirLangString</code> (in
-        case both a language tag and adirection is present).
+        <code>xsd:string</code> (when no language tag is present),
+        as a literal with datatype <code>rdf:langString</code> (when
+        a language tag is present and a direction is not present),
+        or as a literal with datatype <code>rdf:dirLangString</code>
+        (when both a language tag and a direction are present).
         The mapping to N-Triples as
         defined in this subsection is not affected by this change. </p>
 
@@ -2030,7 +2030,7 @@
             class="termref"><span
             class="arrow">·</span>literal-value<span
             class="arrow">·</span></a> accessor
-           "&quot;@" (1 double quote and a '@'),
+           '<code>&quot;@</code>' (one double-quote '`"`' and one at-sign '`@`'),
             the value of the
             <a href="#eventterm-literal-literal-language"
             class="termref"><span
