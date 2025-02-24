@@ -2,7 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:ex="http://example.org/stuff/1.0/">
-  <ex:Document rdf:about="http://example.org/thing">
+  <rdf:Description rdf:about="http://example.org/thing">
+    <rdf:type rdf:resource="http://example.org/stuff/1.0/Document"/>
     <dc:title>A marvelous thing</dc:title>
-  </ex:Document>
+  </rdf:Description>
 </rdf:RDF>

@@ -2,8 +2,9 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:ex="http://example.org/stuff/1.0/">
-  <rdf:Description rdf:about="http://example.org/thing">
-    <rdf:type rdf:resource="http://example.org/stuff/1.0/Document"/>
-    <dc:title>A marvelous thing</dc:title>
+  <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+		   dc:title="RDF/XML Syntax Specification (Revised)">
+    <ex:editor ex:fullName="Dave Beckett" />
+    <!-- Note the ex:homePage property has been ignored for this example -->
   </rdf:Description>
 </rdf:RDF>

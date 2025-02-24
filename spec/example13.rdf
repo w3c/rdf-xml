@@ -4,7 +4,9 @@
          xmlns:ex="http://example.org/stuff/1.0/">
   <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
 		   dc:title="RDF/XML Syntax Specification (Revised)">
-    <ex:editor ex:fullName="Dave Beckett" />
-    <!-- Note the ex:homePage property has been ignored for this example -->
+    <ex:editor rdf:parseType="Resource">
+      <ex:fullName>Dave Beckett</ex:fullName>
+      <ex:homePage rdf:resource="http://purl.org/net/dajobe/"/>
+    </ex:editor>
   </rdf:Description>
 </rdf:RDF>

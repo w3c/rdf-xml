@@ -198,7 +198,7 @@
     </p>
 
     <p>Several RDF/XML examples are given in the following sections
-    building up to complete RDF/XML documents.  <a href="#example7">Example 7</a>
+    building up to complete RDF/XML documents. <a href="#example7"></a>
     is the first complete RDF/XML document.</p>
   </section>
 
@@ -215,13 +215,13 @@
       </figcaption>
     </figure>
 
-    <p>An RDF graph is given in <a href="#figure1">Figure 1</a>
+    <p>An RDF graph is given in <a href="#figure1"></a>
       where the nodes are represented as ovals and contain their
       IRIs where they have them, all the predicate arcs are labeled with
       IRIs and string literals nodes have been written in rectangles.</p>
 
     <p>If we follow one node, predicate arc ... , node path through the
-      graph shown in <a href="#figure2">Figure 2</a>:</p>
+      graph shown in <a href="#figure2"></a>:</p>
 
     <figure id="figure2">
       <!-- Source for this file is at https://docs.google.com/drawings/d/1oQjG8DyfGr33UnaCrS7nC96JMt3NI7Jv2v5LfLUZcYE -->
@@ -235,7 +235,7 @@
       </figcaption>
     </figure>
 
-    <p>The left hand side of the <a href="#figure2">Figure 2</a>
+    <p>The left hand side of the <a href="#figure2"></a>
       graph corresponds to the node/predicate arc stripes:</p>
 
     <ol>
@@ -247,11 +247,11 @@
     </ol>
 
     <p>In RDF/XML, the sequence of 5 nodes and predicate arcs on
-      the left hand side of <a href="#figure2">Figure 2</a> corresponds to
+      the left hand side of <a href="#figure2"></a> corresponds to
       the usage of five XML elements of two types, for the graph nodes and
       predicate arcs. These are conventionally called <em>node elements</em> and
       <em>property elements</em> respectively.  In the striping shown in
-      <a href="#example1">Example 1</a>, <code>rdf:Description</code> is the
+      <a href="#example1"></a>, <code>rdf:Description</code> is the
       node element (used three times for the three nodes) and
       <code>ex:editor</code> and <code>ex:homePage</code> are the two
       property elements.</p>
@@ -273,10 +273,10 @@
       -->
     </pre>
 
-    <p>The <a href="#figure2">Figure 2</a> graph consists of some nodes
+    <p>The <a href="#figure2"></a> graph consists of some nodes
       that are IRIs (and others that are not) and this can be added
       to the RDF/XML using the <code>rdf:about</code> attribute on node
-      elements to give the result in <a href="#example2">Example 2</a>:</p>
+      elements to give the result in <a href="#example2"></a>:</p>
 
     <pre class="example rdf" id="example2"
        data-transform="updateExample"
@@ -295,10 +295,10 @@
     -->
     </pre>
 
-    <p>Adding the other two paths through the <a href="#figure1">Figure 1</a>
+    <p>Adding the other two paths through the <a href="#figure1"></a>
       graph to the RDF/XML in
-      <a href="#example2">Example 2</a>
-      gives the result in <a href="#example3">Example 3</a>
+      <a href="#example2"></a>
+      gives the result in <a href="#example3"></a>
       (this example fails to show that the blank node is
       shared between the two paths,
       see <a href="#section-Syntax-blank-nodes" class="sectionRef"></a>):</p>
@@ -345,14 +345,14 @@
     abbreviated by using multiple child property elements inside the node
     element describing the subject node.</p>
 
-    <p>Taking <a href="#example3">Example 3</a>, there  are
+    <p>Taking <a href="#example3"></a>, there  are
     two node elements that can take multiple property elements.
     The subject node with IRI
     <code>http://www.w3.org/TR/rdf-syntax-grammar</code>
     has property elements <code>ex:editor</code> and <code>dc:title</code>
     and the node element for the blank node can take <code>ex:homePage</code>
     and <code>ex:fullName</code>.  This abbreviation
-    gives the result shown in <a href="#example4">Example 4</a>
+    gives the result shown in <a href="#example4"></a>
     (this example does show that there is a single blank node):</p>
 
     <pre class="example rdf" id="example4"
@@ -394,7 +394,7 @@
     contains an empty node element with the IRI
     <code>http://purl.org/net/dajobe/</code>.  This can be replaced with
     the empty property element form giving the result shown in
-    <a href="#example5">Example 5</a>:</p>
+    <a href="#example5"></a>:</p>
 
     <pre class="example rdf" id="example5"
          data-transform="updateExample"
@@ -435,11 +435,11 @@
     the value of which is interpreted as a
     IRI object node.</p>
 
-    <p>In <a href="#example5">Example 5</a>:,
+    <p>In <a href="#example5"></a>:,
     there are two property elements with string literal content,
     the <code>dc:title</code> and <code>ex:fullName</code>
     property elements.  These can be replaced with property attributes
-    giving the result shown in <a href="#example6">Example 6</a>:</p>
+    giving the result shown in <a href="#example6"></a>:</p>
 
     <pre class="example rdf" id="example6"
          data-transform="updateExample"
@@ -477,16 +477,16 @@
 
     <p>Completing the RDF/XML could be done for any of the correct
     complete graph examples from
-    <a href="#example4">Example 4</a> onwards but taking the smallest
-    <a href="#example6">Example 6</a> and adding the final components,
+    <a href="#example4"></a> onwards but taking the smallest
+    <a href="#example6"></a> and adding the final components,
     gives a complete RDF/XML representation of the original
-    <a href="#figure1">Figure 1</a> graph
-    in <a href="#example7">Example 7</a>:</p>
+    <a href="#figure1"></a> graph
+    in <a href="#example7"></a>:</p>
 
     <aside class="example" id="example7"
          title="Complete RDF/XML description of Figure 1">
 
-      <p>Description of <a href="#figure1">Figure 1</a> graph
+      <p>Description of <a href="#figure1"></a> graph
         (<a href="example07.rdf">example07.rdf</a>,
         output
         <a href="example07.nt">example07.nt</a>).</p>
@@ -512,7 +512,7 @@
     </aside>
 
     <p>It is possible to omit <code>rdf:RDF</code> in
-    <a href="#example7">Example 7</a> above since there is only one
+    <a href="#example7"></a> above since there is only one
     <code>rdf:Description</code> inside <code>rdf:RDF</code> but this
     is not shown here.</p>
   </section>
@@ -536,7 +536,7 @@
     indicates the absence of a language identifier.</p>
 
     <p>Some examples of marking content languages for RDF properties are shown in
-    <a href="#example8">Example 8</a>:</p>
+    <a href="#example8"></a>:</p>
 
     <aside class="example" id="example8"
          title="Complete example of xml:lang">
@@ -582,12 +582,12 @@
       as required for <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
 
     <p>Some examples of marking base direction for RDF properties are shown in
-      <a href="#example8a">Example 8a</a>:</p>
+      <a href="#example9"></a>:</p>
 
-    <aside class="example" id="example8a"
+    <aside class="example" id="example9"
          title="Complete example of xml:lang with its:dir">
       <p><strong>Complete example of <code>its:dir</code>
-        (<a href="example08a.rdf">example08a.rdf</a>, output <a href="example08a.nt">example08a.nt</a>)</strong></p>
+        (<a href="example09.rdf">example09.rdf</a>, output <a href="example09.nt">example09.nt</a>)</strong></p>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -636,7 +636,7 @@
     </p>
 
     <p>An example of writing an XML literal is given in
-    <a href="#example9">Example 9</a> where
+    <a href="#example10"></a> where
     there is a single RDF triple with the subject node
     IRI
     <code>http://example.org/item01</code>, the predicate
@@ -646,9 +646,9 @@
     content beginning <code>a:Box</code>.
     </p>
 
-    <aside class="example" id="example9" title="Complete example of rdf:parseType=Literal">
+    <aside class="example" id="example10" title="Complete example of rdf:parseType=Literal">
     <strong>Complete example of <code>rdf:parseType="Literal"</code>
-      (<a href="example09.rdf">example09.rdf</a>, output <a href="example09.nt">example09.nt</a>)</strong>
+      (<a href="example10.rdf">example10.rdf</a>, output <a href="example10.nt">example10.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -688,7 +688,7 @@
 
     <p>An example of an RDF typed
     literal
-    is given in <a href="#example10">Example 10</a> where
+    is given in <a href="#example11"></a> where
     there is a single RDF triple with the subject node
     IRI
     <code>http://example.org/item01</code>, the predicate
@@ -701,9 +701,9 @@
     XML Schema [[XMLSCHEMA11-2]] datatype <a data-cite="XMLSCHEMA11-2#int"><code>int</code></a>.
     </p>
 
-    <aside class="example" id="example10" title="Complete example of rdf:datatype">
+    <aside class="example" id="example11" title="Complete example of rdf:datatype">
       <strong>Complete example of <code>rdf:datatype</code>
-      (<a href="example10.rdf">example10.rdf</a>,  output <a href="example10.nt">example10.nt</a>)</strong>
+      (<a href="example11.rdf">example11.rdf</a>,  output <a href="example11.nt">example11.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -742,15 +742,15 @@
     with <code>rdf:nodeID="</code><em>blank node identifier</em><code>"</code>
     in both cases.</p>
 
-    <p>Taking <a href="#example7">Example 7</a> and explicitly giving
+    <p>Taking <a href="#example7"></a> and explicitly giving
     a blank node identifier of <code>abc</code> to the blank node in it
-    gives the result shown in <a href="#example11">Example 11</a>.
+    gives the result shown in <a href="#example12"></a>.
     The second <code>rdf:Description</code> property element is
     about the blank node.</p>
 
-    <aside class="example" id="example11" title="Complete RDF/XML description of graph using rdf:nodeID">
+    <aside class="example" id="example12" title="Complete RDF/XML description of graph using rdf:nodeID">
       <strong>Complete RDF/XML description of graph using <code>rdf:nodeID</code> identifying the blank node
-      (<a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example11.rdf">example11.rdf</a>,  output <a href="https://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/example11.nt">example11.nt</a>)</strong>
+      (<a href="example12.rdf">example12.rdf</a>, output <a href="example12.nt">example12.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -790,14 +790,14 @@
     Property attributes and the <code>rdf:nodeID</code> attribute
     are not permitted on property-and-node elements.</p>
 
-    <p>Taking the earlier <a href="#example7">Example 7</a>,
+    <p>Taking the earlier <a href="#example7"></a>,
     the contents of the <code>ex:editor</code> property element
     could be alternatively done in this fashion to give
-    the form shown in <a href="#example12">Example 12</a>:</p>
+    the form shown in <a href="#example13"></a>:</p>
 
-    <aside class="example" id="example12" title="Complete example using rdf:parseType=Resource">
+    <aside class="example" id="example13" title="Complete example using rdf:parseType=Resource">
     <strong>Complete example using <code>rdf:parseType="Resource"</code>
-    (<a href="example12.rdf">example12.rdf</a>, output: <a href="example12.nt">example12.nt</a>)</strong>
+    (<a href="example13.rdf">example13.rdf</a>, output: <a href="example13.nt">example13.nt</a>)</strong>
     <pre class="rdf" data-transform="updateExample">
       <!--
       <?xml version="1.0"?>
@@ -830,7 +830,7 @@
     moving them to be property attributes on the containing property
     element which is made an empty element.</p>
 
-    <p>Taking the earlier <a href="#example5">Example 5</a>,
+    <p>Taking the earlier <a href="#example5"></a>,
     the <code>ex:editor</code> property element contains a
     blank node element with two property elements
 
@@ -845,11 +845,11 @@
     The blank node element becomes implicit in the now empty
 
     <code>ex:editor</code> property element.  The result is shown in
-    <a href="#example13">Example 13</a>.</p>
+    <a href="#example14"></a>.</p>
 
-    <aside class="example" id="example13" title="Complete example of property attributes on an empty property element">
+    <aside class="example" id="example14" title="Complete example of property attributes on an empty property element">
     <strong>Complete example of property attributes on an empty property element
-    (<a href="xample13.rdf">example13.rdf</a>, output <a href="example13.nt">example13.nt</a>)</strong>
+    (<a href="example14.rdf">example14.rdf</a>, output <a href="example14.nt">example14.nt</a>)</strong>
     <pre class="rdf">
       &lt;?xml version="1.0"?&gt;
       &lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -892,12 +892,12 @@
     <code>rdf:Statement</code>, <code>rdf:Property</code> and
     <code>rdf:List</code>.</p>
 
-    <p>For example, the RDF/XML in <a href="#example14">Example 14</a>
-    could be written as shown in <a href="#example15">Example 15</a>.</p>
+    <p>For example, the RDF/XML in <a href="#example15">15</a>
+    could be written as shown in <a href="#example16"></a>.</p>
 
-    <aside class="example" id="example14">
+    <aside class="example" id="example15">
       <strong>Complete example with <code>rdf:type</code>
-      (<a href="example14.rdf">example14.rdf</a>, output <a href="example14.nt">example14.nt</a>)</strong>
+      (<a href="example15.rdf">example15.rdf</a>, output <a href="example15.nt">example15.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -915,9 +915,9 @@
 
     </aside>
 
-    <aside class="example" id="example15">
+    <aside class="example" id="example16">
       <strong>Complete example using a typed node element to replace an <code>rdf:type</code>
-      (<a href="example15.rdf">example15.rdf</a>, output <a href="example15.nt">example15.nt</a>)</strong>
+      (<a href="example16.rdf">example16.rdf</a>, output <a href="example16.nt">example16.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -962,7 +962,7 @@
     <p>Both forms require a base URI to be known, either from an in-scope
     <code>xml:base</code> or from the URI of the RDF/XML document.</p>
 
-    <p><a href="#example16">Example 16</a> shows abbreviating the node
+    <p><a href="#example17"></a> shows abbreviating the node
     IRI of <code>http://example.org/here/#snack</code> using an
     <code>xml:base</code> of <code>http://example.org/here/</code> and
     an <code>rdf:ID</code> on the <code>rdf:Description</code> node element.
@@ -971,9 +971,9 @@
     using the in-scope base URI to give the
     IRI <code>http://example.org/here/fruit/apple</code>.</p>
 
-    <aside class="example" id="example16" title="Complete example using rdf:ID> and xml:base">
+    <aside class="example" id="example17" title="Complete example using rdf:ID> and xml:base">
       <strong>Complete example using <code>rdf:ID</code> and <code>xml:base</code> for shortening URIs
-      (<a href="example16.rdf">example16.rdf</a>, output <a href="example16.nt">example16.nt</a>)</strong>
+      (<a href="example17.rdf">example17.rdf</a>, output <a href="example17.nt">example17.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
         <?xml version="1.0"?>
@@ -1003,20 +1003,20 @@
     classes which may be written as typed node elements.  The list properties are
     <code>rdf:_1</code>, <code>rdf:_2</code> etc. and can be written
     as property elements or property attributes as shown in
-    <a href="#example17">Example 17</a>.  There is an <code>rdf:li</code>
+    <a href="#example18"></a>.  There is an <code>rdf:li</code>
     special property element that is equivalent to
     <code>rdf:_1</code>, <code>rdf:_2</code> in order,
     explained in detail in <a href="#section-List-Expand" class="sectionRef"></a>.
     The mapping to the container membership properties is
     always done in the order that the <code>rdf:li</code> special
     property elements appear in XML &mdash; the document order is significant.
-    The equivalent RDF/XML to <a href="#example17">Example 17</a> written
-    in this form is shown in <a href="#example18">Example 18</a>.
+    The equivalent RDF/XML to <a href="#example18"></a> written
+    in this form is shown in <a href="#example19"></a>.
     </p>
 
-    <aside class="example" id="example17" title="Complex example using RDF list properties">
+    <aside class="example" id="example18" title="Complex example using RDF list properties">
     <strong>Complex example using RDF list properties
-    (<a href="example17.rdf">example17.rdf</a>, output <a href="example17.nt">example17.nt</a>)</strong>
+    (<a href="example18.rdf">example18.rdf</a>, output <a href="example18.nt">example18.nt</a>)</strong>
 
     <pre class="rdf" data-transform="updateExample">
       <!--
@@ -1034,9 +1034,9 @@
     </pre>
     </aside>
 
-    <aside class="example" id="example18" title="Complete example using rdf:li">
+    <aside class="example" id="example19" title="Complete example using rdf:li">
     <strong>Complete example using <code>rdf:li</code> property element for list properties
-    (<a href="example18.rdf">example18.rdf</a>, output <a href="example18.nt">example18.nt</a>)</strong>
+    (<a href="example19.rdf">example19.rdf</a>, output <a href="example19.nt">example19.nt</a>)</strong>
 
     <pre class="rdf" data-transform="updateExample">
       <!--
@@ -1074,13 +1074,13 @@
     defined here.
     </p>
 
-    <p><a href="#example19">Example 19</a> shows a collection of three
+    <p><a href="#example20"></a> shows a collection of three
     nodes elements at the end of the <code>ex:hasFruit</code>
     property element using this form.</p>
 
-    <aside class="example" id="example19" title="Complete example of a RDF collection">
+    <aside class="example" id="example20" title="Complete example of a RDF collection">
       <strong>Complete example of a RDF collection of nodes using <code>rdf:parseType="Collection"</code>
-      (<a href="example19.rdf">example19.rdf</a>, output <a href="example19.nt">example19.nt</a>)</strong>
+      (<a href="example20.rdf">example20.rdf</a>, output <a href="example20.nt">example20.nt</a>)</strong>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -1124,14 +1124,14 @@
     see <a>constraint-id</a>.
     </p>
 
-    <p><a href="#example20">Example 20</a> shows a <code>rdf:ID</code>
+    <p><a href="#example21"></a> shows a <code>rdf:ID</code>
     being used to reify a triple made from the <code>ex:prop</code>
     property element giving the reified triple the
     IRI <code>http://example.org/triples/#triple1</code>.</p>
 
-    <aside class="example" id="example20">
+    <aside class="example" id="example21">
       <strong>Complete example of <code>rdf:ID</code> reifying a property element
-      (<a href="example20.rdf">example20.rdf</a>, output <a href="example20.nt">example20.nt</a>)</strong>
+      (<a href="example21.rdf">example21.rdf</a>, output <a href="example21.nt">example21.nt</a>)</strong>
 
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -2394,53 +2394,53 @@
     <div class="productionOuter"><div class="productionInner">
     <table>
     <tr>
-    <td><a href="#coreSyntaxTerms">7.2.2</a> <a href="#coreSyntaxTerms">coreSyntaxTerms</a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code></td>
+    <td><a href="#coreSyntaxTerms"></a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code></td>
 
     </tr>
     <tr>
-    <td><a href="#syntaxTerms">7.2.3</a> <a href="#syntaxTerms">syntaxTerms</a></td> <td><a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <code>rdf:li</code></td>
+    <td><a href="#syntaxTerms"></a></td> <td><a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <code>rdf:li</code></td>
     </tr>
     <tr>
-    <td><a href="#oldTerms">7.2.4</a> <a href="#oldTerms">oldTerms</a></td> <td><code>rdf:aboutEach</code> | <code>rdf:aboutEachPrefix</code> | <code>rdf:bagID</code></td>
+    <td><a href="#oldTerms"></a></td> <td><code>rdf:aboutEach</code> | <code>rdf:aboutEachPrefix</code> | <code>rdf:bagID</code></td>
 
     </tr>
     <tr>
-    <td><a href="#nodeElementURIs">7.2.5</a> <a href="#nodeElementURIs">nodeElementURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#nodeElementURIs"></a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyElementURIs">7.2.6</a> <a href="#propertyElementURIs">propertyElementURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#propertyElementURIs"></a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:Description</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyAttributeURIs">7.2.7</a> <a href="#propertyAttributeURIs">propertyAttributeURIs</a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
+    <td><a href="#propertyAttributeURIs"></a></td> <td><a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )</td>
 
     </tr>
     <tr>
-    <td><a href="#doc">7.2.8</a> <a href="#doc">doc</a></td> <td>root(<a href="#eventterm-root-document-element">document-element</a> == <a href="#RDF">RDF</a>,
+    <td><a href="#doc"></a></td> <td>root(<a href="#eventterm-root-document-element">document-element</a> == <a href="#RDF">RDF</a>,
     <a href="#eventterm-root-children">children</a> == list(<a href="#RDF">RDF</a>))</td>
 
     </tr>
     <tr>
-    <td><a href="#RDF">7.2.9</a> <a href="#RDF">RDF</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <code>rdf:RDF</code>,
+    <td><a href="#RDF"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <code>rdf:RDF</code>,
     <a href="#eventterm-element-attributes">attributes</a> == set())<br />
     <a href="#nodeElementList">nodeElementList</a><br />
 
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#nodeElementList">7.2.10</a> <a href="#nodeElementList">nodeElementList</a></td> <td><a href="#ws">ws</a>* (<a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>* )*</td>
+    <td><a href="#nodeElementList"></a></td> <td><a href="#ws">ws</a>* (<a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>* )*</td>
     </tr>
     <tr>
 
-    <td><a href="#nodeElement">7.2.11</a> <a href="#nodeElement">nodeElement</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#nodeElementURIs">nodeElementURIs</a><br />
+    <td><a href="#nodeElement"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#nodeElementURIs">nodeElementURIs</a><br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set((<a href="#idAttr">idAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#aboutAttr">aboutAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#ws">7.2.12</a> <a href="#ws">ws</a></td> <td>A
+    <td><a href="#ws"></a></td> <td>A
     <a href="#section-text-node">text event</a> matching white
     space defined by XML [[XML11]] definition <em>White Space</em>
 
@@ -2449,11 +2449,11 @@
     <a data-cite="XML11#sec-common-syn">Common Syntactic Constructs</a></td>
     </tr>
     <tr>
-    <td><a href="#propertyEltList">7.2.13</a> <a href="#propertyEltList">propertyEltList</a></td> <td><a href="#ws">ws</a>* (<a href="#propertyElt">propertyElt</a> <a href="#ws">ws</a>* ) *</td>
+    <td><a href="#propertyEltList"></a></td> <td><a href="#ws">ws</a>* (<a href="#propertyElt">propertyElt</a> <a href="#ws">ws</a>* ) *</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyElt">7.2.14</a> <a href="#propertyElt">propertyElt</a></td> <td><a href="#resourcePropertyElt">resourcePropertyElt</a> |
+    <td><a href="#propertyElt"></a></td> <td><a href="#resourcePropertyElt">resourcePropertyElt</a> |
     <a href="#literalPropertyElt">literalPropertyElt</a> |
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a> |
     <a href="#parseTypeResourcePropertyElt">parseTypeResourcePropertyElt</a> |
@@ -2463,112 +2463,110 @@
     <a href="#emptyPropertyElt">emptyPropertyElt</a></td>
     </tr>
     <tr>
-    <td><a href="#resourcePropertyElt">7.2.15</a> <a href="#resourcePropertyElt">resourcePropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#resourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?))<br />
     <a href="#ws">ws</a>* <a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>*<br />
     end-element()</td>
     </tr>
     <tr>
-
-    <td><a href="#literalPropertyElt">7.2.16</a> <a href="#literalPropertyElt">literalPropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#literalPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
 
     <a href="#section-text-node">text()</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeLiteralPropertyElt">7.2.17</a> <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeLiteralPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseLiteral">parseLiteral</a>))<br />
     <a href="#literal">literal</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeResourcePropertyElt">7.2.18</a> <a href="#parseTypeResourcePropertyElt">parseTypeResourcePropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeResourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeCollectionPropertyElt">7.2.19</a> <a href="#parseTypeCollectionPropertyElt">parseTypeCollectionPropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeCollectionPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseCollection">parseCollection</a>))<br />
     <a href="#nodeElementList">nodeElementList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeOtherPropertyElt">7.2.20</a> <a href="#parseTypeOtherPropertyElt">parseTypeOtherPropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeOtherPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseOther">parseOther</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#emptyPropertyElt">7.2.21</a> <a href="#emptyPropertyElt">emptyPropertyElt</a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#emptyPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
     end-element()</td>
     </tr>
 
     <tr>
-    <td><a href="#idAttr">7.2.22</a> <a href="#idAttr">idAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:ID</code>,
+    <td><a href="#idAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:ID</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#nodeIdAttr">7.2.23</a> <a href="#nodeIdAttr">nodeIdAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:nodeID</code>,
+    <td><a href="#nodeIdAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:nodeID</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#aboutAttr">7.2.24</a> <a href="#aboutAttr">aboutAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:about</code>,
+    <td><a href="#aboutAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:about</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyAttr">7.2.25</a> <a href="#propertyAttr">propertyAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,
+    <td><a href="#propertyAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#resourceAttr">7.2.26</a> <a href="#resourceAttr">resourceAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:resource</code>,
+    <td><a href="#resourceAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:resource</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#datatypeAttr">7.2.27</a> <a href="#datatypeAttr">datatypeAttr</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:datatype</code>,
+    <td><a href="#datatypeAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:datatype</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#parseLiteral">7.2.28</a> <a href="#parseLiteral">parseLiteral</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseLiteral"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Literal")</td>
     </tr>
 
     <tr>
-    <td><a href="#parseResource">7.2.29</a> <a href="#parseResource">parseResource</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseResource"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Resource")</td>
     </tr>
     <tr>
 
-    <td><a href="#parseCollection">7.2.30</a> <a href="#parseCollection">parseCollection</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseCollection"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Collection")</td>
     </tr>
     <tr>
-    <td><a href="#parseOther">7.2.31</a> <a href="#parseOther">parseOther</a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseOther"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
 
     <a
     href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )</td>
     </tr>
     <tr>
-    <td><a href="#URI-reference">7.2.32</a> <a href="#URI-reference">URI-reference</a></td> <td>An IRI.</td>
+    <td><a href="#URI-reference"></a></td> <td>An IRI.</td>
 
     </tr>
     <tr>
-    <td><a href="#literal">7.2.33</a> <a
-    href="#literal">literal</a></td> <td>Any XML element content
+    <td><a href="#literal"></a></td> <td>Any XML element content
     that is allowed according to
     [[XML11]] definition <em>Content of Elements</em>
     Rule [43]
@@ -2578,7 +2576,7 @@
 
     </tr>
     <tr>
-    <td><a href="#rdf-id">7.2.34</a> <a href="#rdf-id">rdf-id</a></td> <td>An attribute <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
+    <td><a href="#rdf-id"></a></td> <td>An attribute <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
     matching any legal [[XML-NAMES]] token
     <a data-cite="XML-NAMES/#NT-NCName">NCName</a></td>
 
