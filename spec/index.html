@@ -1595,7 +1595,7 @@
       Most events are constructed from an Infoset information item (except
       for <a href="#section-identifier-node">IRI</a>,
       <a href="#section-blank-nodeid-event">blank node</a>,
-      <a href="#section-literal-node">plain literal</a> and
+      <a href="#section-literal-node">literal with no explicit datatype</a> and
       <a href="#section-typed-literal-node">typed literal</a>).  The effect
       of an event constructor is to create a new event with a unique identity,
       distinct from all other events.  Events have accessor operations on them
@@ -1971,11 +1971,12 @@
     </section>
 
 
-    <!-- plain literal event -->
+    <!-- literal with no explicit datatype event -->
     <section id="section-literal-node">
-      <h3>Plain Literal Event</h3>
+      <h3>Literal Without Datatype Event</h3>
 
-      <p class="note">RDF/XML plain literals are in RDF 1.2 treated as
+      <p class="note">RDF/XML literals without an explicit datatype in RDF 1.2
+        are treated as
         syntactic sugar for a literal with datatype
         <code>xsd:string</code> (when no language tag is present),
         as a literal with datatype <code>rdf:langString</code> (when
@@ -1985,17 +1986,17 @@
         The mapping to N-Triples as
         defined in this subsection is not affected by this change. </p>
 
-      <p>An event for a plain literal which can have the following accessors:</p>
+      <p>An event for a literal without an explicit datatype which can have the following accessors:</p>
 
       <dl>
         <dt id="eventterm-literal-literal-value">literal-value</dt>
         <dd>Takes a string value.</dd>
 
         <dt id="eventterm-literal-literal-language">literal-language</dt>
-        <dd>Takes a string value used as a language tag in an RDF plain literal.</dd>
+        <dd>Takes a string value used as a language tag in <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">language-tagged string</a>.</dd>
 
         <dt id="eventterm-literal-literal-direction">literal-direction</dt>
-        <dd>Takes a string value used as a direction tag in an RDF plain literal.</dd>
+        <dd>Takes a string value used as a direction tag in a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</dd>
 
         <dt id="eventterm-literal-string-value">string-value</dt>
         <dd>
