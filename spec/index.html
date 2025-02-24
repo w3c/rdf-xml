@@ -827,7 +827,7 @@
     </p>
 
     <p>The typed node elements are commonly used in RDF/XML with the built-in
-    classes in the <a>RDF vocabulary</a>:
+    classes in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>:
     <code>rdf:Seq</code>, <code>rdf:Bag</code>, <code>rdf:Alt</code>,
 
     <code>rdf:Statement</code>, <code>rdf:Property</code> and
@@ -1221,7 +1221,7 @@
     concatenated with additional characters.</p>
 
     <p>Throughout this document the terminology <code>rdf:</code><em>name</em>
-    will be used to indicate <em>name</em> is from the RDF vocabulary
+    will be used to indicate <em>name</em> is from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
     and it has a IRI of the concatenation of the
     <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a> and <em>name</em>.
     For example, <code>rdf:type</code> has the IRI
@@ -1619,7 +1619,7 @@
         <dt id="eventterm-element-URI">URI</dt>
         <dd>Set to the string value of the concatenation of the
           value of the namespace-name accessor and the value of the
-          local-name accessor.</dd>
+          <a href="#eventterm-element-local-name">local-name</a> accessor.</dd>
 
         <dt id="eventterm-element-URI-string-value">URI-string-value</dt>
         <dd>
@@ -1696,18 +1696,31 @@
 
         <dt id="eventterm-attribute-URI">URI</dt>
         <dd>
-          <p>If <a data-cite="XML-NAMES#NT-LocalPart">local name</a> is present,
+          <p>If <a href="#eventterm-attribute-namespace-name"
+            class="termref"><span
+            class="arrow">·</span>namespace-name<span
+            class="arrow">·</span></a> is present,
             set to a string value of the concatenation of the value of the
-            <a data-cite="XML-NAMES#NT-LocalPart">local name</a> accessor
+            <a href="#eventterm-attribute-namespace-name"
+            class="termref"><span
+            class="arrow">·</span>namespace-name<span
+            class="arrow">·</span></a> accessor
             and the value of the
-            <a>local-name</a> accessor.
-            Otherwise if <a>local-name</a> is
+            <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> accessor.
+            Otherwise if <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> is
             <code>ID</code>, <code>about</code>, <code>resource</code>,
             <code>parseType</code> or <code>type</code>, set to a string
             value of the concatenation of the
             <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
-            and the value of the <a>local-name</a> accessor.   Other non-namespaced
-            <a>local-name</a> accessor values are
+            and the value of the <a href="#eventterm-attribute-local-name">local-name</a> accessor.
+            Other non-namespaced
+            <a href="#eventterm-attribute-local-name"
+            class="termref"><span class="arrow">·</span>local-name<span
+            class="arrow">·</span></a> accessor values are
             forbidden.</p>
 
           <p>The support for a limited set of non-namespaced names is
@@ -2470,7 +2483,7 @@
 
     </p></div></div>
 
-    <p>A subset of the syntax terms from the RDF vocabulary in
+    <p>A subset of the syntax terms from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a> in
     <a href="#section-Namespace" class="sectionRef"></a>
     which are used in RDF/XML.
     </p>
@@ -2485,7 +2498,7 @@
 
     </p></div></div>
 
-    <p>All the syntax terms from the RDF vocabulary in
+    <p>All the syntax terms from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a> in
     <a href="#section-Namespace" class="sectionRef"></a>
     which are used in RDF/XML.
     </p>
@@ -2500,7 +2513,7 @@
 
     </p></div></div>
 
-    <p>These are the names from the <a>RDF vocabulary</a>
+    <p>These are the names from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
     that have been withdrawn from the language.  See the resolutions of
     Issue <a href="https://www.w3.org/2000/03/rdf-tracking/#rdfms-aboutEach-on-object">rdfms-aboutEach-on-object</a>,
     Issue <a href="https://www.w3.org/2000/03/rdf-tracking/#rdfms-abouteachprefix">rdfms-abouteachprefix</a> and
