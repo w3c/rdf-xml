@@ -35,7 +35,7 @@
         { name: "Dave Beckett"}
       ],
 
-      xref: [ "RDF11-CONCEPTS" ], // Fixme: change to RDF12-CONCEPTS
+      xref: [ "RDF12-CONCEPTS" ],
       github: "https://github.com/w3c/rdf-xml/",
       group:           "rdf-star",
       doJsonLd:     true,
@@ -143,7 +143,7 @@
     The RDF graph has <em>nodes</em>
     and labeled directed <em>arcs</em>
     that link pairs of nodes and this is represented as a set of
-    RDF triples
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triples</a>
     where each triple contains a
     <em>subject node</em>, <em>predicate</em> and <em>object node</em>.
     Nodes are <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>,
@@ -1103,11 +1103,6 @@
   Unicode.</p>
 
   <dl>
-  <dt>Definition:</dt>
-    <dd>An <dfn data-cite="RDF12-CONCEPTS#dfn-rdf-document">RDF Document</dfn> is a serialization of an
-    <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF Graph</a>
-    into a concrete syntax.</dd>
-
   <dt>Definition:<br /></dt>
     <dd>An <dfn>RDF/XML Document</dfn> is an
     <a data-cite="RDF12-CONCEPTS#dfn-rdf-document">RDF Document</a> written in the
@@ -1178,11 +1173,11 @@
 
     <h3>The RDF Namespace and Vocabulary</h3>
 
-     <p>The <dfn data-cite="RDF12-CONCEPTS#dfn-namespace-iri" id="rdf-ns-uri">RDF namespace IRI</dfn> (or namespace name) is
+     <p>The <dfn data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</dfn><span id="rdf-ns-uri"></span> (or namespace name) is
     <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
     and is typically used in XML with the prefix <code>rdf</code>
     although other prefix strings may be used.
-    The <dfn data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</dfn>
+    The <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
     is identified by this namespace name and consists of the following names only:</p>
 
     <dl>
@@ -1222,14 +1217,13 @@
 
     <p>Within RDF/XML documents it is not permitted to use XML namespaces
     whose namespace name is the
-    <a href="#rdf-ns-uri" class="termref"><span class="arrow">·</span>RDF namespace IRI<span class="arrow">·</span></a>
-
+    <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
     concatenated with additional characters.</p>
 
     <p>Throughout this document the terminology <code>rdf:</code><em>name</em>
     will be used to indicate <em>name</em> is from the RDF vocabulary
     and it has a IRI of the concatenation of the
-    <a href="#rdf-ns-uri" class="termref"><span class="arrow">·</span>RDF namespace IRI<span class="arrow">·</span></a> and <em>name</em>.
+    <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a> and <em>name</em>.
     For example, <code>rdf:type</code> has the IRI
     <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</code></p>
     </section>
@@ -1396,7 +1390,7 @@
     <h3>Constraints</h3>
 
     <dl>
-    <dt><dfn>constraint-id</dfn></dt>
+    <dt><dfn class="no-export">constraint-id</dfn></dt>
     <dd><p>Each application of production <a href="#idAttr">idAttr</a>
     matches an attribute.  The pair formed by the
     <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
@@ -1702,35 +1696,18 @@
 
         <dt id="eventterm-attribute-URI">URI</dt>
         <dd>
-          <p>If <a href="#eventterm-attribute-namespace-name"
-            class="termref"><span
-            class="arrow">·</span>namespace-name<span
-            class="arrow">·</span></a> is present,
+          <p>If <a data-cite="XML-NAMES#NT-LocalPart">local name</a> is present,
             set to a string value of the concatenation of the value of the
-            <a href="#eventterm-attribute-namespace-name"
-            class="termref"><span
-            class="arrow">·</span>namespace-name<span
-            class="arrow">·</span></a> accessor
+            <a data-cite="XML-NAMES#NT-LocalPart">local name</a> accessor
             and the value of the
-            <a href="#eventterm-attribute-local-name"
-            class="termref"><span class="arrow">·</span>local-name<span
-            class="arrow">·</span></a> accessor.
-            Otherwise if <a href="#eventterm-attribute-local-name"
-            class="termref"><span class="arrow">·</span>local-name<span
-            class="arrow">·</span></a> is
+            <a>local-name</a> accessor.
+            Otherwise if <a>local-name</a> is
             <code>ID</code>, <code>about</code>, <code>resource</code>,
             <code>parseType</code> or <code>type</code>, set to a string
             value of the concatenation of the
-            <a href="#rdf-ns-uri" class="termref"><span
-            class="arrow">·</span>RDF namespace IRI<span
-            class="arrow">·</span></a>
-            and the value of the <a
-            href="#eventterm-attribute-local-name" class="termref"><span
-            class="arrow">·</span>local-name<span
-            class="arrow">·</span></a> accessor.   Other non-namespaced
-            <a href="#eventterm-attribute-local-name"
-            class="termref"><span class="arrow">·</span>local-name<span
-            class="arrow">·</span></a> accessor values are
+            <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
+            and the value of the <a>local-name</a> accessor.   Other non-namespaced
+            <a>local-name</a> accessor values are
             forbidden.</p>
 
           <p>The support for a limited set of non-namespaced names is
@@ -2129,11 +2106,11 @@
         <td>The terms in A excluding all the terms in B.</td>
         </tr>
         <tr>
-        <td><dfn>anyURI</dfn>.</td>
+        <td><dfn data-cite="XMLSCHEMA11-2#anyURI">anyURI</dfn>.</td>
         <td>Any URI.</td>
         </tr>
         <tr>
-        <td><dfn>anyString</dfn>.</td>
+        <td><dfn data-cite="XMLSCHEMA11-2#anyString">anyString</dfn>.</td>
         <td>Any string.</td>
         </tr>
         <tr>
@@ -3389,7 +3366,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       has restrictions on the legal characters such that not all property URIs
       can be expressed as these names.
       It is recommended that implementors of RDF serializers, in order to
-      break a URI into a namespace name and a local name, split it after
+      break a URI into a namespace name and a <a data-cite="XML-NAMES#NT-LocalPart">local name</a>, split it after
       the last XML non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
       character, ensuring that the first character of the name is a
       <a data-cite="XML11#NT-Letter">Letter</a> or '_'.
