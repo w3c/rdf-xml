@@ -1,4 +1,0 @@
-<http://example.org/vocab/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" .
-<http://example.org/vocab/show/218> <http://example.org/vocab/show/localName> "That Seventies Show"@en .
-<http://example.org/vocab/show/218> <http://example.org/vocab/show/unrelatedName> "HTML היא שפת סימון."@he--rtl .
-<http://example.org/vocab/show/218> <http://example.org/vocab/show/localName> "That Seventies Show"@en-us--ltr .
