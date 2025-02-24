@@ -1666,7 +1666,10 @@
             accessor is set to the [normalized-value] property of the
             attribute information item.</p>
 
-          <p>If this set contains an attribute information item
+          <p>If the <a href="#section-root-node"></a> has a
+            <a href="#eventterm-root-version">version</a> accessor
+            with the value `"1.2"` or greater,
+            this set contains an attribute information item
             <code>its:dir</code> ([namespace name] property with the value
             `"http://www.w3.org/2005/11/its"` and
             [local name] property value "dir")
@@ -1675,9 +1678,12 @@
               <span class="arrow">·</span>direction<span class="arrow">·</span></a>
             accessor is set to the [normalized-value] property of the
             attribute information item,
-            which MUST be one or `"ltr"`, `"rtl"`, or the empty string.</p>
+            which MUST be one of `"ltr"`, `"rtl"`, or the empty string.</p>
 
-          <p>If this set contains an attribute information item
+          <p>If the <a href="#section-root-node"></a> has a
+            <a href="#eventterm-root-version">version</a> accessor
+            with the value `"1.2"` or greater,
+            this set contains an attribute information item
             <code>its:version</code> ([namespace name] property with the value
             `"http://www.w3.org/2005/11/its"` and
             [local name] property value "version")
@@ -2342,7 +2348,7 @@
       </tr>
       <tr>
       <td>resolve(<em>e</em>, <em>s</em>)</td>
-      <td>A string created by interpreting string <em>s</em> as a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a> to the
+      <td>A string created by interpreting string <em>s</em> as a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> to the
       <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"><em>e</em></a>
       as defined in <a href="#section-baseURIs" class="sectionRef"></a>.
       The resulting string represents an
@@ -3657,6 +3663,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>Adds <a href="#privacy-considerations"></a> and <a href="#security"></a>.</li>
     <li>Updates reference for [[SAX]].</li>
     <li>Removes the statement that the `rdf:HTML` datatype cannot be serialized in RDF/XML.</li>
+    <li>Adds <a href="#section-Syntax-base-direction"></a> and <a href="#eventterm-root-version"><code>rdf:version</code></a>.</li>
   </ul>
 </section>
 
