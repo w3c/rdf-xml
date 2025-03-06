@@ -428,7 +428,7 @@
     and any in-scope <code>xml:lang</code> on the
     <a data-lt="property element">property element's</a> string literal (if any) are the same
     (see <a href="#section-Syntax-languages" class="sectionRef"></a>)
-    This abbreviation is known as a <dfn class="no-export" data-lt="property attribute">Property Attribute</em>
+    This abbreviation is known as a <dfn class="no-export" data-lt="property attribute">Property Attribute</dfn>
     and can be applied to any <a>node element</a>.</p>
 
     <p>This abbreviation can also be used when the <a>property element</a> is
@@ -2319,7 +2319,7 @@
       </tr>
       <tr>
       <td>literal(literal-value := string,<br />
-      &#160;&#160;&#160;&#160;literal-language := language, ...)</td>
+      &#160;&#160;&#160;&#160;literal-language := language,<br />
       &#160;&#160;&#160;&#160;literal-direction := direction, ...)</td>
       <td>Create a new <a href="#section-literal-node">Literal Without Datatype Event</a>.</td>
       </tr>
@@ -2767,7 +2767,7 @@
     <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>
 
     SHOULD be in Normal Form C [[NFC]],
-    <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>)
+    <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
     and the following statement is added to the graph:
 
 
@@ -2894,7 +2894,7 @@
     then <em>o</em> := typed-literal(<a href="#eventterm-typedliteral-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-typedliteral-literal-datatype">literal-datatype</a> := <em>d</em>.<a href="#eventterm-attribute-string-value">string-value</a>)
     otherwise
 
-    <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>)
+    <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -3149,7 +3149,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>
     <p>If there are no attributes <strong>or</strong> only the
     optional <code>rdf:ID</code> attribute <em>i</em>
-    then <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a>:="", <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>)
+    then <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a>:="", <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -3217,7 +3217,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
         <li><p>Otherwise Unicode string
          <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>
          SHOULD be in Normal Form C [[NFC]],
-         <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>)
+         <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
          and the following statement is added to the graph:</p>
 
         <div class="ntripleOuter"><div class="ntripleInner"><p>
