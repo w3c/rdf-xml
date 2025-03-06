@@ -87,14 +87,15 @@
 <section id="section-Introduction" class="informative">
   <h2>Introduction</h2>
 
-  <p>This document defines the XML [[XML11]] syntax for RDF graphs. </p>
+  <p>This document defines the XML [[XML11]] syntax for <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>. </p>
 
   <p>This document revises the original RDF/XML grammar [[RDF-SYNTAX-GRAMMAR-19990222]]
     in terms of XML Information Set [[XML-INFOSET]] information items which moves
     away from the rather low-level details of XML, such as particular
     forms of empty elements.  This allows the grammar to be more
-    precisely recorded and the mapping from the XML syntax to the RDF
-    Graph more clearly shown.  The mapping to the RDF graph is done by
+    precisely recorded and the mapping from the XML syntax to the
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF Graph</a> more clearly shown.
+    The mapping to the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> is done by
     emitting statements in the N-Triples [[RDF12-N-TRIPLES]] format. </p>
 
   <ul>
@@ -127,7 +128,7 @@
 
   <h2>An XML Syntax for RDF</h2>
   <p>This section introduces the RDF/XML syntax, describes how it
-   encodes RDF graphs and explains this with examples.  If there is any
+   encodes <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> and explains this with examples.  If there is any
    conflict between this informal description and the formal description
    of the syntax and grammar in sections
    <a href="#section-Data-Model" class="sectionRef"></a> and
@@ -140,11 +141,11 @@
     <h3>Introduction</h3>
 
     <p>The RDF Concepts and Abstract Syntax document [[RDF12-CONCEPTS]]
-    defines the RDF Graph data model and the
-    RDF Graph abstract syntax.
+    defines the RDF data model and the
+    RDF abstract syntax.
     Along with the RDF Semantics [[RDF12-SEMANTICS]]
     this provides an abstract syntax with a formal semantics for it.
-    The RDF graph has <em>nodes</em>
+    The RDF data model has <a data-cite="RDF12-CONCEPTS#dfn-nodes">nodes</a>
     and labeled directed <em>arcs</em>
     that link pairs of nodes and this is represented as a set of
     <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triples</a>
@@ -155,8 +156,8 @@
     <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a>.
     Blank nodes may be given
     a document-local identifier called a
-    blank node identifier.
-    Predicates are IRIs
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>.
+    Predicates are <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
     and can be interpreted as either a relationship between the two
     nodes or as defining an attribute value (object node) for some
     subject node.</p>
@@ -165,8 +166,8 @@
     represented in XML terms &mdash; element names, attribute names, element contents
     and attribute values.
     RDF/XML uses XML <a data-cite="XML-NAMES#NT-QName">QNames</a>
-    as defined in Namespaces in XML [[XML-NAMES]] to represent IRIs.
-    All QNames have a <dfn data-cite="XML-NAMES#dt-NSName">namespace name</dfn> which is an IRI
+    as defined in Namespaces in XML [[XML-NAMES]] to represent <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>.
+    All QNames have a <dfn data-cite="XML-NAMES#dt-NSName">namespace name</dfn> which is an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     and a short
     <a data-cite="XML-NAMES#NT-LocalPart">local name</a>.
     In addition, QNames can either have a short
@@ -177,10 +178,10 @@
     <p>The <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> represented by a <a data-cite="XML-NAMES#NT-QName">QName</a> is determined by appending the
     <a data-cite="XML-NAMES#NT-LocalPart">local name</a>
     part of the QName after the
-    <a>namespace name</a> (IRI) part of the QName.
-    This is used to shorten the IRI
+    <a>namespace name</a> (<a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>) part of the QName.
+    This is used to shorten the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     of all predicates and some nodes.
-    IRIs identifying
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> identifying
     subject and object nodes can also be stored as XML attribute values.
     <a data-cite="RDF12-CONCEPTS#dfn-literal">RDF literals</a>
     which can only be object nodes,
@@ -217,8 +218,8 @@
 
     <p>An RDF graph is given in <a href="#figure1"></a>
       where the nodes are represented as ovals which contain their
-      IRIs where they have them, all the predicate arcs are labeled with
-      IRIs, and string literal nodes have been written in rectangles.</p>
+      <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> where they have them, all the predicate arcs are labeled with
+      <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>, and string literal nodes have been written in rectangles.</p>
 
     <p>If we follow one node, predicate arc ... , node path through the
       graph shown in <a href="#figure2"></a>:</p>
@@ -239,22 +240,22 @@
       graph corresponds to the node/predicate arc stripes:</p>
 
     <ol>
-      <li>Node with IRI <code>http://www.w3.org/TR/rdf-syntax-grammar</code></li>
-      <li>Predicate Arc labeled with IRI <code>http://example.org/terms/editor</code></li>
-      <li>Node with no IRI</li>
-      <li>Predicate Arc labeled with IRI  <code>http://example.org/terms/homePage</code></li>
-      <li>Node with IRI <code>http://purl.org/net/dajobe/</code></li>
+      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://www.w3.org/TR/rdf-syntax-grammar</code></li>
+      <li>Predicate Arc labeled with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://example.org/terms/editor</code></li>
+      <li>Node with no <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a></li>
+      <li>Predicate Arc labeled with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>  <code>http://example.org/terms/homePage</code></li>
+      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://purl.org/net/dajobe/</code></li>
     </ol>
 
     <p>In RDF/XML, the sequence of 5 nodes and predicate arcs on
       the left-hand side of <a href="#figure2"></a> corresponds to
       the usage of five XML elements of two types, for the graph nodes and
-      predicate arcs. These are conventionally called <em>node elements</em> and
-      <em>property elements</em> respectively.  In the striping shown in
+      predicate arcs. These are conventionally called <dfn class="no-export">node elements</dfn> and
+      <dfn class="no-export">property elements</dfn> respectively.  In the striping shown in
       <a href="#example1"></a>, <code>rdf:Description</code> is the
-      node element (used three times for the three nodes) and
+      <a>node element</a> (used three times for the three nodes) and
       <code>ex:editor</code> and <code>ex:homePage</code> are the two
-      property elements.</p>
+      <a>property elements</a>.</p>
 
     <pre class="example rdf" id="example1"
          data-transform="updateExample"
@@ -274,7 +275,7 @@
     </pre>
 
     <p>The <a href="#figure2"></a> graph consists of some nodes
-      that are IRIs (and others that are not) and this can be added
+      that are <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> (and others that are not, called <dfn class="no-export">blank node elements</dfn>) and this can be added
       to the RDF/XML using the <code>rdf:about</code> attribute on node
       elements to give the result in <a href="#example2"></a>:</p>
 
@@ -341,16 +342,16 @@
     uses easier to write down.  In particular, it is common that a
     subject node in the RDF graph has multiple outgoing predicate arcs.  RDF/XML
     provides an abbreviation for the corresponding syntax when a node
-    element about a resource has multiple property elements. This can be
-    abbreviated by using multiple child property elements inside the node
+    element about a resource has multiple <a>property elements</a>. This can be
+    abbreviated by using multiple child <a>property elements</a> inside the node
     element describing the subject node.</p>
 
     <p>Taking <a href="#example3"></a>, there are
-    two node elements that can take multiple property elements.
-    The subject node with IRI
+    two <a>node elements</a> that can take multiple <a>property elements</a>.
+    The subject node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://www.w3.org/TR/rdf-syntax-grammar</code>
-    has property elements <code>ex:editor</code> and <code>dc:title</code>
-    and the node element for the blank node can take <code>ex:homePage</code>
+    has <a>property elements</a> <code>ex:editor</code> and <code>dc:title</code>
+    and the <a>node element</a> for the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> can take <code>ex:homePage</code>
     and <code>ex:fullName</code>.  This abbreviation
     gives the result shown in <a href="#example4"></a>
     (this example does show that there is a single blank node):</p>
@@ -381,19 +382,19 @@
     <h3>Empty Property Elements</h3>
 
     <p>When a predicate arc in an RDF graph points to an object node which has no
-    further predicate arcs, which appears in RDF/XML as an empty node element
+    further predicate arcs, which appears in RDF/XML as an empty <a>node element</a>
     <code>&lt;rdf:Description rdf:about="..."&gt;</code>
     <code>&lt;/rdf:Description&gt;</code>
     (or <code>&lt;rdf:Description rdf:about="..." /&gt;</code>)
     this form can be shortened.  This is done by using the
-    IRI of the object node as the value of an XML attribute <code>rdf:resource</code>
-    on the containing property element and making the property element empty.
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> of the object node as the value of an XML attribute <code>rdf:resource</code>
+    on the containing <a>property element</a> and making the <a>property element</a> empty.
     </p>
 
-    <p>In this example, the property element <code>ex:homePage</code>
-    contains an empty node element with the IRI
+    <p>In this example, the <a>property element</a> <code>ex:homePage</code>
+    contains an empty <a>node element</a> with the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://purl.org/net/dajobe/</code>.  This can be replaced with
-    the empty property element form giving the result shown in
+    the empty <a>property element</a> form giving the result shown in
     <a href="#example5"></a>:</p>
 
     <pre class="example rdf" id="example5"
@@ -418,27 +419,27 @@
   <section id="section-Syntax-property-attributes" class="informative">
     <h3>Property Attributes</h3>
 
-    <p>When a property element's content is string literal,
+    <p>When a <a data-lt="property element">property element's</a> content is string literal,
     it may be possible to use it as an XML attribute on the
-    containing node element.
-    This can be done for multiple properties on the same node element
-    only if the property element name is not repeated
+    containing <a>node element</a>.
+    This can be done for multiple properties on the same <a>node element</a>
+    only if the <a>property element</a> name is not repeated
     (required by XML &mdash; attribute names are unique on an XML element)
     and any in-scope <code>xml:lang</code> on the
-    property element's string literal (if any) are the same
+    <a data-lt="property element">property element's</a> string literal (if any) are the same
     (see <a href="#section-Syntax-languages" class="sectionRef"></a>)
-    This abbreviation is known as a <em>Property Attribute</em>
-    and can be applied to any node element.</p>
+    This abbreviation is known as a <dfn class="no-export" data-lt="property attribute">Property Attribute</em>
+    and can be applied to any <a>node element</a>.</p>
 
-    <p>This abbreviation can also be used when the property element is
+    <p>This abbreviation can also be used when the <a>property element</a> is
     <code>rdf:type</code> and it has an <code>rdf:resource</code> attribute
     the value of which is interpreted as a
-    IRI object node.</p>
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> object node.</p>
 
     <p>In <a href="#example5"></a>:,
-    there are two property elements with string literal content,
+    there are two <a>property elements</a> with string literal content,
     the <code>dc:title</code> and <code>ex:fullName</code>
-    property elements.  These can be replaced with property attributes
+    <a>property elements</a>.  These can be replaced with <a>property attributes</a>
     giving the result shown in <a href="#example6"></a>:</p>
 
     <pre class="example rdf" id="example6"
@@ -467,9 +468,9 @@
     XML element which becomes the <a>top-level XML document element</a>.
     Conventionally the <code>rdf:RDF</code> element is also used to
     declare the XML namespaces that are used, although that is not
-    required.  When there is only one top-level node element inside
+    required.  When there is only one top-level <a>node element</a> inside
     <code>rdf:RDF</code>, the <code>rdf:RDF</code> can be omitted
-    although any XML namespaces must still be declared.</p>
+    although any XML namespaces MUST still be declared.</p>
 
     <p>The XML specification also permits an XML declaration at
     the top of the document with the XML version and possibly the XML
@@ -525,14 +526,14 @@
     <a data-cite="XML11#sec-lang-tag">2.12 Language Identification</a>
     of XML 1.1 [[XML11]]
     to allow the identification of content language.
-    The <code>xml:lang</code> attribute can be used on any node element or property element
+    The <code>xml:lang</code> attribute can be used on any <a>node element</a> or <a>property element</a>
     to indicate that the included content is in the given language.
     <a href="#section-Syntax-datatyped-literals">Typed literals</a>
     which includes <a href="#section-Syntax-XML-literals">XML literals</a>
     are not affected by this attribute.
     The most specific in-scope language present
-    (if any) is applied to property element string literal content or
-    property attribute values.  The <code>xml:lang=""</code> form
+    (if any) is applied to <a>property element</a> string literal content or
+    <a>property attribute</a> values.  The <code>xml:lang=""</code> form
     indicates the absence of a language identifier.</p>
 
     <p>Some examples of marking content languages for RDF properties are shown in
@@ -576,7 +577,7 @@
       to specify the initial text direction of <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">language-tagged strings</a>
       to create a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.
       This is specified by adding the `its:dir` attribute on any
-      node element or property element, where `its` is the typical prefix
+      <a>node element</a> or <a>property element</a>, where `its` is the typical prefix
       used for the ITS namespace `http://www.w3.org/2005/11/its`.
       The supported values for `its:dir` are `"ltr"`, and `"rtl"`
       as required for <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
@@ -612,15 +613,6 @@
     <p class="note">The `its:dir` attribute is specifically tied to
       version 2.0 of [[ITS]], as indicated by the `its:version="2.0"` on the
       <a>top-level XML document element</a>.</p>
-
-    <div class="ednote">
-      The following terms should be defined and used within this spec:
-      <ul>
-        <li>node element</li>
-        <li>property element</li>
-        <li>property attribute</li>
-      </ul>
-    </div>
   </section>
 
   <!-- XML Literal -->
@@ -629,18 +621,18 @@
 
     <p>RDF allows XML literals [RDF12-CONCEPTS]
     to be given as the object node of a predicate.
-    These are written in RDF/XML as content of a property element (not
-    a property attribute) and indicated using the
+    These are written in RDF/XML as content of a <a>property element</a> (not
+    a <a>property attribute</a>) and indicated using the
     <code>rdf:parseType="Literal"</code> attribute on the containing
-    property element.
+    <a>property element</a>.
     </p>
 
     <p>An example of writing an XML literal is given in
     <a href="#example10"></a> where
     there is a single RDF triple with the subject node
-    IRI
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://example.org/item01</code>, the predicate
-    IRI
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://example.org/stuff/1.0/prop</code> (from
     <code>ex:prop</code>) and the object node with XML literal
     content beginning <code>a:Box</code>.
@@ -679,20 +671,20 @@
     to be given as the object node of a predicate.  Typed literals consist of a literal
     string and a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>.
     These are written in RDF/XML using
-    the same syntax for literal string nodes in the property element form
-    (not property attribute) but with an additional
+    the same syntax for literal string nodes in the <a>property element</a> form
+    (not <a>property attribute</a>) but with an additional
     <code>rdf:datatype="</code><em>datatypeURI</em><code>"</code>
-    attribute on the property element.  Any
-    IRI can be used in the attribute.
+    attribute on the <a>property element</a>.
+    Any <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> can be used in the attribute.
     </p>
 
     <p>An example of an RDF typed
     literal
     is given in <a href="#example11"></a> where
     there is a single RDF triple with the subject node
-    IRI
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://example.org/item01</code>, the predicate
-    IRI
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://example.org/stuff/1.0/size</code> (from
     <code>ex:size</code>) and the object node with the
     typed literal
@@ -725,31 +717,31 @@
   <section id="section-Syntax-blank-nodes" class="informative">
     <h3>Identifying Blank Nodes: <code>rdf:nodeID</code></h3>
 
-    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> in the RDF graph are distinct but have no
-    IRI identifier.
-    It is sometimes required that the same graph blank node is referred to in the
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> in the RDF are distinct but have no
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.
+    It is sometimes required that the same <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> is referred to in the
     RDF/XML in multiple places, such as at the subject and object
-    of several RDF triples.  In this case, a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
-    can be given to the blank node for identifying it
-    in the document.  Blank node identifiers in RDF/XML are scoped to the
+    of several RDF triples. In this case, a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
+    can be given to the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> for identifying it
+    in the document.  <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">Blank node identifiers</a> in RDF/XML are scoped to the
     containing XML Information Set [[XML-INFOSET]]
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.
-    A blank node identifier is used
-    on a node element to replace
+    A <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> is used
+    on a <a>node element</a> to replace
     <code>rdf:about="</code><em>IRI</em><code>"</code>
-    or on a property element to replace
+    or on a <a>property element</a> to replace
     <code>rdf:resource="</code><em>IRI</em><code>"</code>
     with <code>rdf:nodeID="</code><em>blank node identifier</em><code>"</code>
     in both cases.</p>
 
     <p>Taking <a href="#example7"></a> and explicitly giving
-    a blank node identifier of <code>abc</code> to the blank node in it
+    a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> of <code>abc</code> to the blank node in it
     gives the result shown in <a href="#example12"></a>.
-    The second <code>rdf:Description</code> property element is
-    about the blank node.</p>
+    The second <code>rdf:Description</code> <a>property element</a> is
+    about the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>.</p>
 
     <aside class="example" id="example12" title="Complete RDF/XML description of graph using rdf:nodeID">
-      <strong>Complete RDF/XML description of graph using <code>rdf:nodeID</code> identifying the blank node
+      <strong>Complete RDF/XML description of graph using <code>rdf:nodeID</code> identifying the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>
       (<a href="example12.rdf">example12.rdf</a>, output <a href="example12.nt">example12.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -778,20 +770,20 @@
   <section id="section-Syntax-parsetype-resource" class="informative">
     <h3>Omitting Blank Nodes: <code>rdf:parseType="Resource"</code></h3>
 
-    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not IRI nodes) in RDF graphs can be written
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> nodes) in RDF graphs can be written
     in a form that allows the
     <code>&lt;rdf:Description&gt;</code>
     <code>&lt;/rdf:Description&gt;</code> pair to be omitted.
     The omission is done by putting an
     <code>rdf:parseType="Resource"</code>
-    attribute on the containing property element
-    that turns the property element into a property-and-node element,
-    which can itself have both property elements and property attributes.
-    Property attributes and the <code>rdf:nodeID</code> attribute
+    attribute on the containing <a>property element</a>
+    that turns the <a>property element</a> into a property-and-node element,
+    which can itself have both <a>property elements</a> and <a>property attributes</a>.
+    <a>Property attributes</a> and the <code>rdf:nodeID</code> attribute
     are not permitted on property-and-node elements.</p>
 
     <p>Taking the earlier <a href="#example7"></a>,
-    the contents of the <code>ex:editor</code> property element
+    the contents of the <code>ex:editor</code> <a>property element</a>
     could be alternatively done in this fashion to give
     the form shown in <a href="#example13"></a>:</p>
 
@@ -822,33 +814,33 @@
   <section id="section-Syntax-property-attributes-on-property-element" class="informative">
     <h3>Omitting Nodes: Property Attributes on an empty Property Element</h3>
 
-    <p>If all of the property elements on a blank node element have
+    <p>If all of the <a>property elements</a> on a <a>blank node element</a> have
     string literal values with the same in-scope <code>xml:lang</code>
-    value (if present) and each of these property elements appears at
+    value (if present) and each of these <a>property elements</a> appears at
     most once and there is at most one <code>rdf:type</code> property
-    element with a IRI object node, these can be abbreviated by
-    moving them to be property attributes on the containing property
+    element with a <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> object node, these can be abbreviated by
+    moving them to be <a>property attributes</a> on the containing property
     element which is made an empty element.</p>
 
     <p>Taking the earlier <a href="#example5"></a>,
-    the <code>ex:editor</code> property element contains a
-    blank node element with two property elements
+    the <code>ex:editor</code> <a>property element</a> contains a
+    <a>blank node element</a> with two <a>property elements</a>
 
     <code>ex:fullname</code> and <code>ex:homePage</code>.
     <code>ex:homePage</code> is not suitable here since it
     does not have a string literal value, so it is being
     <em>ignored</em> for the purposes of this example.
-    The abbreviated form removes the <code>ex:fullName</code> property element
-    and adds a new property attribute <code>ex:fullName</code> with the
-    string literal value of the deleted property element
-    to the <code>ex:editor</code> property element.
-    The blank node element becomes implicit in the now empty
+    The abbreviated form removes the <code>ex:fullName</code> <a>property element</a>
+    and adds a new <a>property attribute</a> <code>ex:fullName</code> with the
+    string literal value of the deleted <a>property element</a>
+    to the <code>ex:editor</code> <a>property element</a>.
+    The <a>blank node element</a> becomes implicit in the now empty
 
-    <code>ex:editor</code> property element.  The result is shown in
+    <code>ex:editor</code> <a>property element</a>.  The result is shown in
     <a href="#example14"></a>.</p>
 
     <aside class="example" id="example14" title="Complete example of property attributes on an empty property element">
-    <strong>Complete example of property attributes on an empty property element
+    <strong>Complete example of <a>property attributes</a> on an empty <a>property element</a>
     (<a href="example14.rdf">example14.rdf</a>, output <a href="example14.nt">example14.nt</a>)</strong>
     <pre class="rdf">
       &lt;?xml version="1.0"?&gt;
@@ -879,10 +871,10 @@
     by replacing the <code>rdf:Description</code> node element name with
     the namespaced-element corresponding to the
 
-    IRI of the value of
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> of the value of
     the type relationship.  There may, of course, be multiple <code>rdf:type</code>
-    predicates but only one can be used in this way, the others must remain as
-    property elements or property attributes.
+    predicates but only one can be used in this way, the others MUST remain as
+    <a>property elements</a> or <a>property attributes</a>.
     </p>
 
     <p>The typed node elements are commonly used in RDF/XML with the built-in
@@ -938,18 +930,19 @@
 
   <!-- xml base -->
   <section id="section-Syntax-ID-xml-base" class="informative">
-    <h3>Abbreviating URIs: <code>rdf:ID</code> and <code>xml:base</code></h3>
+    <h3>Abbreviating IRIs: <code>rdf:ID</code> and <code>xml:base</code></h3>
 
-    <p>RDF/XML allows further abbreviating IRIs in XML attributes in two
+    <p>RDF/XML allows further abbreviating <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> in XML attributes in two
     ways.  The XML Infoset provides a base URI attribute <code>xml:base</code>
-    that sets the base URI for resolving <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>, otherwise
-    the base URI is that of the document.  The base URI applies to
-    all RDF/XML attributes that deal with IRIs which are <code>rdf:about</code>,
+    that sets the base IRI for resolving <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>, otherwise
+    the base IRI is that of the document.  The base IRI applies to
+    all RDF/XML attributes that deal with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> which are <code>rdf:about</code>,
     <code>rdf:resource</code>, <code>rdf:ID</code>
     and <code>rdf:datatype</code>.</p>
 
-    <p>The <code>rdf:ID</code> attribute on a node element (not property
-    element, that has another meaning) can be used instead of
+    <p>The <code>rdf:ID</code> attribute on a <a>node element</a>
+    (not <a>property element</a>,
+    that has another meaning) can be used instead of
     <code>rdf:about</code> and gives a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> equivalent to <code>#</code>
     concatenated with the <code>rdf:ID</code> attribute value.  So for
     example if <code>rdf:ID="name"</code>, that would be equivalent
@@ -957,22 +950,22 @@
     check since the same <em>name</em> can only appear once in the
     scope of an <code>xml:base</code> value (or document, if none is given),
     so is useful for defining a set of distinct,
-    related terms relative to the same IRI.</p>
+    related terms relative to the same <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</p>
 
-    <p>Both forms require a base URI to be known, either from an in-scope
-    <code>xml:base</code> or from the URI of the RDF/XML document.</p>
+    <p>Both forms require a base IRI to be determined, either from an in-scope
+    <code>xml:base</code> or from the URL of the RDF/XML document.</p>
 
     <p><a href="#example17"></a> shows abbreviating the node
-    IRI of <code>http://example.org/here/#snack</code> using an
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> of <code>http://example.org/here/#snack</code> using an
     <code>xml:base</code> of <code>http://example.org/here/</code> and
     an <code>rdf:ID</code> on the <code>rdf:Description</code> node element.
     The object node of the <code>ex:prop</code> predicate is an
-    IRI resolved from the <code>rdf:resource</code> XML attribute value
-    using the in-scope base URI to give the
-    IRI <code>http://example.org/here/fruit/apple</code>.</p>
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> resolved from the <code>rdf:resource</code> XML attribute value
+    using the in-scope base IRI to give the
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://example.org/here/fruit/apple</code>.</p>
 
     <aside class="example" id="example17" title="Complete example using rdf:ID> and xml:base">
-      <strong>Complete example using <code>rdf:ID</code> and <code>xml:base</code> for shortening URIs
+      <strong>Complete example using <code>rdf:ID</code> and <code>xml:base</code> for shortening IRIs
       (<a href="example17.rdf">example17.rdf</a>, output <a href="example17.nt">example17.nt</a>)</strong>
       <pre class="rdf" data-transform="updateExample">
         <!--
@@ -997,19 +990,19 @@
     <h3>Container Membership Property Elements: <code>rdf:li</code> and <code>rdf:_</code><em>n</em></h3>
 
     <p>RDF has a set of container membership properties
-    and corresponding property elements that are mostly used with
+    and corresponding <a>property elements</a> that are mostly used with
     instances of the
     <code>rdf:Seq</code>, <code>rdf:Bag</code> and <code>rdf:Alt</code>
     classes which may be written as typed node elements.  The list properties are
     <code>rdf:_1</code>, <code>rdf:_2</code> etc. and can be written
-    as property elements or property attributes as shown in
+    as <a>property elements</a> or <a>property attributes</a> as shown in
     <a href="#example18"></a>.  There is an <code>rdf:li</code>
-    special property element that is equivalent to
+    special <a>property element</a> that is equivalent to
     <code>rdf:_1</code>, <code>rdf:_2</code> in order,
     explained in detail in <a href="#section-List-Expand" class="sectionRef"></a>.
     The mapping to the container membership properties is
     always done in the order that the <code>rdf:li</code> special
-    property elements appear in XML &mdash; the document order is significant.
+    <a>property elements</a> appear in XML &mdash; the document order is significant.
     The equivalent RDF/XML to <a href="#example18"></a> written
     in this form is shown in <a href="#example19"></a>.
     </p>
@@ -1062,7 +1055,7 @@
 
     <p>RDF/XML allows an <code>rdf:parseType="Collection"</code>
 
-    attribute on a property element to let it contain multiple node
+    attribute on a <a>property element</a> to let it contain multiple node
     elements.  These contained node elements give the set of subject
     nodes of the collection.  This syntax form corresponds to a set of
     triples connecting the collection of subject nodes, the exact triples
@@ -1076,7 +1069,7 @@
 
     <p><a href="#example20"></a> shows a collection of three
     nodes elements at the end of the <code>ex:hasFruit</code>
-    property element using this form.</p>
+    <a>property element</a> using this form.</p>
 
     <aside class="example" id="example20" title="Complete example of a RDF collection">
       <strong>Complete example of a RDF collection of nodes using <code>rdf:parseType="Collection"</code>
@@ -1115,22 +1108,22 @@
     <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     made from the <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a>
     <code>#</code> concatenated with the <code>rdf:ID</code> attribute
-    value, resolved against the in-scope base URI.  So for example if
+    value, resolved against the in-scope base IRI.  So for example if
 
-    <code>rdf:ID="triple"</code>, that would be equivalent to the IRI
-    formed from <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> <code>#triple</code> against the base URI.
-    Each (<code>rdf:ID</code> attribute value, base URI)
+    <code>rdf:ID="triple"</code>, that would be equivalent to the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
+    formed from <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> <code>#triple</code> against the base IRI.
+    Each (<code>rdf:ID</code> attribute value, base IRI)
     pair has to be unique in an RDF/XML document,
     see <a>constraint-id</a>.
     </p>
 
     <p><a href="#example21"></a> shows a <code>rdf:ID</code>
     being used to reify a triple made from the <code>ex:prop</code>
-    property element giving the reified triple the
-    IRI <code>http://example.org/triples/#triple1</code>.</p>
+    <a>property element</a> giving the reified triple the
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://example.org/triples/#triple1</code>.</p>
 
     <aside class="example" id="example21">
-      <strong>Complete example of <code>rdf:ID</code> reifying a property element
+      <strong>Complete example of <code>rdf:ID</code> reifying a <a>property element</a>
       (<a href="example21.rdf">example21.rdf</a>, output <a href="example21.nt">example21.nt</a>)</strong>
 
       <pre class="rdf" data-transform="updateExample">
@@ -1285,9 +1278,9 @@
 
     <p>Throughout this document the terminology <code>rdf:</code><em>name</em>
     will be used to indicate <em>name</em> is from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
-    and it has a IRI of the concatenation of the
+    and it has a <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> of the concatenation of the
     <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a> and <em>name</em>.
-    For example, <code>rdf:type</code> has the IRI
+    For example, <code>rdf:type</code> has the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</code></p>
     </section>
 
@@ -1304,14 +1297,14 @@
 
     <dt>IRI</dt>
     <dd>
-<p>IRIs can act as node (both subject and object) and as
+<p><a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can act as node (both subject and object) and as
     predicate. </p>
 
     <p><a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be either:</p>
     <ul>
     <li>given as XML attribute values interpreted as <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>
-    that are resolved against the in-scope base URI
-    as described in <a href="#section-baseURIs" class="sectionRef"></a>
+    that are resolved against the in-scope base IRI
+    as described in <a href="#section-baseIRIs" class="sectionRef"></a>
     to give <a data-cite="RFC3986#section-5">resolved</a> IRIs</li>
     <li>transformed from XML namespace-qualified element and attribute names
     (<a data-cite="XML-NAMES#NT-QName">QNames</a>)</li>
@@ -1325,17 +1318,17 @@
     namespace name (IRI)
 
     <code>http://example.org/somewhere/</code> then the <a data-cite="XML-NAMES#NT-QName">QName</a>
-    <code>foo:bar</code> would correspond to the IRI
+    <code>foo:bar</code> would correspond to the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
     <code>http://example.org/somewhere/bar</code>.  Note that this
     restricts which
-    IRIs can be made and the same IRI can be given in multiple ways.</p>
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be made and the same IRI can be given in multiple ways.</p>
 
     <p>The <a href="#idAttr"><code>rdf:ID</code></a> values
     are transformed into
     <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
     by appending the attribute value to the result of appending
-    "#" to the in-scope base URI which is defined in
-    <a href="#section-baseURIs" class="sectionRef"></a></p>
+    "#" to the in-scope base IRI which is defined in
+    <a href="#section-baseIRIs" class="sectionRef"></a></p>
     </dd>
 
     <dt>Literal</dt>
@@ -1354,28 +1347,28 @@
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> can act as subject node and as object node.</p>
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the RDF graph.
     When the graph is written in a syntax such as RDF/XML, these
-    blank nodes may need graph-local identifiers and a syntax
-    in order to preserve this distinction.  These local identifiers are called
-    blank node identifiers
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> may need document-local identifiers and a syntax
+    in order to preserve this distinction. These local identifiers are called
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a>
     and are used in RDF/XML as values of the <code>rdf:nodeID</code> attribute
     with the syntax given in <a href="#nodeIdAttr">Production nodeIdAttr</a>.
-    Blank node identifiers in RDF/XML are scoped to the XML Information Set [[XML-INFOSET]]
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">Blank node identifiers</a> in RDF/XML are scoped to the XML Information Set [[XML-INFOSET]]
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.</p>
 
     <p>If no <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> is given explicitly as an
     <code>rdf:nodeID</code> attribute value then one will need to be
     generated (using generated-blank-node-id,
     see <a href="#section-Infoset-Grammar-Action" class="sectionRef"></a>).
-    Such generated blank node
-    identifiers must not clash with any blank node identifiers derived
+    Such generated <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a>
+    MUST not clash with any <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a> derived
     from <code>rdf:nodeID</code> attribute values.  This can be
     implemented by any method that preserves the distinct identity of all
-    the blank nodes in the graph, that is, the same blank node identifier
+    the blank nodes in the graph, that is, the same <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
     is not given for different blank nodes.  One possible method would be
     to add a constant prefix to all the <code>rdf:nodeID</code> attribute
-    values and ensure no generated blank node identifiers ever used that
+    values and ensure no generated <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a> ever used that
     prefix.  Another would be to map all <code>rdf:nodeID</code> attribute
-    values to new generated blank node identifiers and perform that mapping
+    values to new generated <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a> and perform that mapping
     on all such values in the RDF/XML document.</p>
     </dd>
     </dl>
@@ -1384,14 +1377,14 @@
 
 
     <!-- uri resolution -->
-    <section id="section-baseURIs">
+    <section id="section-baseIRIs"><span id="section-baseURIs"><!-- preserve anchor --></span>
     <h3>Resolving IRIs</h3>
 
     <p>RDF/XML supports
     XML Base [[XMLBASE]]
     which defines a
     <a href="#eventterm-element-base-uri" class="termref"><span
-    class="arrow">·</span>base-uri<span class="arrow">·</span></a>
+    class="arrow">·</span>base-iri<span class="arrow">·</span></a>
     accessor for each <a href="#section-root-node"><span
     class="arrow">·</span>root event<span
     class="arrow">·</span></a> and
@@ -1399,15 +1392,16 @@
     class="arrow">·</span>element event<span
     class="arrow">·</span></a>.
     <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">Relative IRI references</a> are resolved into
-    IRIs according to the algorithm specified in [[XMLBASE]] (and RFC 2396).
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> according to the algorithm specified in [[XMLBASE]]
+    and as per [[[RFC3986]]] [[RFC3986]] using only the basic algorithm in section 5.2.
     These specifications do not specify an algorithm for resolving a
     fragment identifier alone, such as <code>#foo</code>, or the empty
     string <code>""</code> into an
-    IRI. In RDF/XML, a fragment identifier
-    is transformed into an IRI
-    by appending the fragment identifier to the in-scope base URI. The
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>. In RDF/XML, a fragment identifier
+    is transformed into an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
+    by appending the fragment identifier to the in-scope base IRI. The
     empty string is transformed
-    into an IRI by substituting the in-scope base URI.
+    into an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> by substituting the in-scope base IRI.
     </p>
 
     <p class="note"><strong>Test:</strong>
@@ -1423,7 +1417,7 @@
     </p>
 
     <p>An empty same document reference ""
-    resolves against the URI part of the base URI; any fragment part
+    resolves against the URI part of the base IRI; any fragment part
     is ignored.  See
     Uniform Resource Identifiers (URI) [[RFC3986]].
     </p>
@@ -1437,7 +1431,7 @@
     <p class="note"><strong>Implementation Note (Informative):</strong>
     When using a hierarchical base
     URI that has no path component (/), it must be added before using as a
-    base URI for resolving.
+    base IRI for resolving.
     </p>
 
     <p class="note"><strong>Test:</strong>
@@ -1458,11 +1452,11 @@
     matches an attribute.  The pair formed by the
     <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
     accessor of the matched attribute and the
-    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a>
+    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-iri<span class="arrow">·</span></a>
     accessor of the matched attribute is unique within a single RDF/XML
     document.</p>
 
-    <p>The syntax of the  names must match the
+    <p>The syntax of the names MUST match the
     <a href="#rdf-id">rdf-id production</a>.</p>
 
     <p class="note"><strong>Test:</strong>
@@ -1497,11 +1491,26 @@
     the grammar to determine whether they are or are not syntactically
     well-formed RDF/XML.</p>
 
+
+  <p>The RDF 1.2 Concepts and Abstract Syntax specification [[!RDF12-CONCEPTS]] defines four types of <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a>:
+    <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>,
+    <a data-cite="RDF12-CONCEPTS#dfn-literal">literals</a>,
+    <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a>, and
+    <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>.
+
+    Literals are composed of a <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a>
+    and an optional <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> [[!BCP47]]
+    – possibly including a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a> –
+    or <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>.
+    An extra type, <code id="prefix" class="dfn">prefix</code>, is used during parsing to map string identifiers to namespace IRIs.
+  </p>
+
   <p>The grammar productions may include actions which fire when the
-    production is recognized.  Taken together these actions define a
+    production is recognized. Taken together these actions define a
     transformation from any syntactically well-formed RDF/XML sequence of
-    events into an RDF graph represented in the N-Triples [[RDF12-N-TRIPLES]]
-    language.</p>
+    events into a set of triples by mapping matching productions
+    to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> or their components (e.g., language tags, lexical forms of literals).
+    Grammar productions change the parser state and emit triples.</p>
 
   <p>The model given here illustrates one way to create a representation of
     an RDF Graph
@@ -1530,8 +1539,8 @@
 
   <p>The Infoset requires support for
     XML Base [[XMLBASE]].
-    RDF/XML uses the information item property [base URI], discussed in
-    <a href="#section-baseURIs" class="sectionRef"></a></p>
+    RDF/XML uses the information item property [base IRI], discussed in
+    <a href="#section-baseIRIs" class="sectionRef"></a></p>
 
   <p>This specification requires an
     XML Information Set [[XML-INFOSET]]
@@ -1540,10 +1549,10 @@
 
   <dl>
     <dt><a data-cite="XML-INFOSET#infoitem.document">document information item</a></dt>
-    <dd>[document element], [children], [base URI]</dd>
+    <dd>[document element], [children], [base IRI]</dd>
 
     <dt><a data-cite="XML-INFOSET#infoitem.element">element information item</a></dt>
-    <dd>[local name], [namespace name], [children], [attributes], [parent], [base URI]</dd>
+    <dd>[local name], [namespace name], [children], [attributes], [parent], [base IRI]</dd>
 
     <dt><a data-cite="XML-INFOSET#infoitem.attribute">attribute information item</a></dt>
     <dd>[local name], [namespace name], [normalized value]</dd>
@@ -1599,7 +1608,7 @@
       <a href="#section-typed-literal-node">typed literal</a>).  The effect
       of an event constructor is to create a new event with a unique identity,
       distinct from all other events.  Events have accessor operations on them
-      and most have the <em>string-value</em> accessor that may be a static value
+      and most have the <em>string-value</em>,  <em>IRI</em>, <em>literal</em>, or <em>bnode</em> accessors that may be a static value
       or computed.</p>
 
     <!-- root event -->
@@ -1615,8 +1624,8 @@
       <dd>Set to the value of document information item property [document-element].</dd>
       <dt id="eventterm-root-children">children</dt>
       <dd>Set to the value of document information item property [children].</dd>
-      <dt id="eventterm-root-base-uri">base-uri</dt>
-      <dd>Set to the value of document information item property [base URI].</dd>
+      <dt id="eventterm-root-base-uri">base-iri</dt>
+      <dd>Set to the value of document information item property [base IRI].</dd>
       <dt id="eventterm-root-language">language</dt>
       <dd>Set to the empty string.</dd>
       <dt id="eventterm-root-direction">direction</dt>
@@ -1647,8 +1656,8 @@
         <dt id="eventterm-element-parent">parent</dt>
         <dd>Set to the value of element information item property [parent].</dd>
 
-        <dt id="eventterm-element-base-uri">base-uri</dt>
-        <dd>Set to the value of element information item property [base URI].</dd>
+        <dt id="eventterm-element-base-uri">base-iri</dt>
+        <dd>Set to the value of element information item property [base IRI].</dd>
 
         <dt id="eventterm-element-attributes">attributes</dt>
         <dd>
@@ -1701,7 +1710,7 @@
             (case independent comparison) and all attribute information items with [prefix]
             property having no value and which have [local name] beginning with
             <code>xml</code> (case independent comparison) are removed.
-            Note that the [base URI] accessor is computed by XML Base before any
+            Note that the [base IRI] accessor is computed by XML Base before any
             <code>xml:base</code> attribute information item is deleted.</p>
 
           <p>The remaining set of attribute information items are then used
@@ -1710,28 +1719,12 @@
             which is assigned as the value of this accessor.</p>
         </dd>
 
-        <dt id="eventterm-element-URI">URI</dt>
-        <dd>Set to the string value of the concatenation of the
-          value of the namespace-name accessor and the value of the
+        <dt id="eventterm-element-URI">IRI</dt>
+        <dd>Set to an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> constructed from the concatenation of the
+          value of the <a href="#eventterm-element-namespace-name">namespace-name</a> accessor and the value of the
           <a href="#eventterm-element-local-name">local-name</a> accessor.</dd>
 
-        <dt id="eventterm-element-URI-string-value">URI-string-value</dt>
-        <dd>
-          <p>The value is the concatenation of the following in this order "&lt;",
-          the escaped value of the
-          <a href="#eventterm-element-URI" class="termref">
-            <span class="arrow">·</span>URI<span class="arrow">·</span>
-          </a>
-          accessor and "&gt;".</p>
-
-          <p>The escaping of the
-            <a href="#eventterm-element-URI" class="termref">
-              <span class="arrow">·</span>URI<span class="arrow">·</span>
-            </a>
-            accessor uses the N-Triples escapes for
-            IRIs [[RDF12-N-TRIPLES]].</p>
-
-        </dd>
+        <dd id="eventterm-element-URI-string-value"><!-- obsolete URI-string-value--></dd>
 
         <dt id="eventterm-element-liCounter">li-counter</dt>
         <dd>Set to the integer value 1.</dd>
@@ -1777,7 +1770,8 @@
         <dd>Has no initial value.  Takes a value that is an
           <a href="#section-identifier-node">Identifier</a> event.
           This accessor is used on elements that deal with one node in the RDF graph,
-          this generally being the subject of a statement.
+          this generally being the <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> of an
+          <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.
         </dd>
 
       </dl>
@@ -1813,13 +1807,13 @@
           a zero-length string).
         </dd>
 
-        <dt id="eventterm-attribute-URI">URI</dt>
+        <dt id="eventterm-attribute-URI">IRI</dt>
         <dd>
           <p>If <a href="#eventterm-attribute-namespace-name"
             class="termref"><span
             class="arrow">·</span>namespace-name<span
             class="arrow">·</span></a> is present,
-            set to a string value of the concatenation of the value of the
+            set to an <a href="#section-identifier-node">IRI</a> constructed from the concatenation of the value of the
             <a href="#eventterm-attribute-namespace-name"
             class="termref"><span
             class="arrow">·</span>namespace-name<span
@@ -1833,7 +1827,8 @@
             class="arrow">·</span></a> is
             <code>ID</code>, <code>about</code>,
             <code>parseType</code>, <code>resource</code>, <code>type</code>,
-            or <code>version</code>, set to a string
+            or <code>version</code>,
+            set to an <a href="#section-identifier-node">IRI</a> constructed from the
             value of the concatenation of the
             <a data-cite="RDF12-CONCEPTS#dfn-namespace-iri">RDF namespace IRI</a>
             and the value of the <a href="#eventterm-attribute-local-name">local-name</a> accessor.
@@ -1849,7 +1844,7 @@
             SHOULD NOT use these unqualified attributes and applications MAY
             choose to warn when the unqualified form is seen in a document.</p>
 
-          <p>The construction of IRIs from XML attributes can generate the same
+          <p>The construction of <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> from XML attributes can generate the same
             IRIs from different XML attributes.  This can cause ambiguity in the
             grammar when matching attribute events (such as when
             <code>rdf:about</code> and <code>about</code> XML attributes are
@@ -1857,22 +1852,7 @@
           </p>
         </dd>
 
-        <dt id="eventterm-attribute-URI-string-value">URI-string-value</dt>
-        <dd>
-          <p>The value is the concatenation of the following in this order "&lt;",
-            the escaped value of the
-            <a href="#eventterm-attribute-URI" class="termref"><span
-              class="arrow">·</span>URI<span class="arrow">·</span></a>
-            accessor and "&gt;".</p>
-
-          <p>The escaping of the
-            <a href="#eventterm-attribute-URI" class="termref"><span
-            class="arrow">·</span>URI<span class="arrow">·</span></a>
-            accessor uses the N-Triples escapes for
-            IRIs [[RDF12-N-TRIPLES]].
-          </p>
-        </dd>
-
+        <dd id="eventterm-attribute-URI-string-value"><!-- obsolete URI-string-value--></dd>
       </dl>
     </section>
 
@@ -1900,26 +1880,18 @@
       <h3>IRI Event</h3>
 
       <p id="eventterm-identifier-identifier-type">
-        An event for a IRIs which has the following accessors:</p>
+        An event for a <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> which has the following accessors:</p>
 
       <dl>
         <dt id="eventterm-identifier-identifier">identifier</dt>
-        <dd>Takes a string value used as an IRI.</dd>
+        <dd>Takes a string value used as an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</dd>
 
-        <dt id="eventterm-identifier-string-value">string-value</dt>
-        <dd>
-          <p>The value is the concatenation of "&lt;", the escaped
-            value of the <a href="#eventterm-identifier-identifier"
-            class="termref"><span class="arrow">·</span>identifier<span
-            class="arrow">·</span></a> accessor and "&gt;"</p>
-
-          <p>The escaping of the <a
-            href="#eventterm-identifier-identifier"
-            class="termref"><span
-            class="arrow">·</span>identifier<span
-            class="arrow">·</span></a> accessor value
-            uses the N-Triples escapes for IRIs [[RDF12-N-TRIPLES]]. </p>
-
+        <dt id="eventterm-identifier-IRI">IRI</dt>
+        <dd id="eventterm-identifier-string-value"><!-- Obsolete form --></dd>
+        <dd>The value is an <a href="#section-identifier-node">IRI</a> constructed from the
+          value of the <a href="#eventterm-identifier-identifier"
+          class="termref"><span class="arrow">·</span>identifier<span
+          class="arrow">·</span></a> accessor.
         </dd>
 
       </dl>
@@ -1930,7 +1902,7 @@
         class="arrow">·</span></a> accessor.
       </p>
 
-      <p>For further information on identifiers in the RDF graph, see
+      <p>For further information on identifiers in RDF, see
         <a href="#section-Identifiers" class="sectionRef"></a>.</p>
     </section>
 
@@ -1939,23 +1911,21 @@
     <section id="section-blank-nodeid-event">
       <h3>Blank Node Identifier Event</h3>
 
-      <p>An event for a blank node identifier
+      <p>An event for a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
         which has the following accessors:</p>
 
       <dl>
         <dt id="eventterm-blanknodeid-identifier">identifier</dt>
         <dd>Takes a string value.</dd>
 
-        <dt id="eventterm-blanknodeid-string-value">string-value</dt>
-        <dd>The value is a function of the value of the
+        <dt id="eventterm-blanknodeid-blank-node">blank-node</dt>
+        <dd id="eventterm-blanknodeid-string-value"><!-- Obsolete term --></dd>
+        <dd>The value is a <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> with local identifier taken from the
           <a href="#eventterm-blanknodeid-identifier"
           class="termref"><span class="arrow">·</span>identifier<span
           class="arrow">·</span></a> accessor.
-          The value begins with "_:" and the entire value MUST match the
-          N-Triples
-          <a data-cite="RDF12-N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABELD</a> production.
-          The function MUST preserve distinct blank node identity as
-          discussed in in section <a href="#section-Identifiers" class="sectionRef"></a>.
+          Within an RDF/XML document,
+          all <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> identified by the same identifier represent the same <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>.
         </dd>
 
       </dl>
@@ -1966,7 +1936,7 @@
         class="arrow">·</span></a> accessor.
       </p>
 
-      <p>For further information on identifiers in the RDF graph, see
+      <p>For further information on identifiers in RDF, see
         <a href="#section-Identifiers" class="sectionRef"></a>.</p>
     </section>
 
@@ -1998,63 +1968,56 @@
         <dt id="eventterm-literal-literal-direction">literal-direction</dt>
         <dd>Takes a string value used as a direction tag in a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</dd>
 
-        <dt id="eventterm-literal-string-value">string-value</dt>
+        <dt id="eventterm-literal-literal">literal</dt>
+        <dd id="eventterm-literal-string-value"><!-- Obsolete term --></dd>
         <dd>
-          <p>The value is calculated from the other accessors as follows.</p>
+          <p>The value is an <a data-cite="RDF12-CONCEPTS#dfn-literal">RDF literal</a> constructed from the other accessors as follows.</p>
 
           <p>If <a href="#eventterm-literal-literal-language"
             class="termref"><span
             class="arrow">·</span>literal-language<span
             class="arrow">·</span></a> is the empty string
-            then the value is the concatenation of "&quot;" (1 double quote),
-            the escaped value of the
+            then the value is an <a data-cite="RDF12-CONCEPTS#dfn-literal">RDF literal</a> with the
+            <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> taken from the value of the
             <a href="#eventterm-literal-literal-value"
             class="termref"><span
             class="arrow">·</span>literal-value<span
             class="arrow">·</span></a> accessor
-            and "&quot;" (1 double quote).</p>
+            and <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> `xsd:string`.</p>
 
           <p>Otherwise, if the <a href="#eventterm-literal-literal-direction"
             class="termref"><span
             class="arrow">·</span>literal-direction<span
             class="arrow">·</span></a> is the empty string,
-            the value is the concatenation of "&quot;" (1 double quote),
-            the escaped value of the
+            then the value is a <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">language-tagged string</a> with the
+            <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> taken from the value of the
             <a href="#eventterm-literal-literal-value"
             class="termref"><span
             class="arrow">·</span>literal-value<span
             class="arrow">·</span></a> accessor
-           "&quot;@" (1 double quote and a '@'),
-            and the value of the
+            and the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> taken from the value of the 
             <a href="#eventterm-literal-literal-language"
             class="termref"><span
             class="arrow">·</span>literal-language<span
             class="arrow">·</span></a> accessor.</p>
 
-          <p>Otherwise the value is the concatenation of "&quot;" (1 double quote),
-            the escaped value of the
+          <p>Otherwise the value is a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged string</a>
+            with the
+            <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> taken from the value of the
             <a href="#eventterm-literal-literal-value"
             class="termref"><span
             class="arrow">·</span>literal-value<span
-            class="arrow">·</span></a> accessor
-           '<code>&quot;@</code>' (one double-quote '`"`' and one at-sign '`@`'),
-            the value of the
+            class="arrow">·</span></a> accessor,
+            the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> taken from the value of the 
             <a href="#eventterm-literal-literal-language"
             class="termref"><span
             class="arrow">·</span>literal-language<span
             class="arrow">·</span></a> accessor,
-            "--" (2 hyphen),
-            and the value of the <a href="#eventterm-literal-literal-direction"
+            and the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
+            taken from the value of the <a href="#eventterm-literal-literal-direction"
             class="termref"><span
             class="arrow">·</span>literal-direction<span
             class="arrow">·</span></a> accessor.</p>
-
-          <p>The escaping of the <a
-            href="#eventterm-literal-literal-value" class="termref"><span
-            class="arrow">·</span>literal-value<span
-            class="arrow">·</span></a> accessor value uses the N-Triples
-            escapes for strings as described in [[RDF12-N-TRIPLES]]
-            for escaping certain characters such as &quot;. </p>
         </dd>
       </dl>
 
@@ -2091,41 +2054,22 @@
         <dd>Takes a string value.</dd>
 
         <dt id="eventterm-typedliteral-literal-datatype">literal-datatype</dt>
-        <dd>Takes a string value used as an IRI.</dd>
+        <dd>Takes a string value used as an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</dd>
 
-        <dt id="eventterm-typedliteral-string-value">string-value</dt>
+        <dt id="eventterm-typedliteral-literal">literal</dt>
+        <dd id="eventterm-typedliteral-string-value"><!-- Obsolete term --></dd>
         <dd>
-          <p>The value is the concatenation of the following in this order
-            "&quot;" (1 double quote),
-            the escaped value of the
+          <p>The value is an <a data-cite="RDF12-CONCEPTS#dfn-literal">RDF literal</a> with the
+            <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> taken from the value of the
             <a href="#eventterm-typedliteral-literal-value"
             class="termref"><span
             class="arrow">·</span>literal-value<span
-            class="arrow">·</span></a> accessor,
-            "&quot;" (1 double quote),  "^^&lt;",
-            the escaped value of the
-            <a href="#eventterm-typedliteral-literal-datatype"
-            class="termref"><span
-            class="arrow">·</span>literal-datatype<span
             class="arrow">·</span></a> accessor
-            and "&gt;".
-          </p>
-
-          <p>The escaping of the <a
-            href="#eventterm-typedliteral-literal-value"
-            class="termref"><span
-            class="arrow">·</span>literal-value<span
-            class="arrow">·</span></a> accessor value
-            uses the N-Triples
-            escapes for strings [[RDF12-N-TRIPLES]]
-            for escaping certain characters such as &quot;.
-            The escaping of the <a
-            href="#eventterm-typedliteral-literal-datatype"
+            and <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>
+            taken from the value of the <a href="#eventterm-typedliteral-literal-datatype"
             class="termref"><span
             class="arrow">·</span>literal-datatype<span
-            class="arrow">·</span></a> accessor value
-            must use the N-Triples escapes for IRI [[RDF12-N-TRIPLES]].</p>
-
+            class="arrow">·</span></a> accessor.</p>
         </dd>
       </dl>
 
@@ -2201,7 +2145,7 @@
         <em>action</em>...
         <div class="ntripleOuter">
           <div class="ntripleInner">
-            <p><code>N-Triples</code></p>
+            <p><code>Triple(s)</code></p>
           </div>
         </div>
       </div>
@@ -2349,16 +2293,14 @@
       </tr>
       <tr>
       <td>resolve(<em>e</em>, <em>s</em>)</td>
-      <td>A string created by interpreting string <em>s</em> as a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> to the
-      <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"><em>e</em></a>
-      as defined in <a href="#section-baseURIs" class="sectionRef"></a>.
-      The resulting string represents an
-      IRI.</td>
+      <td>An <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> created by interpreting <em>s</em> as a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> to the
+      <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-iri<span class="arrow">·</span></a> accessor of <a href="#section-element-node"><em>e</em></a>
+      as defined in <a href="#section-baseIRIs" class="sectionRef"></a>.</td>
       </tr>
       <tr>
       <td>generated-blank-node-id()</td>
       <td>A string value for a new distinct generated
-      blank node identifier
+      <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
       as defined in <a href="#section-Identifiers" class="sectionRef"></a>.
       </td>
       </tr>
@@ -2367,8 +2309,8 @@
       <td>Sets an event accessor to the given value.</td>
       </tr>
       <tr>
-      <td>uri(identifier := value)</td>
-      <td>Create a new <a href="#section-identifier-node">URI Reference Event</a>.</td>
+      <td>iri(identifier := value)</td>
+      <td>Create a new <a href="#section-identifier-node">IRI Event</a>.</td>
       </tr>
       <tr>
       <td>bnodeid(identifier := value)</td>
@@ -2378,7 +2320,8 @@
       <tr>
       <td>literal(literal-value := string,<br />
       &#160;&#160;&#160;&#160;literal-language := language, ...)</td>
-      <td>Create a new <a href="#section-literal-node">Plain Literal Event</a>.</td>
+      &#160;&#160;&#160;&#160;literal-direction := direction, ...)</td>
+      <td>Create a new <a href="#section-literal-node">Literal Without Datatype Event</a>.</td>
       </tr>
       <tr>
       <td>typed-literal(literal-value := string, ...)</td>
@@ -2429,7 +2372,7 @@
 
     </tr>
     <tr>
-    <td><a href="#RDF"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <code>rdf:RDF</code>,
+    <td><a href="#RDF"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <code>rdf:RDF</code>,
     <a href="#eventterm-element-attributes">attributes</a> == set())<br />
     <a href="#nodeElementList">nodeElementList</a><br />
 
@@ -2440,8 +2383,8 @@
     </tr>
     <tr>
 
-    <td><a href="#nodeElement"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#nodeElementURIs">nodeElementURIs</a><br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set((<a href="#idAttr">idAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#aboutAttr">aboutAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
+    <td><a href="#nodeElement"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#nodeElementURIs">nodeElementIRIs</a><br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#aboutAttr">aboutAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*)<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
@@ -2470,106 +2413,106 @@
     <a href="#emptyPropertyElt">emptyPropertyElt</a></td>
     </tr>
     <tr>
-    <td><a href="#resourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#resourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?))<br />
     <a href="#ws">ws</a>* <a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>*<br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#literalPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#literalPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
 
     <a href="#section-text-node">text()</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeLiteralPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeLiteralPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseLiteral">parseLiteral</a>))<br />
     <a href="#literal">literal</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeResourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeResourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeCollectionPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeCollectionPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseCollection">parseCollection</a>))<br />
     <a href="#nodeElementList">nodeElementList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#parseTypeOtherPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#parseTypeOtherPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseOther">parseOther</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
-    <td><a href="#emptyPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+    <td><a href="#emptyPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
     end-element()</td>
     </tr>
 
     <tr>
-    <td><a href="#idAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:ID</code>,
+    <td><a href="#idAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:ID</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#nodeIdAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:nodeID</code>,
+    <td><a href="#nodeIdAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:nodeID</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#aboutAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:about</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
+    <td><a href="#aboutAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code>,
+    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#propertyAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,
+    <td><a href="#propertyAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <a href="#propertyAttributeURIs">propertyAttributeIRIs</a>,
     <a href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#resourceAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:resource</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
+    <td><a href="#resourceAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:resource</code>,
+    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#datatypeAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:datatype</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)</td>
+    <td><a href="#datatypeAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:datatype</code>,
+    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
 
     </tr>
     <tr>
-    <td><a href="#parseLiteral"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseLiteral"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Literal")</td>
     </tr>
 
     <tr>
-    <td><a href="#parseResource"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseResource"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Resource")</td>
     </tr>
     <tr>
 
-    <td><a href="#parseCollection"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseCollection"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Collection")</td>
     </tr>
     <tr>
-    <td><a href="#parseOther"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,
+    <td><a href="#parseOther"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
 
     <a
     href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )</td>
     </tr>
     <tr>
-    <td><a href="#URI-reference"></a></td> <td>An IRI.</td>
+    <td><a href="#URI-reference"></a></td> <td>An <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</td>
 
     </tr>
     <tr>
@@ -2617,8 +2560,8 @@
     or at production <a href="#nodeElementList">nodeElementList</a>
     (only when element content is legal, since this is a list of elements).
     For such embedded RDF/XML, the
-    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-uri<span class="arrow">·</span></a>
-    value on the outermost element must be initialized from the containing
+    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-iri<span class="arrow">·</span></a>
+    value on the outermost element MUST be initialized from the containing
     XML since no
     <a href="#section-root-node">Root Event</a>&#160; will be available.
     Note that if such embedding occurs, the grammar may be entered
@@ -2681,16 +2624,16 @@
     </p>
     </section>
 
-    <!-- node element uri -->
+    <!-- node element iri -->
     <section id="nodeElementURIs">
-    <h4>Production nodeElementURIs</h4>
+    <h4>Production nodeElementIRIs</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
     <a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
 
     </p></div></div>
 
-    <p>The IRIs that are allowed on node elements.</p>
+    <p>The <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> that are allowed on node elements.</p>
     </section>
 
     <!-- property element URIs -->
@@ -2702,19 +2645,19 @@
 
     </p></div></div>
 
-    <p>The URIs that are allowed on property elements.</p>
+    <p>The URIs that are allowed on <a>property elements</a>.</p>
     </section>
 
     <!-- property attribute URIs -->
     <section id="propertyAttributeURIs">
-    <h4>Production propertyAttributeURIs</h4>
+    <h4>Production propertyAttributeIRIs</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
     <a>anyURI</a> - ( <a href="#coreSyntaxTerms">coreSyntaxTerms</a>  | <code>rdf:Description</code> | <code>rdf:li</code> | <a href="#oldTerms">oldTerms</a> )
 
     </p></div></div>
 
-    <p>The IRIs that are allowed on property attributes.</p>
+    <p>The <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> that are allowed on <a>property attributes</a>.</p>
     </section>
 
     <!-- production doc -->
@@ -2733,7 +2676,7 @@
     <h4>Production RDF</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <code>rdf:RDF</code>,<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <code>rdf:RDF</code>,<br />
 
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set())<br />
     <a href="#nodeElementList">nodeElementList</a><br />
@@ -2756,8 +2699,8 @@
     <h4 id="typedNode">Production nodeElement</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#nodeElementURIs">nodeElementURIs</a><br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set((<a href="#idAttr">idAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#aboutAttr">aboutAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#nodeElementURIs">nodeElementIRIs</a><br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#aboutAttr">aboutAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*)<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()
@@ -2770,19 +2713,19 @@
     <ul>
 
     <li>If there is an attribute <em>a</em> with
-     <em>a</em>.<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:ID</code>, then
+     <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:ID</code>, then
 
-    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))).</li>
+    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))).</li>
 
     <li>If there is an attribute <em>a</em> with
-     <em>a</em>.<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:nodeID</code>, then
+     <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:nodeID</code>, then
 
     <em>e</em>.<a href="#eventterm-element-subject">subject</a> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a>:=<em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>).</li>
 
     <li>If there is an attribute <em>a</em> with
 
-    <em>a</em>.<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:about</code> then
-    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)).</li>
+    <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code> then
+    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)).</li>
 
     </ul>
 
@@ -2795,25 +2738,25 @@
     <ul>
 
     <li id="nodeElementStatement1"> If <em>e</em>.<a
-    href="#eventterm-element-URI">URI</a> !=
+    href="#eventterm-element-URI">IRI</a> !=
     <code>rdf:Description</code>
     then the following statement is added to the graph:
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>e</em>.<a href="#eventterm-element-URI">IRI</a> .</code>
     </p></div></div>
     </li>
 
     <li id="nodeElementStatement2"> If there is an attribute <em>a</em>
     in <a href="#propertyAttr">propertyAttr</a> with
-    <em>a</em>.<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:type</code>
+    <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:type</code>
     then
 
-    <em>u</em>:=uri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+    <em>u</em>:=iri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
     and the following triple is added to the graph:
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
 
     </p></div></div>
     </li>
@@ -2829,7 +2772,7 @@
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>a</em>.<a href="#eventterm-attribute-URI-string-value">URI-string-value</a> <em>o</em>.<a href="#eventterm-literal-string-value">string-value</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
     </li>
@@ -2879,18 +2822,18 @@
     </p></div></div>
 
     <p>If element <em>e</em> has
-    <em>e</em>.<a href="#eventterm-element-URI">URI</a> =
+    <em>e</em>.<a href="#eventterm-element-URI">IRI</a> =
     <code>rdf:li</code> then apply the list expansion rules on element <em>e</em>.parent in
 
     <a href="#section-List-Expand" class="sectionRef"></a>
-    to give a new URI <em>u</em> and
-    <em>e</em>.<a href="#eventterm-element-URI">URI</a> := <em>u</em>.
+    to give a new IRI <em>u</em> and
+    <em>e</em>.<a href="#eventterm-element-URI">IRI</a> := <em>u</em>.
     </p>
 
-    <p>The action of this production must be done before the
+    <p>The action of this production MUST be done before the
     actions of any sub-matches (<a
     href="#resourcePropertyElt">resourcePropertyElt</a> ... <a href="#emptyPropertyElt">emptyPropertyElt</a>).
-    Alternatively the result must be equivalent to as if it this action
+    Alternatively the result MUST be equivalent to as if it this action
     was performed first, such as performing as the first
     action of all of the sub-matches.
     </p>
@@ -2901,7 +2844,7 @@
     <h4>Production resourcePropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?))<br />
 
     <a href="#ws">ws</a>* <a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>*<br />
@@ -2909,19 +2852,19 @@
     </p></div></div>
 
     <p>For element <em>e</em>, and the single contained nodeElement
-    <em>n</em>, first <em>n</em> must be processed using production
+    <em>n</em>, first <em>n</em> MUST be processed using production
 
     <a href="#nodeElement">nodeElement</a>.
     Then the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    &#160;&#160;<code> <em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+    &#160;&#160;<code> <em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
 
     </p></div></div>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
     statement is reified with
-    <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
     <a href="#section-Reification" class="sectionRef"></a>
@@ -2933,7 +2876,7 @@
     <h4>Production literalPropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
 
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
     <a href="#section-text-node">text()</a><br />
@@ -2955,13 +2898,13 @@
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>o</em>.<a href="#eventterm-literal-string-value">string-value</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
     statement is reified with
-    <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
     <a href="#section-Reification" class="sectionRef"></a>
@@ -2974,7 +2917,7 @@
 
     <div class="productionOuter"><div class="productionInner"><p>
 
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseLiteral">parseLiteral</a>))<br />
     <a href="#literal">literal</a><br />
 
@@ -3023,7 +2966,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>o</em>.<a href="#eventterm-typedliteral-string-value">string-value</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-typedliteral-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -3037,7 +2980,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
     statement is reified with
 
-    <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
@@ -3048,7 +2991,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseTypeResourcePropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
@@ -3062,7 +3005,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>Add the following statement to the graph:
     </p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>n</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
 
     </p></div></div>
 
@@ -3076,7 +3019,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the
     statement above is reified with
 
-    <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
@@ -3084,7 +3027,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>If the element content <em>c</em> is not empty, then use event
     <em>n</em> to create a new sequence of events as follows:</p>
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> := <code>rdf:Description</code>,<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> := <code>rdf:Description</code>,<br />
 
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-subject">subject</a> := <em>n</em>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> := set())<br />
@@ -3103,7 +3046,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseTypeCollectionPropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
 
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseCollection">parseCollection</a>))<br />
     <a href="#nodeElementList">nodeElementList</a><br />
@@ -3124,18 +3067,18 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <em>s</em> and the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
 
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>n</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
     </p></div></div>
 
     <p>otherwise the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
     </p></div></div>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given,
     either of the the above statements is reified with
-    <em>i</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
 
     <a href="#section-Reification" class="sectionRef"></a>.
@@ -3148,7 +3091,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code> <em>n</em>.<a href="#eventterm-identifier-string-value">string-value</a>  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; <em>f</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+    <code> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a>  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; <em>f</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
     </p></div></div>
 
     <p>For each consecutive and overlapping pair of events
@@ -3156,14 +3099,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>n</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; <em>o</em>.<a href="#eventterm-identifier-string-value">string-value</a>  .</code>
+    <code><em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; <em>o</em>.<a href="#eventterm-identifier-IRI">IRI</a>  .</code>
 
     </p></div></div>
 
     <p>If <em>s</em> is not empty, <em>n</em> is the last event identifier
     in <em>s</em>, the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>n</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
+    <code><em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
     </p></div></div>
     </section>
@@ -3173,7 +3116,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseTypeOtherPropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseOther">parseOther</a>))<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
@@ -3195,7 +3138,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production emptyPropertyElt</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    start-element(<a href="#eventterm-element-URI">URI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
 
     end-element()
@@ -3210,12 +3153,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>o</em>.<a href="#eventterm-literal-string-value">string-value</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
     <p>and then if <em>i</em> is given, the above statement is reified with
-    uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+    iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>.</p>
 
@@ -3241,7 +3184,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
       <ul>
         <li>If <code>rdf:resource</code> attribute <em>i</em> is present, then
-        <em>r</em> := uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+        <em>r</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
         </li>
 
         <li>If <code>rdf:nodeID</code> attribute <em>i</em> is present, then
@@ -3261,12 +3204,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     attributes <em>a</em> (in any order)</p>
       <ul>
 
-        <li><p>If <em>a</em>.<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:type</code>
+        <li><p>If <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:type</code>
 
-        then <em>u</em>:=uri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+        then <em>u</em>:=iri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
         and the following triple is added to the graph:</p>
         <div class="ntripleOuter"><div class="ntripleInner"><p>
-        <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+        <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
 
         </p></div></div>
         </li>
@@ -3278,7 +3221,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
          and the following statement is added to the graph:</p>
 
         <div class="ntripleOuter"><div class="ntripleInner"><p>
-        <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> <em>a</em>.<a href="#eventterm-attribute-URI-string-value">URI-string-value</a> <em>o</em>.<a href="#eventterm-literal-string-value">string-value</a> .</code>
+        <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
         </p></div></div>
         </li>
@@ -3303,13 +3246,13 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <li><p>Add the following statement to the graph:</p>
       <div class="ntripleOuter"><div class="ntripleInner"><p>
-      <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-string-value">string-value</a> <em>e</em>.<a href="#eventterm-element-URI-string-value">URI-string-value</a> <em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> .</code>
+      <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
 
       </p></div></div>
 
       <p>and then if <code>rdf:ID</code> attribute <em>i</em> is given, the above statement is
       reified with
-      uri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-string-value">string-value</a>)))
+      iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-IRI">IRI</a>)))
       using the reification rules in
       <a href="#section-Reification" class="sectionRef"></a>.</p>
 
@@ -3327,7 +3270,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <!-- idAboutAttr one has gone; id is closest thing replacing it -->
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:ID</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:ID</code>,<br />
 
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)
     </p></div></div>
@@ -3341,7 +3284,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production nodeIdAttr</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:nodeID</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:nodeID</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#rdf-id">rdf-id</a>)
 
     </p></div></div>
@@ -3352,8 +3295,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production aboutAttr</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:about</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI-reference</a>)
 
     </p></div></div>
     </section>
@@ -3363,7 +3306,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4 id="propAttr">Production propertyAttr</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <a href="#propertyAttributeURIs">propertyAttributeURIs</a>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <a href="#propertyAttributeURIs">propertyAttributeIRIs</a>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a>)
 
     </p></div></div>
@@ -3374,8 +3317,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production resourceAttr</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:resource</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:resource</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)
 
     </p></div></div>
     </section>
@@ -3385,8 +3328,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production datatypeAttr</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:datatype</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">URI-reference</a>)
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:datatype</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)
 
     </p></div></div>
     </section>
@@ -3396,7 +3339,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseLiteral</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == "Literal")
 
     </p></div></div>
@@ -3407,7 +3350,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseResource</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == "Resource")
 
     </p></div></div>
@@ -3418,7 +3361,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseCollection</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == "Collection")
 
     </p></div></div>
@@ -3429,7 +3372,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production parseOther</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    attribute(<a href="#eventterm-attribute-URI">URI</a> == <code>rdf:parseType</code>,<br />
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a
     href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )
 
@@ -3441,7 +3384,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h4>Production IRI</h4>
 
     <div class="productionOuter"><div class="productionInner"><p>
-    An IRI.
+    An <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.
     </p></div></div>
     </section>
 
@@ -3484,7 +3427,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <section id="section-Reification">
     <h3>Reification Rules</h3>
 
-    <p>For the given IRI event <em>r</em> and
+    <p>For the given <a href="#section-identifier-node">IRI event</a> <em>r</em> and
     the statement with terms <em>s</em>, <em>p</em> and <em>o</em>
 
     corresponding to the N-Triples:</p>
@@ -3494,12 +3437,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>add the following statements to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#subject&gt; <em>s</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#subject&gt; <em>s</em> .</code><br />
 
-    <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate&gt; <em>p</em> .</code><br />
-    <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#object&gt; <em>o</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate&gt; <em>p</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#object&gt; <em>o</em> .</code><br />
 
-    <code><em>r</em>.<a href="#eventterm-identifier-string-value">string-value</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&gt; .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&gt; .</code><br />
     </p></div></div>
     </section>
 
@@ -3715,9 +3658,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     # coreSyntaxTerms = rdf:RDF | rdf:ID | rdf:about | rdf:parseType | rdf:resource | rdf:nodeID | rdf:datatype
     # syntaxTerms = coreSyntaxTerms | rdf:Description | rdf:li
     # oldTerms    = rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID
-    # nodeElementURIs       = * - ( coreSyntaxTerms | rdf:li | oldTerms )
+    # nodeElementIRIs       = * - ( coreSyntaxTerms | rdf:li | oldTerms )
     # propertyElementURIs   = * - ( coreSyntaxTerms | rdf:Description | oldTerms )
-    # propertyAttributeURIs = * - ( coreSyntaxTerms | rdf:Description | rdf:li | oldTerms )
+    # propertyAttributeIRIs = * - ( coreSyntaxTerms | rdf:Description | rdf:li | oldTerms )
 
     # Also needed to allow rdf:li on all property element productions
     # since we can't capture the rdf:li rewriting to rdf_&lt;n&gt; in relaxng
@@ -3843,7 +3786,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     aboutAttr =
       attribute rdf:about {
-          URI-reference
+          IRI
       }
 
     propertyAttr =
@@ -3857,12 +3800,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     resourceAttr =
       attribute rdf:resource {
-          URI-reference
+          IRI
       }
 
     datatypeAttr =
       attribute rdf:datatype {
-          URI-reference
+          IRI
       }
 
     parseLiteral =
@@ -3885,7 +3828,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
           text
       }
 
-    URI-reference =
+    IRI =
       string
 
     literal =
