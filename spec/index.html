@@ -1449,10 +1449,8 @@
     <dl>
     <dt><dfn class="no-export">constraint-id</dfn></dt>
     <dd><p>Each application of production <a href="#idAttr">idAttr</a>
-    matches an attribute.  The pair formed by the
-    <a href="#eventterm-attribute-string-value" class="termref"><span class="arrow">·</span>string-value<span class="arrow">·</span></a>
-    accessor of the matched attribute and the
-    <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-iri<span class="arrow">·</span></a>
+    matches an attribute.
+    The <a href="#eventterm-attribute-rdf-term" class="termref"><span class="arrow">·</span>rdf-term<span class="arrow">·</span></a>
     accessor of the matched attribute is unique within a single RDF/XML
     document.</p>
 
@@ -1608,7 +1606,7 @@
       <a href="#section-typed-literal-node">typed literal</a>).  The effect
       of an event constructor is to create a new event with a unique identity,
       distinct from all other events.  Events have accessor operations on them
-      and most have the <em>string-value</em>,  <em>IRI</em>, <em>literal</em>, or <em>bnode</em> accessors that may be a static value
+      and most have the <em>string-value</em>, <em>IRI</em>, <em>rdf-term</em>, <em>literal</em>, or <em>bnode</em> accessors that may be a static value
       or computed.</p>
 
     <!-- root event -->
@@ -1723,7 +1721,6 @@
         <dd>Set to an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> constructed from the concatenation of the
           value of the <a href="#eventterm-element-namespace-name">namespace-name</a> accessor and the value of the
           <a href="#eventterm-element-local-name">local-name</a> accessor.</dd>
-
         <dd id="eventterm-element-URI-string-value"><!-- obsolete URI-string-value--></dd>
 
         <dt id="eventterm-element-liCounter">li-counter</dt>
@@ -1852,6 +1849,14 @@
           </p>
         </dd>
 
+        <dt id="eventterm-attribute-rdf-term">rdf-term</dt>
+        <dd>
+          The value is an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
+          constructed from
+          <a href="#eventterm-attribute-string-value">string-value</a>
+          resolved against the <a href="#eventterm-element-base-uri" class="termref"><span class="arrow">·</span>base-iri<span class="arrow">·</span></a>
+          accessor of the containing element.
+        </dd>
         <dd id="eventterm-attribute-URI-string-value"><!-- obsolete URI-string-value--></dd>
       </dl>
     </section>
@@ -1886,7 +1891,7 @@
         <dt id="eventterm-identifier-identifier">identifier</dt>
         <dd>Takes a string value used as an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</dd>
 
-        <dt id="eventterm-identifier-IRI">IRI</dt>
+        <dt id="eventterm-identifier-rdf-term">rdf-term</dt>
         <dd id="eventterm-identifier-string-value"><!-- Obsolete form --></dd>
         <dd>The value is an <a href="#section-identifier-node">IRI</a> constructed from the
           value of the <a href="#eventterm-identifier-identifier"
@@ -2324,6 +2329,10 @@
       <td>Create a new <a href="#section-literal-node">Literal Without Datatype Event</a>.</td>
       </tr>
       <tr>
+      <td>string(iri)</td>
+      <td>The <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">string</a> value of an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</td>
+      </tr>
+      <tr>
       <td>typed-literal(literal-value := string, ...)</td>
       <td>Create a new <a href="#section-typed-literal-node">Typed Literal Event</a>.</td>
       </tr>
@@ -2473,7 +2482,7 @@
     </tr>
     <tr>
     <td><a href="#aboutAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
+    <a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))</td>
 
     </tr>
     <tr>
@@ -2483,12 +2492,12 @@
     </tr>
     <tr>
     <td><a href="#resourceAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:resource</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
+    <a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))</td>
 
     </tr>
     <tr>
     <td><a href="#datatypeAttr"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:datatype</code>,
-    <a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)</td>
+    <a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))</td>
 
     </tr>
     <tr>
@@ -2725,7 +2734,7 @@
     <li>If there is an attribute <em>a</em> with
 
     <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code> then
-    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)).</li>
+    <em>e</em>.<a href="#eventterm-element-subject">subject</a> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := <em>e</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>).</li>
 
     </ul>
 
@@ -2744,7 +2753,7 @@
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>e</em>.<a href="#eventterm-element-URI">IRI</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>e</em>.<a href="#eventterm-element-URI">IRI</a> .</code>
     </p></div></div>
     </li>
 
@@ -2753,10 +2762,10 @@
     <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:type</code>
     then
 
-    <em>u</em>:=iri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+    <em>u</em>:=iri(identifier:=<em>e</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
     and the following triple is added to the graph:
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
     </li>
@@ -2772,7 +2781,7 @@
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
     </li>
@@ -2858,7 +2867,7 @@
     Then the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    &#160;&#160;<code> <em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+    &#160;&#160;<code> <em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
 
@@ -2891,14 +2900,14 @@
     href="#eventterm-text-string-value">string-value</a> SHOULD be
     in Normal Form C [[NFC]].
     If the <code>rdf:datatype</code> attribute <em>d</em> is given
-    then <em>o</em> := typed-literal(<a href="#eventterm-typedliteral-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-typedliteral-literal-datatype">literal-datatype</a> := <em>d</em>.<a href="#eventterm-attribute-string-value">string-value</a>)
+    then <em>o</em> := typed-literal(<a href="#eventterm-typedliteral-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-typedliteral-literal-datatype">literal-datatype</a> := <em>d</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
     otherwise
 
     <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -2966,7 +2975,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-typedliteral-literal">literal</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-typedliteral-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -3005,7 +3014,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>Add the following statement to the graph:
     </p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
 
@@ -3067,12 +3076,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <em>s</em> and the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
 
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
     </p></div></div>
 
     <p>otherwise the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
     </p></div></div>
 
@@ -3091,7 +3100,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code> <em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a>  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; <em>f</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+    <code> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; <em>f</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
     </p></div></div>
 
     <p>For each consecutive and overlapping pair of events
@@ -3099,14 +3108,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; <em>o</em>.<a href="#eventterm-identifier-IRI">IRI</a>  .</code>
+    <code><em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; <em>o</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>  .</code>
 
     </p></div></div>
 
     <p>If <em>s</em> is not empty, <em>n</em> is the last event identifier
     in <em>s</em>, the following statement is added to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>n</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
+    <code><em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
     </p></div></div>
     </section>
@@ -3153,7 +3162,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     and the following statement is added to the graph:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -3184,7 +3193,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
       <ul>
         <li>If <code>rdf:resource</code> attribute <em>i</em> is present, then
-        <em>r</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+        <em>r</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := <em>i</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
         </li>
 
         <li>If <code>rdf:nodeID</code> attribute <em>i</em> is present, then
@@ -3206,10 +3215,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
         <li><p>If <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:type</code>
 
-        then <em>u</em>:=iri(identifier:=resolve(<em>e</em>, <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))
+        then <em>u</em>:=iri(identifier:=<em>i</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
         and the following triple is added to the graph:</p>
         <div class="ntripleOuter"><div class="ntripleInner"><p>
-        <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+        <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
         </p></div></div>
         </li>
@@ -3221,7 +3230,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
          and the following statement is added to the graph:</p>
 
         <div class="ntripleOuter"><div class="ntripleInner"><p>
-        <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+        <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
         </p></div></div>
         </li>
@@ -3246,13 +3255,13 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <li><p>Add the following statement to the graph:</p>
       <div class="ntripleOuter"><div class="ntripleInner"><p>
-      <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-IRI">IRI</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> .</code>
+      <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
       </p></div></div>
 
       <p>and then if <code>rdf:ID</code> attribute <em>i</em> is given, the above statement is
       reified with
-      iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-IRI">IRI</a>)))
+      iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>)))
       using the reification rules in
       <a href="#section-Reification" class="sectionRef"></a>.</p>
 
@@ -3296,7 +3305,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI-reference</a>)
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
 
     </p></div></div>
     </section>
@@ -3318,7 +3327,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:resource</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
 
     </p></div></div>
     </section>
@@ -3329,7 +3338,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:datatype</code>,<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == <a href="#URI-reference">IRI</a>)
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
 
     </p></div></div>
     </section>
@@ -3437,12 +3446,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>add the following statements to the graph:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#subject&gt; <em>s</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#subject&gt; <em>s</em> .</code><br />
 
-    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate&gt; <em>p</em> .</code><br />
-    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#object&gt; <em>o</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate&gt; <em>p</em> .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#object&gt; <em>o</em> .</code><br />
 
-    <code><em>r</em>.<a href="#eventterm-identifier-IRI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&gt; .</code><br />
+    <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&gt; .</code><br />
     </p></div></div>
     </section>
 
