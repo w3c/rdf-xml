@@ -3617,6 +3617,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>Updates reference for [[SAX]].</li>
     <li>Removes the statement that the `rdf:HTML` datatype cannot be serialized in RDF/XML.</li>
     <li>Adds <a href="#section-Syntax-base-direction"></a> and <a href="#eventterm-root-version"><code>rdf:version</code></a>.</li>
+    <li>The processing model now emits <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> and <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triples</a> directly,
+      rather than N-Triples [[RDF12-N-TRIPLES]];
+      this is more consistent with other <a data-cite="RDF12-CONCEPTS#dfn-concrete-rdf-syntax">concrete RDF syntaxes</a>.
+      The names of some event accessors have been updated accordingly.</li>
   </ul>
 </section>
 
