@@ -1056,7 +1056,7 @@
     <p>RDF/XML allows an <code>rdf:parseType="Collection"</code>
 
     attribute on a <a>property element</a> to let it contain multiple node
-    elements.  These contained node elements give the set of subject
+    elements.  These contained <a>node elements</a> give the set of subject
     nodes of the collection.  This syntax form corresponds to a set of
     triples connecting the collection of subject nodes, the exact triples
     generated are described in detail in
@@ -1187,8 +1187,8 @@
       systems be given a file type of <code>"rdf&nbsp;"</code>
       (all lowercase, with a space character as the fourth letter).</p>
 
-    <p>Features introduced in RDF 1.2 require a version announcement in the
-      <a>top-level XML document element</a> with an `rdf:version` attribute with the value `"1.2"`.</p>
+    <p>Features introduced in RDF 1.2 require a version announcement
+      on an in-scope <a>node element</a> with an `rdf:version` attribute with the value `"1.2"`.</p>
 
     <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
   </section>
@@ -1628,8 +1628,6 @@
       <dd>Set to the empty string.</dd>
       <dt id="eventterm-root-direction">direction</dt>
       <dd>Set to the empty string.</dd>
-      <dt id="eventterm-root-version">version</dt>
-      <dd>Set to the `rdf:version` attribute of the <a>top-level XML document element</a>.</dd>
       </dl>
     </section>
 
@@ -1673,8 +1671,8 @@
             accessor is set to the [normalized-value] property of the
             attribute information item.</p>
 
-          <p>If the <a href="#section-root-node"></a> has a
-            <a href="#eventterm-root-version">version</a> accessor
+          <p>If the element has a
+            <a href="#eventterm-element-version">version</a> accessor
             with the value `"1.2"` or greater,
             this set contains an attribute information item
             <code>its:dir</code> ([namespace name] property with the value
@@ -1687,8 +1685,8 @@
             attribute information item,
             which MUST be one of `"ltr"`, `"rtl"`, or the empty string.</p>
 
-          <p>If the <a href="#section-root-node"></a> has a
-            <a href="#eventterm-root-version">version</a> accessor
+          <p>If the element has a
+            <a href="#eventterm-element-version">version</a> accessor
             with the value `"1.2"` or greater,
             this set contains an attribute information item
             <code>its:version</code> ([namespace name] property with the value
@@ -1748,7 +1746,18 @@
           the direction accessor on the parent event (either a
           <a href="#section-root-node">Root Event</a> or an
           <a href="#section-element-node">Element Event</a>), which may be the empty string.
-          The its-version accessor
+        </dd>
+
+        <dt id="eventterm-element-version">version</dt>
+        <dd>Set from the
+          <a href="#eventterm-element-attributes"
+          class="termref"><span class="arrow">·</span>attributes<span
+          class="arrow">·</span></a>
+          as described above.
+          If no value is given from the attributes, the value is set to the value of
+          the version accessor on the parent event (either a
+          <a href="#section-root-node">Root Event</a> or an
+          <a href="#section-element-node">Element Event</a>).
         </dd>
 
         <dt id="eventterm-element-its-version">its-version</dt>
@@ -2715,7 +2724,7 @@
     end-element()
     </p></div></div>
 
-    <p>For node element <em>e</em>, the processing of some of the attributes
+    <p>For <a>node element</a> <em>e</em>, the processing of some of the attributes
     has to be done before other work such as dealing with children events
     or other attributes.  These can be processed in any order:</p>
 
@@ -3616,7 +3625,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>Adds <a href="#privacy-considerations"></a> and <a href="#security"></a>.</li>
     <li>Updates reference for [[SAX]].</li>
     <li>Removes the statement that the `rdf:HTML` datatype cannot be serialized in RDF/XML.</li>
-    <li>Adds <a href="#section-Syntax-base-direction"></a> and <a href="#eventterm-root-version"><code>rdf:version</code></a>.</li>
+    <li>Adds <a href="#section-Syntax-base-direction"></a> and <a href="#eventterm-element-version"><code>rdf:version</code></a>.</li>
     <li>The processing model now emits <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> and <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triples</a> directly,
       rather than N-Triples [[RDF12-N-TRIPLES]];
       this is more consistent with other <a data-cite="RDF12-CONCEPTS#dfn-concrete-rdf-syntax">concrete RDF syntaxes</a>.
