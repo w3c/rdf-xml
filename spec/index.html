@@ -3672,12 +3672,13 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     namespace local = ""
     namespace rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+    namespace its = "http://www.w3.org/2005/11/its"
 
     start = doc
 
     # I cannot seem to do this in RNGC so they are expanded in-line
 
-    # coreSyntaxTerms = rdf:RDF | rdf:ID | rdf:about | rdf:parseType | rdf:resource | rdf:nodeID | rdf:datatype
+    # coreSyntaxTerms = rdf:RDF | rdf:ID | rdf:about | rdf:parseType | rdf:resource | rdf:nodeID | rdf:datatype | rdf:version
     # syntaxTerms = coreSyntaxTerms | rdf:Description | rdf:li
     # oldTerms    = rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID
     # nodeElementIRIs       = * - ( coreSyntaxTerms | rdf:li | oldTerms )
@@ -3742,58 +3743,66 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     resourcePropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, nodeElement
+          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, nodeElement
       }
 
     literalPropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr? , datatypeAttr?, xmllang?, xmlbase?, text
+          idAttr? , datatypeAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, text
       }
 
     parseTypeLiteralPropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, parseLiteral, xmllang?, xmlbase?, literal
+          idAttr?, parseLiteral, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, literal
       }
 
     parseTypeResourcePropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, parseResource, xmllang?, xmlbase?, propertyEltList
+          idAttr?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
       }
 
     parseTypeCollectionPropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, parseCollection, nodeElementList
+          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseCollection, nodeElementList
       }
 
     parseTypeOtherPropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, parseOther, any
+          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseOther, any
       }
 
     emptyPropertyElt =
        element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                     rdf:resource | rdf:nodeID | rdf:datatype |
+                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                     its:dir | its:version |
                      rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                      xml:* ) {
-           idAttr?, (resourceAttr | nodeIdAttr | datatypeAttr )?, xmllang?, xmlbase?, propertyAttr*
+           idAttr?, (resourceAttr | nodeIdAttr | datatypeAttr )?, xmllang?,
+           xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyAttr*
        }
 
     idAttr =
@@ -3813,9 +3822,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     propertyAttr =
       attribute * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                      rdf:resource | rdf:nodeID | rdf:datatype | rdf:li |
+                      rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                      rdf:li | its:dir | | its:version
                       rdf:Description | rdf:aboutEach |
-              rdf:aboutEachPrefix | rdf:bagID |
+                      rdf:aboutEachPrefix | rdf:bagID |
                       xml:* ) {
           string
       }
@@ -3847,6 +3857,21 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     parseOther =
       attribute rdf:parseType {
+          text
+      }
+
+    versionAttr =
+      attribute rdf:version {
+          text
+      }
+
+    dirAttr =
+      attribute its:dir {
+          text
+      }
+
+    itsVersionAttr =
+      attribute its:version {
           text
       }
 
