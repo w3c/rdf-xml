@@ -68,7 +68,16 @@
     in terms of Namespaces in XML,
     the XML Information Set [[XML-INFOSET]]
     and XML Base [[XMLBASE]].</p>
-  <p>RDF 1.2 XML adds support for
+
+  <p>RDF 1.2 XML introduces <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>
+    as a fourth kind of <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF term</a>
+    which can be used as the
+    <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of another
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a>,
+    making it possible to make statements about other statements.
+    <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple terms</a> are typically not used explicitly
+    as the <a href="#handle-annotation"><code>annotation</code></a> construction is generally preferred.
+    RDF 1.2 XML also adds support for
     <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
 </section>
 
@@ -216,7 +225,7 @@
       </figcaption>
     </figure>
 
-    <p>An RDF graph is given in <a href="#figure1"></a>
+    <p>An <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> is given in <a href="#figure1"></a>
       where the nodes are represented as ovals which contain their
       <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> where they have them, all the predicate arcs are labeled with
       <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>, and string literal nodes have been written in rectangles.</p>
@@ -340,7 +349,7 @@
 
     <p>There are several abbreviations that can be used to make common
     uses easier to write down.  In particular, it is common that a
-    subject node in the RDF graph has multiple outgoing predicate arcs.  RDF/XML
+    subject node in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> has multiple outgoing predicate arcs.  RDF/XML
     provides an abbreviation for the corresponding syntax when a node
     element about a resource has multiple <a>property elements</a>. This can be
     abbreviated by using multiple child <a>property elements</a> inside the node
@@ -381,7 +390,7 @@
   <section id="section-Syntax-empty-property-elements" class="informative">
     <h3>Empty Property Elements</h3>
 
-    <p>When a predicate arc in an RDF graph points to an object node which has no
+    <p>When a predicate arc in an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> points to an object node which has no
     further predicate arcs, which appears in RDF/XML as an empty <a>node element</a>
     <code>&lt;rdf:Description rdf:about="..."&gt;</code>
     <code>&lt;/rdf:Description&gt;</code>
@@ -770,7 +779,7 @@
   <section id="section-Syntax-parsetype-resource" class="informative">
     <h3>Omitting Blank Nodes: <code>rdf:parseType="Resource"</code></h3>
 
-    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> nodes) in RDF graphs can be written
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> (not <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> nodes) in <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> can be written
     in a form that allows the
     <code>&lt;rdf:Description&gt;</code>
     <code>&lt;/rdf:Description&gt;</code> pair to be omitted.
@@ -864,7 +873,7 @@
   <section id="section-Syntax-typed-nodes" class="informative">
     <h3>Typed Node Elements</h3>
 
-    <p>It is common for RDF graphs to have <code>rdf:type</code> predicates
+    <p>It is common for <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> to have <code>rdf:type</code> predicates
     from subject nodes.  These are conventionally called <em>typed
     nodes</em> in the graph, or <em>typed node elements</em> in the
     RDF/XML.  RDF/XML allows this triple to be expressed more concisely.
@@ -1143,6 +1152,53 @@
 
   </section>
 
+  <section id="section-Syntax-triple-terms" class="informative">
+    <h3>Triple Terms: <code>rdf:parseType="Triple"</code></h3>
+
+    <p>A <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple term</a>
+      may be the <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of an
+      <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.
+      <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a> in <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> can be written
+      in a form that allows a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
+      to be written as a <a data-cite="RDF12-CONCEPTS#dfn-resource">resource</a>
+      encoding a single <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.
+      This is done by adding the `rdf:parseType="Triple"` attribute
+      on a <a>property element</a> to describe a single <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>,
+      which may not appear as a triple within the graph, itself; see <a href="#parseTypeTriplePropertyElt"></a>.
+    </p>
+
+    <aside class="example" id="example22" title="Complete example using rdf:parseType=Triple">
+    <strong>Complete example using <code>rdf:parseType="Triple"</code>
+    (<a href="example22.rdf">example22.rdf</a>, output: <a href="example22.nt">example22.nt</a>)</strong>
+    <pre class="rdf" data-transform="updateExample">
+      <!--
+      <?xml version="1.0"?>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:ex="http://example.org/stuff/1.0/"
+               xml:base="http://example.org/triples/"
+               rdf:version="1.2">
+        <rdf:Description rdf:about="http://example.org/">
+          <ex:prop rdf:parseType="Triple">
+            <rdf:Description rdf:about="http://example.org/stuff/1.0/s">
+              <ex:p rdf:resource="http://example.org/stuff/1.0/o" />
+            </rdf:Description>
+          </ex:prop>
+        </rdf:Description>
+      </rdf:RDF>
+      -->
+    </pre>
+    </aside>
+
+    <p class="note"><a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple terms</a>
+      play a similar role to <a href="#section-Syntax-reifying">Reifying Statements</a>,
+      the difference being that triple terms are are a core part of the
+      <a data-cite="RDF12-CONCEPTS#section-triple-terms">RDF 1.2 Abstract Syntax</a> [[RDF12-CONCEPTS]], while Reifying Statements emit triples to describe
+      another triple in the asserted graph.
+      Triple terms describe triples that are not necessarily asserted.
+      See <a href="#section-Syntax-annotations"></a> for a way to combine
+      asserting triples and describing them at the same time.</p>
+  </section>
+
 </section>
 
 <!-- SECOND PART : TERMINILOGY -->
@@ -1290,7 +1346,7 @@
     <h3>Identifiers</h3>
 
     <p>The RDF Concepts document [[RDF12-CONCEPTS]]
-    defines the three types of RDF data that can act as node
+    defines the four types of RDF data that can act as node
     and/or predicate:</p>
 
     <dl>
@@ -1345,7 +1401,7 @@
     <dt>Blank Node</dt>
     <dd>
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> can act as subject node and as object node.</p>
-    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the RDF graph.
+    <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.
     When the graph is written in a syntax such as RDF/XML, these
     <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank nodes</a> may need document-local identifiers and a syntax
     in order to preserve this distinction. These local identifiers are called
@@ -1370,6 +1426,13 @@
     prefix.  Another would be to map all <code>rdf:nodeID</code> attribute
     values to new generated <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifiers</a> and perform that mapping
     on all such values in the RDF/XML document.</p>
+    </dd>
+
+    <dt>Triple Term</dt>
+    <dd>
+      <p><a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple terms</a> can only act as object nodes.</p>
+
+      <p>A triple term describes a <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a>, which may, or may not, be asserted in the graph.</p>
     </dd>
     </dl>
 
@@ -1511,15 +1574,15 @@
     Grammar productions change the parser state and emit triples.</p>
 
   <p>The model given here illustrates one way to create a representation of
-    an RDF Graph
+    an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF Graph</a>
     from an RDF/XML document.  It does not mandate any implementation
     method &mdash; any other method that results in a representation of the same
-    RDF Graph may be used.</p>
+    <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF Graph</a> may be used.</p>
 
   <p>In particular:</p>
   <ul>
     <li>This specification permits any
-      representation of an RDF graph;
+      representation of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>;
       in particular, it does not require the use of N-Triples [[RDF12-N-TRIPLES]].</li>
     <li>This specification does not require the use of
       [[XPATH]] or [[SAX]]</li>
@@ -1628,6 +1691,9 @@
       <dd>Set to the empty string.</dd>
       <dt id="eventterm-root-direction">direction</dt>
       <dd>Set to the empty string.</dd>
+      <dt id="eventterm-root-graph">graph</dt>
+      <dd>The graph used for collecting emitted triples,
+        initialized to a new <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</dd>
       </dl>
     </section>
 
@@ -1774,11 +1840,20 @@
 
         <dt id="eventterm-element-subject">subject</dt>
         <dd>Has no initial value.  Takes a value that is an
-          <a href="#section-identifier-node">Identifier</a> event.
-          This accessor is used on elements that deal with one node in the RDF graph,
+          <a href="#section-identifier-node">Identifier</a> event,
+          or a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>.
+          This accessor is used on elements that deal with one node in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
           this generally being the <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> of an
           <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.
         </dd>
+
+        <dt id="eventterm-element-graph">graph</dt>
+        <dd>The graph used for collecting emitted triples.
+          The initial value is taken from the parent event
+          (either a <a href="#section-root-node">Root Event</a> or an
+          <a href="#section-element-node">Element Event</a>),
+          or a new <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>, if not set.
+          May be modified by a `parseType="Triple"` attribute.</dd>
 
       </dl>
     </section>
@@ -1888,13 +1963,12 @@
       </dl>
     </section>
 
-
     <!-- uri reference event -->
     <section id="section-identifier-node">
       <h3>IRI Event</h3>
 
-      <p id="eventterm-identifier-identifier-type">
-        An event for a <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> which has the following accessors:</p>
+      <p id="eventterm-identifier-type">
+        An event for an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> which has the following accessors:</p>
 
       <dl>
         <dt id="eventterm-identifier-identifier">identifier</dt>
@@ -1918,6 +1992,23 @@
 
       <p>For further information on identifiers in RDF, see
         <a href="#section-Identifiers" class="sectionRef"></a>.</p>
+    </section>
+
+    <!-- triple term event -->
+    <section id="section-triple-term-node">
+      <h3>Triple Term Event</h3>
+
+      <p>
+        An event for an <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> which has the following accessors:</p>
+
+      <dl>
+        <dt id="eventterm-triple-term-rdf-term">rdf-term</dt>
+        <dd>The value is a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>.</dd>
+
+      </dl>
+
+      <p>These events are constructed by giving a value to the <a href="#eventterm-triple-term-rdf-term">rdf-term</a> accessor.
+      </p>
     </section>
 
 
@@ -2170,8 +2261,7 @@
       using notation given in the following sections.
       The number is used for reference purposes.
       The grammar <em>action</em> may include generating
-      new triples to the graph, written in N-Triples [[RDF12-N-TRIPLES]]
-      format.
+      new triples to the graph.
     </p>
 
     <p>The following sections describe the general notation used and that
@@ -2345,6 +2435,10 @@
       <td>typed-literal(literal-value := string, ...)</td>
       <td>Create a new <a href="#section-typed-literal-node">Typed Literal Event</a>.</td>
       </tr>
+      <tr>
+      <td>triple(s, p, o)</td>
+      <td>Create a new <a href="#section-triple-term-node">Triple Term Event</a> composed of <em>s</em>, <em>p</em>, and <em>o</em>.</td>
+      </tr>
       </table>
     </section>
   </section>
@@ -2425,6 +2519,7 @@
     <a href="#literalPropertyElt">literalPropertyElt</a> |
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a> |
     <a href="#parseTypeResourcePropertyElt">parseTypeResourcePropertyElt</a> |
+    <a href="#parseTypeTriplePropertyElt">parseTypeTriplePropertyElt</a> |
 
     <a href="#parseTypeCollectionPropertyElt">parseTypeCollectionPropertyElt</a> |
     <a href="#parseTypeOtherPropertyElt">parseTypeOtherPropertyElt</a> |
@@ -2455,6 +2550,13 @@
     <td><a href="#parseTypeResourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
     <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
+    <a href="#propertyEltList">propertyEltList</a><br />
+    end-element()</td>
+    </tr>
+    <tr>
+    <td><a href="#parseTypeTriplePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
+
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseTriple">parseTriple</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
@@ -2517,6 +2619,11 @@
     <tr>
     <td><a href="#parseResource"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
     <a href="#eventterm-attribute-string-value">string-value</a> == "Resource")</td>
+    </tr>
+
+    <tr>
+    <td><a href="#parseTriple"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
+    <a href="#eventterm-attribute-string-value">string-value</a> == "Triple")</td>
     </tr>
     <tr>
 
@@ -2758,7 +2865,7 @@
     <li id="nodeElementStatement1"> If <em>e</em>.<a
     href="#eventterm-element-URI">IRI</a> !=
     <code>rdf:Description</code>
-    then the following statement is added to the graph:
+    then the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -2772,7 +2879,7 @@
     then
 
     <em>u</em>:=iri(identifier:=<em>e</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
-    and the following triple is added to the graph:
+    and the following triple is <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code><em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
@@ -2786,7 +2893,7 @@
 
     SHOULD be in Normal Form C [[NFC]],
     <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
-    and the following statement is added to the graph:
+    and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
 
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -2833,6 +2940,7 @@
     <a href="#literalPropertyElt">literalPropertyElt</a> |
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a> |
     <a href="#parseTypeResourcePropertyElt">parseTypeResourcePropertyElt</a> |
+    <a href="#parseTypeResourcePropertyElt">parseTypeTriplePropertyElt</a> |
     <a href="#parseTypeCollectionPropertyElt">parseTypeCollectionPropertyElt</a> |
 
     <a href="#parseTypeOtherPropertyElt">parseTypeOtherPropertyElt</a> |
@@ -2841,7 +2949,7 @@
 
     <p>If element <em>e</em> has
     <em>e</em>.<a href="#eventterm-element-URI">IRI</a> =
-    <code>rdf:li</code> then apply the list expansion rules on element <em>e</em>.parent in
+    <code>rdf:li</code> then apply the list expansion rules on element <em>e</em>.<a href="#eventterm-element-parent">parent</a> in
 
     <a href="#section-List-Expand" class="sectionRef"></a>
     to give a new IRI <em>u</em> and
@@ -2873,20 +2981,19 @@
     <em>n</em>, first <em>n</em> MUST be processed using production
 
     <a href="#nodeElement">nodeElement</a>.
-    Then the following statement is added to the graph:</p>
+    Then the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    &#160;&#160;<code> <em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+    &#160;&#160;<code> <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
-    statement is reified with
-    <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
-    using the reification rules in
-
-    <a href="#section-Reification" class="sectionRef"></a>
-    and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em></p>
+      statement is reified with
+      <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
+      using the reification rules in
+      <a href="#section-Reification" class="sectionRef"></a>
+      and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em></p>
     </section>
 
     <!-- literal property element -->
@@ -2913,10 +3020,10 @@
     otherwise
 
     <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>t</em>.<a href="#eventterm-text-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
-    and the following statement is added to the graph:</p>
+    and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -2951,7 +3058,7 @@
 
     <p><em>l</em> is transformed into the lexical form of an
     <a data-cite="RDF12-CONCEPTS#dfn-rdf-xmlliteral">XML literal</a>
-    in the RDF graph <em>x</em> (a Unicode string)
+    in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> <em>x</em> (a Unicode string)
     by the following algorithm.  This does not mandate any implementation
     method &mdash; any other method that gives the same result may be used.</p>
 
@@ -2981,10 +3088,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     </ol>
 
     <p>Then <em>o</em> := typed-literal(<a href="#eventterm-typedliteral-literal-value">literal-value</a> := <em>x</em>, <a href="#eventterm-typedliteral-literal-datatype">literal-datatype</a> := <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral</code> )
-    and the following statement is added to the graph:</p>
+    and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-typedliteral-literal">literal</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-typedliteral-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -3020,10 +3127,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p><em>n</em> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()).</p>
 
-    <p>Add the following statement to the graph:
+    <p>Add the following statement added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
     </p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
 
@@ -3059,6 +3166,51 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <a href="#nodeElementList">nodeElement</a>.</p>
     </section>
 
+    <!-- parse type triple property element -->
+    <section id="parseTypeTriplePropertyElt">
+    <h4>Production parseTypeTriplePropertyElt</h4>
+
+    <div class="productionOuter"><div class="productionInner"><p>
+    start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#parseTriple">parseTriple</a>))<br />
+
+    <a href="#propertyEltList">propertyEltList</a><br />
+    end-element()
+    </p></div></div>
+
+    <p>For element <em>e</em> with element content <em>c</em>.</p>
+
+    <p>Create a new sequence of events as follows:</p>
+    <div class="productionOuter"><div class="productionInner"><p>
+    start-element(<a href="#eventterm-element-URI">IRI</a> := <a href="#nodeElementURIs">nodeElementIRIs</a>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> := set())<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-graph">graph</a> := a new <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>)<br />
+      <em>c</em><br />
+    end-element()
+    </p></div></div>
+
+    <p>Then process the resulting sequence using production
+    <a href="#nodeElementList">nodeElement</a>.</p>
+
+    <p>After processing the node sequence,
+      <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>
+      MUST be an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> containing a single triple.</p>
+
+    <p><em>e</em>.<a href="#eventterm-element-subject">subject</a> := triple(<em>s</em>, <em>p</em>, <em>o</em>), where
+      <em>s</em>, <em>p</em>, and <em>o</em> are the
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+      <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
+      of the sole triple in <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>.</p>
+
+    <p>Add the following statement added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
+    </p>
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>e</em>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
+    </section>
+
     <!-- parse type collection property element -->
     <section id="parseTypeCollectionPropertyElt">
     <h4>Production parseTypeCollectionPropertyElt</h4>
@@ -3082,15 +3234,15 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <em>s</em> to give a sequence of events.</p>
 
     <p>If <em>s</em> is not empty, <em>n</em> is the first event identifier in
-    <em>s</em> and the following statement is added to the graph:</p>
+    <em>s</em> and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
 
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
     </p></div></div>
 
-    <p>otherwise the following statement is added to the graph:</p>
+    <p>otherwise the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
     </p></div></div>
 
@@ -3106,7 +3258,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>For each event <em>n</em> in <em>s</em> and the
     corresponding element event <em>f</em> in <em>l</em>, the following
-    statement is added to the graph:</p>
+    statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; <em>f</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
@@ -3114,7 +3266,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>For each consecutive and overlapping pair of events
     (<em>n</em>, <em>o</em>) in <em>s</em>, the following statement is
-    added to the graph:</p>
+    added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code><em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; <em>o</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>  .</code>
@@ -3122,7 +3274,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     </p></div></div>
 
     <p>If <em>s</em> is not empty, <em>n</em> is the last event identifier
-    in <em>s</em>, the following statement is added to the graph:</p>
+    in <em>s</em>, the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code><em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .</code>
 
@@ -3168,10 +3320,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>If there are no attributes <strong>or</strong> only the
     optional <code>rdf:ID</code> attribute <em>i</em>
     then <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a>:="", <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
-    and the following statement is added to the graph:</p>
+    and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
-    <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
+    <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
 
     </p></div></div>
 
@@ -3225,7 +3377,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
         <li><p>If <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:type</code>
 
         then <em>u</em>:=iri(identifier:=<em>i</em>.<a href="#eventterm-attribute-rdf-term">rdf-term</a>)
-        and the following triple is added to the graph:</p>
+        and the following triple is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
         <div class="ntripleOuter"><div class="ntripleInner"><p>
         <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; <em>u</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
@@ -3236,7 +3388,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
          <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>
          SHOULD be in Normal Form C [[NFC]],
          <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a> := <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>, <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
-         and the following statement is added to the graph:</p>
+         and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
         <div class="ntripleOuter"><div class="ntripleInner"><p>
         <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> <em>o</em>.<a href="#eventterm-literal-literal">literal</a> .</code>
@@ -3264,7 +3416,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <li><p>Add the following statement to the graph:</p>
       <div class="ntripleOuter"><div class="ntripleInner"><p>
-      <code><em>e</em>.parent.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+      <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
       </p></div></div>
 
@@ -3370,6 +3522,17 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == "Resource")
+
+    </p></div></div>
+    </section>
+
+    <!-- parse resource -->
+    <section id="parseTriple">
+    <h4>Production parseTriple</h4>
+
+    <div class="productionOuter"><div class="productionInner"><p>
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == "Triple")
 
     </p></div></div>
     </section>
@@ -3483,7 +3646,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 <section id="section-Serialising">
     <h2>Serializing an RDF Graph to RDF/XML</h2>
 
-    <p>There are some RDF Graphs as defined in
+    <p>There are some <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> as defined in
     [[RDF12-CONCEPTS]] that cannot be serialized in RDF/XML. These are the graphs that:</p>
 
     <dl>
@@ -3510,7 +3673,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     </dl>
 
     <p class="note"><strong>Implementation Note (Informative):</strong>
-    When an RDF graph is serialized to RDF/XML and has an XML Schema
+    When an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> is serialized to RDF/XML and has an XML Schema
     Datatype (XSD), it SHOULD be written in a form that does not require
     whitespace processing.  XSD support is NOT required by RDF or RDF/XML
     so this is optional.
@@ -3630,6 +3793,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       rather than N-Triples [[RDF12-N-TRIPLES]];
       this is more consistent with other <a data-cite="RDF12-CONCEPTS#dfn-concrete-rdf-syntax">concrete RDF syntaxes</a>.
       The names of some event accessors have been updated accordingly.</li>
+    <li>Adds <a href="#section-Syntax-triple-terms"></a>,
+      <a href="#parseTypeTriplePropertyElt"></a>, and
+      <a href="#parseTriple"></a> to support <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple Terms</a>.
+    </li>
   </ul>
 </section>
 
@@ -3737,6 +3904,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       literalPropertyElt |
       parseTypeLiteralPropertyElt |
       parseTypeResourcePropertyElt |
+      parseTypeTriplePropertyElt |
       parseTypeCollectionPropertyElt |
       parseTypeOtherPropertyElt |
       emptyPropertyElt
@@ -3770,6 +3938,15 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     parseTypeResourcePropertyElt =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
+                    its:dir | its:version |
+                    rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
+                    xml:* ) {
+          idAttr?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
+      }
+
+    parseTypeTriplePropertyElt =
+      element * - ( local:* | rdf:RDF | rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3848,6 +4025,11 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     parseResource =
       attribute rdf:parseType {
           "Resource"
+      }
+
+    parseTriple =
+      attribute rdf:parseType {
+          "Triple"
       }
 
     parseCollection =
