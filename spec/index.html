@@ -76,7 +76,7 @@
     <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a>,
     making it possible to make statements about other statements.
     <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple terms</a> are typically not used explicitly
-    as the <a href="#handle-annotation"><code>annotation</code></a> construction is generally preferred.
+    as the <a data-lt="annotating">annotation</a> construction is generally preferred.
     RDF 1.2 XML also adds support for
     <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
 </section>
@@ -1199,6 +1199,70 @@
       asserting triples and describing them at the same time.</p>
   </section>
 
+  <section id="section-Syntax-annotations" class="informative">
+    <h3>Annotating Triples: `rdf:annotation` or `rdf:annotationNodeID`</h3>
+
+    <p>RDF 1.2 XML also includes syntax for
+      <dfn class="no-export">annotating</dfn> triples
+      by both asserting the triple, via an explicit identifier, and
+      having the <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a> associated with that <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a> be the
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> or
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of further triples.
+      If explicitly identified, the same <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a> can then be used as the
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> or
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of additional
+      triples and/or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>.
+    </p>
+
+    <p>A <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a> can be add as a <a>property attribute</a>
+      using either the `rdf:annotation` (for <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a>)
+      or `rdf:annotationNodeID` (for <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a>).
+      This <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifier</a> can also be used as the subject of other triples
+      as a way to associate those triples with the triple term
+      composed of the subject, predicate, and object associated with a <a>property element</a>.</p>
+
+    <aside class="example" id="example23" title="Complete example using rdf:annotation">
+    <strong>Complete example using <code>rdf:annotation</code>
+    (<a href="example23.rdf">example23.rdf</a>, output: <a href="example23.nt">example23.nt</a>)</strong>
+    <pre class="rdf" data-transform="updateExample">
+      <!--
+      <?xml version="1.0"?>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:ex="http://example.org/stuff/1.0/"
+               xml:base="http://example.org/triples/">
+        <rdf:Description rdf:about="http://example.org/">
+          <ex:prop rdf:annotation="http://example.org/triple1">blah</ex:prop>
+        </rdf:Description>
+        <rdf:Description rdf:about="http://example.org/triple1">
+          <ex:prop>foo</ex:prop>
+        </rdf:Description>
+      </rdf:RDF>
+      -->
+    </pre>
+    </aside>
+
+
+    <aside class="example" id="example24" title="Complete example using rdf:annotationNodeID">
+    <strong>Complete example using <code>rdf:annotationNodeID</code>
+    (<a href="example24.rdf">example24.rdf</a>, output: <a href="example24.nt">example24.nt</a>)</strong>
+    <pre class="rdf" data-transform="updateExample">
+      <!--
+      <?xml version="1.0"?>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:ex="http://example.org/stuff/1.0/"
+               xml:base="http://example.org/triples/">
+        <rdf:Description rdf:about="http://example.org/">
+          <ex:prop rdf:annotationNodeID="triple1">blah</ex:prop>
+        </rdf:Description>
+        <rdf:Description rdf:nodeID="triple1">
+          <ex:prop>foo</ex:prop>
+        </rdf:Description>
+      </rdf:RDF>
+      -->
+    </pre>
+    </aside>
+  </section>
+
 </section>
 
 <!-- SECOND PART : TERMINILOGY -->
@@ -1295,7 +1359,7 @@
     <dt>Syntax names &mdash; not concepts</dt>
     <dd>
     <p>
-    <code>RDF Description ID about datatype li nodeID parseType resource version</code>
+    <code>RDF Description ID about annotation annotationNodeID datatype li nodeID parseType resource version</code>
     </p>
     </dd>
 
@@ -2456,7 +2520,7 @@
     <div class="productionOuter"><div class="productionInner">
     <table>
     <tr>
-    <td><a href="#coreSyntaxTerms"></a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code></td>
+    <td><a href="#coreSyntaxTerms"></a></td> <td><code>rdf:RDF</code> | <code>rdf:ID</code> | <code>rdf:about</code> | <code>rdf:annotation</code> | <code>rdf:annotationNodeID</code> | <code>rdf:parseType</code> | <code>rdf:resource</code> | <code>rdf:nodeID</code> | <code>rdf:datatype</code> | <code>rdf:version</code></td>
 
     </tr>
     <tr>
@@ -2534,7 +2598,7 @@
     </tr>
     <tr>
     <td><a href="#literalPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
 
     <a href="#section-text-node">text()</a><br />
     end-element()</td>
@@ -2542,21 +2606,21 @@
     <tr>
     <td><a href="#parseTypeLiteralPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseLiteral">parseLiteral</a>))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseLiteral">parseLiteral</a>))<br />
     <a href="#literal">literal</a><br />
     end-element()</td>
     </tr>
     <tr>
     <td><a href="#parseTypeResourcePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseResource">parseResource</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
     <td><a href="#parseTypeTriplePropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseTriple">parseTriple</a>))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseTriple">parseTriple</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
@@ -2570,14 +2634,14 @@
     <tr>
     <td><a href="#parseTypeOtherPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseOther">parseOther</a>))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseOther">parseOther</a>))<br />
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()</td>
     </tr>
     <tr>
     <td><a href="#emptyPropertyElt"></a></td> <td>start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),
 
-    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
+    <a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
     end-element()</td>
     </tr>
 
@@ -2971,7 +3035,7 @@
 
     <div class="productionOuter"><div class="productionInner"><p>
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?)<br />
 
     <a href="#ws">ws</a>* <a href="#nodeElement">nodeElement</a> <a href="#ws">ws</a>*<br />
     end-element()
@@ -2994,6 +3058,15 @@
       using the reification rules in
       <a href="#section-Reification" class="sectionRef"></a>
       and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em></p>
+
+    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
     </section>
 
     <!-- literal property element -->
@@ -3003,7 +3076,7 @@
     <div class="productionOuter"><div class="productionInner"><p>
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
 
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#datatypeAttr">datatypeAttr</a>?))<br />
     <a href="#section-text-node">text()</a><br />
     end-element()
     </p></div></div>
@@ -3034,6 +3107,14 @@
 
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
+    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
     </section>
 
     <!-- parse type literal property element -->
@@ -3043,7 +3124,7 @@
     <div class="productionOuter"><div class="productionInner"><p>
 
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseLiteral">parseLiteral</a>))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseLiteral">parseLiteral</a>))<br />
     <a href="#literal">literal</a><br />
 
     end-element()
@@ -3109,6 +3190,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
+    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
     </section>
 
     <!-- parse type resource property element -->
@@ -3117,7 +3206,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseResource">parseResource</a>))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseResource">parseResource</a>))<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()
@@ -3148,6 +3237,15 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
+
+    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
 
     <p>If the element content <em>c</em> is not empty, then use event
     <em>n</em> to create a new sequence of events as follows:</p>
@@ -3253,6 +3351,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <a href="#section-Reification" class="sectionRef"></a>.
     </p>
+    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
 
     <p>If <em>s</em> is empty, no further work is performed.</p>
 
@@ -3287,7 +3393,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, <a href="#parseOther">parseOther</a>))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, <a href="#parseOther">parseOther</a>))<br />
 
     <a href="#propertyEltList">propertyEltList</a><br />
     end-element()
@@ -3295,8 +3401,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
 
     <p>All <code>rdf:parseType</code> attribute values other than the strings
-    "Resource", "Literal" or "Collection" are treated as if the value was
-    "Literal".   This production matches and acts as if production
+    "Resource", "Literal", "Collection", or "Triple"
+    are treated as if the value was "Literal".
+    This production matches and acts as if production
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a>
     was matched.
     No extra triples are generated for other <code>rdf:parseType</code> values.
@@ -3309,7 +3416,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <div class="productionOuter"><div class="productionInner"><p>
     start-element(<a href="#eventterm-element-URI">IRI</a> == <a href="#propertyElementURIs">propertyElementURIs</a> ),<br />
-    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-element-attributes">attributes</a> == set(<a href="#idAttr">idAttr</a>?, (<a href="#annotationAttr">annotationAttr</a> | <a href="#annotationNodeIDAttr">annotationNodeIDAttr</a>)?, ( <a href="#resourceAttr">resourceAttr</a> | <a href="#nodeIdAttr">nodeIdAttr</a> | <a href="#datatypeAttr">datatypeAttr</a> )?, <a href="#propertyAttr">propertyAttr</a>*))<br />
 
     end-element()
     </p></div></div>
@@ -3467,6 +3574,28 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:about</code>,<br />
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
+
+    </p></div></div>
+    </section>
+
+    <!-- annotation attribute -->
+    <section id="annotationAttr">
+    <h4>Production annotationAttr</h4>
+
+    <div class="productionOuter"><div class="productionInner"><p>
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:annotationAttr</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
+
+    </p></div></div>
+    </section>
+
+    <!-- annotationNodeID attribute -->
+    <section id="annotationNodeIDAttr">
+    <h4>Production annotationNodeIDAttr</h4>
+
+    <div class="productionOuter"><div class="productionInner"><p>
+    attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:annotationNodeIDAttr</code>,<br />
+    &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-rdf-term">rdf-term</a> == bnodeid(<a href="#rdf-id">rdf-id</a>))
 
     </p></div></div>
     </section>
@@ -3797,6 +3926,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       <a href="#parseTypeTriplePropertyElt"></a>, and
       <a href="#parseTriple"></a> to support <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple Terms</a>.
     </li>
+    <li>Adds <a href="#section-Syntax-annotations"></a> and rules
+      for creating <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifiers</a> for <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple Terms</a>, allowing them
+      to be used as the subject or object of other triples.</li>
   </ul>
 </section>
 
@@ -3845,7 +3977,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     # I cannot seem to do this in RNGC so they are expanded in-line
 
-    # coreSyntaxTerms = rdf:RDF | rdf:ID | rdf:about | rdf:parseType | rdf:resource | rdf:nodeID | rdf:datatype | rdf:version
+    # coreSyntaxTerms = rdf:RDF | rdf:ID | rdf:annotation | rdf:annotationNodeID | rdf:about | rdf:parseType | rdf:resource | rdf:nodeID | rdf:datatype | rdf:version
     # syntaxTerms = coreSyntaxTerms | rdf:Description | rdf:li
     # oldTerms    = rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID
     # nodeElementIRIs       = * - ( coreSyntaxTerms | rdf:li | oldTerms )
@@ -3910,7 +4042,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       emptyPropertyElt
 
     resourcePropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3919,7 +4053,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     literalPropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3928,7 +4064,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     parseTypeLiteralPropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3937,7 +4075,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     parseTypeResourcePropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3955,7 +4095,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     parseTypeCollectionPropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3964,7 +4106,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     parseTypeOtherPropertyElt =
-      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      element * - ( local:* | rdf:RDF | rdf:ID |
+                    rdf:annotation | rdf:annotationNodeID |
+                    rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3973,7 +4117,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     emptyPropertyElt =
-       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+       element * - ( local:* | rdf:RDF | rdf:ID |
+                     rdf:annotation | rdf:annotationNodeID |
+                     rdf:about | rdf:parseType |
                      rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                      its:dir | its:version |
                      rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
@@ -3998,7 +4144,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     propertyAttr =
-      attribute * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+      attribute * - ( local:* | rdf:RDF | rdf:ID |
+                      rdf:annotation | rdf:annotationNodeID |
+                      rdf:about | rdf:parseType |
                       rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
                       rdf:li | its:dir | | its:version
                       rdf:Description | rdf:aboutEach |
