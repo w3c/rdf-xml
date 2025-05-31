@@ -7,6 +7,16 @@
   <script src="./common/local-biblio.js" class="remove"></script>
   <script src="./common/fixup.js" class="remove"></script>
   <script class='remove'>
+    // Use fragment identifier of test as name.
+    function data_test_display() {
+        const test_references = document.querySelectorAll('details.respec-tests-details a');
+        for( const a of test_references ) {
+            const href = a.href;
+            const test_reference = href.split('#')[1];
+            a.textContent = test_reference;
+        }
+    }
+
     var respecConfig = {
       localBiblio:          localBibliography,
       specStatus:           "ED",
@@ -36,6 +46,9 @@
       ],
 
       xref: [ "RDF12-CONCEPTS" ],
+      testSuiteURI: "https://w3c.github.io/rdf-tests/",
+      postProcess: [data_test_display],
+
       github: "https://github.com/w3c/rdf-xml/",
       group:           "rdf-star",
       doJsonLd:     true,
@@ -1507,7 +1520,12 @@
     <section id="section-baseIRIs"><span id="section-baseURIs"><!-- preserve anchor --></span>
     <h3>Resolving IRIs</h3>
 
-    <p>RDF/XML supports
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test004,
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test006,
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test008">
+    RDF/XML supports
     XML Base [[XMLBASE]]
     which defines a
     <a href="#eventterm-element-base-uri" class="termref"><span
@@ -1531,28 +1549,13 @@
     into an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> by substituting the in-scope base IRI.
     </p>
 
-    <p class="note"><strong>Test:</strong>
-    indicated by: <br/>
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test001.rdf">test001.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test001.nt">test001.nt</a>
-    <br/>
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test004.rdf">test004.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test004.nt">test004.nt</a>
-    <br/>
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test008.rdf">test008.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test008.nt">test008.nt</a>
-    </p>
-
-    <p>An empty same document reference ""
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test011,
+      rdf/rdf11/rdf-xml/index.html#xmlbase-test013">
+    An empty same document reference ""
     resolves against the URI part of the base IRI; any fragment part
     is ignored.  See
     Uniform Resource Identifiers (URI) [[RFC3986]].
-    </p>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test013.rdf">test013.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test013.nt">test013.nt</a>
     </p>
 
     <p class="note"><strong>Implementation Note (Informative):</strong>
@@ -1560,14 +1563,7 @@
     URI that has no path component (/), it must be added before using as a
     base IRI for resolving.
     </p>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test011.rdf">test011.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test011.nt">test011.nt</a>
-    </p>
     </section>
-
 
     <!-- constraints -->
     <section id="section-constraints">
@@ -1581,15 +1577,9 @@
     accessor of the matched attribute is unique within a single RDF/XML
     document.</p>
 
-    <p>The syntax of the names MUST match the
-    <a href="#rdf-id">rdf-id production</a>.</p>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test014.rdf">test014.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/xmlbase/test014.nt">test014.nt</a>
-    </p>
-    </dd>
+    <p data-tests="rdf/rdf11/rdf-xml/index.html#xmlbase-test014">
+      The syntax of the names MUST match the
+      <a href="#rdf-id">rdf-id production</a>.</p>
 
     </dl>
     </section>
@@ -2798,18 +2788,15 @@
 
     </p></div></div>
 
-    <p>These are the names from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error001,
+      rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error002">
+      These are the names from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
     that have been withdrawn from the language.  See the resolutions of
     Issue <a href="https://www.w3.org/2000/03/rdf-tracking/#rdfms-aboutEach-on-object">rdfms-aboutEach-on-object</a>,
     Issue <a href="https://www.w3.org/2000/03/rdf-tracking/#rdfms-abouteachprefix">rdfms-abouteachprefix</a> and
     Last Call Issue <a href="https://www.w3.org/2001/sw/RDFCore/20030123-issues/#timbl-01">timbl-01</a>
     for further information.
-    </p>
-
-    <p class="note"><strong>Error Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-abouteach/error001.rdf">error001.rdf</a> and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-abouteach/error002.rdf">error002.rdf</a>
     </p>
     </section>
 
@@ -3183,12 +3170,12 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     </p></div></div>
 
-    <p class="note"><strong>Test:</strong>
+    <!--p class="note"><strong>Test:</strong>
     Empty literal case indicated by
     <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test009.rdf">test009.rdf</a>
     and
     <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test009.nt">test009.nt</a>
-    </p>
+    </p-->
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
     statement is reified with
@@ -3226,19 +3213,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p><em>n</em> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()).</p>
 
-    <p>Add the following statement added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004">
+      Add the following statement to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
     </p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code><em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-subject">subject</a>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> <em>e</em>.<a href="#eventterm-element-URI">IRI</a> <em>n</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test004.rdf">test004.rdf</a>
-    and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test004.nt">test004.nt</a>
-    </p>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the
     statement above is reified with
@@ -3459,7 +3441,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     </p></div></div>
 
-    <p>and then if <em>i</em> is given, the above statement is reified with
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
+      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005">
+      and then if <em>i</em> is given, the above statement is reified with
     iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>.</p>
@@ -3473,20 +3458,6 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
 
     </p></div></div>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test002.rdf">test002.rdf</a>
-    and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test002.nt">test002.nt</a>
-    </p>
-
-    <p class="note"><strong>Test:</strong>
-    Indicated by
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test005.rdf">test005.rdf</a>
-    and
-    <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test005.nt">test005.nt</a>
-    </p>
 
     </li>
 
@@ -3508,7 +3479,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
         </li>
       </ul>
 
-    <p>The following are done in any order:</p>
+    <p data-tests="
+      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test013,
+      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test014">
+      The following are done in any order:</p>
 
     <ul>
 
@@ -3539,20 +3513,6 @@ to this sequence to give an xsd:string <em>x</em>.</li>
         </li>
 
       </ul>
-
-        <p class="note"><strong>Test:</strong>
-        Indicated by
-        <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test013.rdf">test013.rdf</a>
-        and
-        <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test013.nt">test013.nt</a>
-        </p>
-
-        <p class="note"><strong>Test:</strong>
-        Indicated by
-        <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test014.rdf">test014.rdf</a>
-        and
-        <a href="https://w3c.github.io/rdf-tests/rdf-xml/rdfms-empty-property-elements/test014.nt">test014.nt</a>
-           </p>
 
     </li>
 
