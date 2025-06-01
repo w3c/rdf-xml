@@ -1520,7 +1520,7 @@
     <section id="section-baseIRIs"><span id="section-baseURIs"><!-- preserve anchor --></span>
     <h3>Resolving IRIs</h3>
 
-    <p data-tests="
+    <p id="baseURIs-tests1" data-tests="
       rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
       rdf/rdf11/rdf-xml/index.html#xmlbase-test004,
       rdf/rdf11/rdf-xml/index.html#xmlbase-test006,
@@ -1549,7 +1549,7 @@
     into an <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> by substituting the in-scope base IRI.
     </p>
 
-    <p data-tests="
+    <p id="baseURIs-tests2" data-tests="
       rdf/rdf11/rdf-xml/index.html#xmlbase-test011,
       rdf/rdf11/rdf-xml/index.html#xmlbase-test013">
     An empty same document reference ""
@@ -1577,7 +1577,7 @@
     accessor of the matched attribute is unique within a single RDF/XML
     document.</p>
 
-    <p data-tests="rdf/rdf11/rdf-xml/index.html#xmlbase-test014">
+    <p id="constraints-tests1" data-tests="rdf/rdf11/rdf-xml/index.html#xmlbase-test014">
       The syntax of the names MUST match the
       <a href="#rdf-id">rdf-id production</a>.</p>
 
@@ -2788,7 +2788,7 @@
 
     </p></div></div>
 
-    <p data-tests="
+    <p id="oldTerms-tests1" data-tests="
       rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error001,
       rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error002">
       These are the names from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
@@ -3213,7 +3213,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p><em>n</em> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()).</p>
 
-    <p data-tests="
+    <p id="parseTypeResourcePropertyElt-tests1" data-tests="
       rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004">
       Add the following statement to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
     </p>
@@ -3441,7 +3441,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     </p></div></div>
 
-    <p data-tests="
+    <p id="emptyPropertyElt-tests1" data-tests="
       rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
       rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005">
       and then if <em>i</em> is given, the above statement is reified with
@@ -3479,7 +3479,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
         </li>
       </ul>
 
-    <p data-tests="
+    <p id="emptyPropertyElt-tests2" data-tests="
       rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test013,
       rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test014">
       The following are done in any order:</p>
