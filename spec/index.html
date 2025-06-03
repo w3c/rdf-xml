@@ -22,7 +22,7 @@
       specStatus:           "ED",
       edDraftURI:           "https://w3c.github.io/rdf-xml/spec/",
       shortName:            "rdf12-xml",
-      testSuiteURI:         "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-xml/",
+      testSuiteURI:         "https://w3c.github.io/rdf-tests/rdf/rdf12/rdf-xml/",
       copyrightStart:       "2004",
 
       previousPublishDate:  "2014-02-25",
@@ -46,7 +46,6 @@
       ],
 
       xref: [ "RDF12-CONCEPTS" ],
-      testSuiteURI: "https://w3c.github.io/rdf-tests/",
       postProcess: [data_test_display],
 
       github: "https://github.com/w3c/rdf-xml/",
@@ -888,8 +887,8 @@
     <h3>Typed Node Elements</h3>
 
     <p id="typed-nodes-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test006,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-error002">
+      ../../rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test006,
+      ../../rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-error002">
       It is common for <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> to have <code>rdf:type</code> predicates
     from subject nodes.  These are conventionally called <em>typed
     nodes</em> in the graph, or <em>typed node elements</em> in the
@@ -967,9 +966,9 @@
     and <code>rdf:datatype</code>.</p>
 
     <p id="id-xml-base-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-error1
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-error1
       ">
       The <code>rdf:ID</code> attribute on a <a>node element</a>
     (not <a>property element</a>,
@@ -1021,13 +1020,13 @@
     <h3>Container Membership Property Elements: <code>rdf:li</code> and <code>rdf:_</code><em>n</em></h3>
 
     <p id="list-elements-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test001,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test002,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test003,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test004,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test006,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test007,
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test008">
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test001,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test002,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test003,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test004,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test006,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test007,
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test008">
       RDF has a set of container membership properties
     and corresponding <a>property elements</a> that are mostly used with
     instances of the
@@ -1093,7 +1092,7 @@
     <h3>Collections: <code>rdf:parseType="Collection"</code></h3>
 
     <p id="parsetype-collection-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-seq-representation-test001">
+      ../../rdf11/rdf-xml/index.html#rdfms-seq-representation-test001">
       RDF/XML allows an <code>rdf:parseType="Collection"</code>
 
     attribute on a <a>property element</a> to let it contain multiple node
@@ -1142,11 +1141,11 @@
     <h3>Reifying Statements: <code>rdf:ID</code></h3>
 
     <p id="reifying-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-reification-required-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-reification-required-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005">
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005">
       The <code>rdf:ID</code> attribute can be used on a property
     element to reify the triple that it generates (See
     <a href="#section-Reification" class="sectionRef"></a> for the
@@ -1461,51 +1460,51 @@
     <p><a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be either:</p>
     <ul>
     <li id="iri-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test002,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test003,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test004,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test006,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test007,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test008,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test009,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test010,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test011,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test013,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test014,
-      rdf/rdf11/rdf-xml/index.html#rdf-charmod-uris-test001,
-      rdf/rdf11/rdf-xml/index.html#rdf-charmod-uris-test002">
+      ../../rdf11/rdf-xml/index.html#xmlbase-test001,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test002,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test003,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test004,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test006,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test007,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test008,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test009,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test010,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test011,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test013,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test014,
+      ../../rdf11/rdf-xml/index.html#rdf-charmod-uris-test001,
+      ../../rdf11/rdf-xml/index.html#rdf-charmod-uris-test002">
     given as XML attribute values interpreted as <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI references</a>
     that are resolved against the in-scope base IRI
     as described in <a href="#section-baseIRIs" class="sectionRef"></a>
     to give <a data-cite="RFC3986#section-5">resolved</a> IRIs</li>
     <li id="iri-tests2" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0001,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0003,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0004,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0005,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0006,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0009,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0010,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0011,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0012,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0013,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0014">
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0001,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0003,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0004,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0005,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0006,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0009,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0010,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0011,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0012,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0013,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0014">
       transformed from XML namespace-qualified element and attribute names
       (<a data-cite="XML-NAMES#NT-QName">QNames</a>)</li>
     <li id="rdf-id-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error005">
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test001,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error001,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error002,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error003,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error004,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error005">
       transformed from <code>rdf:ID</code> attribute values.</li>
     </ul>
 
@@ -1535,14 +1534,14 @@
 <p>Literals can only act as object nodes.</p>
 
     <p id="literal-datatype-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test005,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test006,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test008,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test011">
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test003,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test005,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test006,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test008,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test011">
       <a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> always have a datatype.
     <a data-cite="RDF12-CONCEPTS#dfn-language-tagged-string">Language-tagged strings</a> get
     the datatype <code>rdf:langString</code>. When there is no
@@ -1553,8 +1552,8 @@
     <dt>Blank Node</dt>
     <dd>
     <p id="bnode-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002">
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002">
       <a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> can act as subject node and as object node.</p>
     <p><a data-cite="RDF12-CONCEPTS#dfn-blank-node">Blank nodes</a> have distinct identity in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.
     When the graph is written in a syntax such as RDF/XML, these
@@ -1567,11 +1566,11 @@
     <a data-cite="XML-INFOSET#infoitem.document">document information item</a>.</p>
 
     <p id="bnode-tests2" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test005">
+      ../../rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test003,
+      ../../rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-identity-anon-resources-test005">
       If no <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> is given explicitly as an
     <code>rdf:nodeID</code> attribute value then one will need to be
     generated (using generated-blank-node-id,
@@ -1605,10 +1604,10 @@
     <h3>Resolving IRIs</h3>
 
     <p id="baseURIs-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test004,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test006,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test008">
+      ../../rdf11/rdf-xml/index.html#xmlbase-test001,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test004,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test006,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test008">
     RDF/XML supports
     XML Base [[XMLBASE]]
     which defines a
@@ -1634,8 +1633,8 @@
     </p>
 
     <p id="baseURIs-tests2" data-tests="
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test011,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test013">
+      ../../rdf11/rdf-xml/index.html#xmlbase-test011,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test013">
     An empty same document reference ""
     resolves against the URI part of the base IRI; any fragment part
     is ignored.  See
@@ -1661,7 +1660,7 @@
     accessor of the matched attribute is unique within a single RDF/XML
     document.</p>
 
-    <p id="constraints-tests1" data-tests="rdf/rdf11/rdf-xml/index.html#xmlbase-test014">
+    <p id="constraints-tests1" data-tests="../../rdf11/rdf-xml/index.html#xmlbase-test014">
       The syntax of the names MUST match the
       <a href="#rdf-id">rdf-id production</a>.</p>
 
@@ -1776,8 +1775,8 @@
     syntax data model events.</p>
 
   <p id="xml-attributes-tests1" data-tests="
-    rdf/rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test001,
-    rdf/rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test002">
+    ../../rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test001,
+    ../../rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test002">
     Element information items with reserved XML Names
     (See <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
     are not mapped to data model element events.
@@ -2248,12 +2247,12 @@
             class="arrow">·</span></a> accessor.</p>
 
           <p id="literal-direction-tests2" data-tests="
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-01,
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-02,
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-03,
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-04,
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-05,
-            rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-dir-06">
+            eval/index.html#rdf12-xml-dir-01,
+            eval/index.html#rdf12-xml-dir-02,
+            eval/index.html#rdf12-xml-dir-03,
+            eval/index.html#rdf12-xml-dir-04,
+            eval/index.html#rdf12-xml-dir-05,
+            eval/index.html#rdf12-xml-dir-06">
             Otherwise the value is a <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged string</a>
             with the
             <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> taken from the value of the
@@ -2327,8 +2326,8 @@
       </dl>
 
       <p id="datatype-tests1" data-tests="
-        rdf/rdf11/rdf-xml/index.html#datatypes-test001,
-        rdf/rdf11/rdf-xml/index.html#datatypes-test002">
+        ../../rdf11/rdf-xml/index.html#datatypes-test001,
+        ../../rdf11/rdf-xml/index.html#datatypes-test002">
         These events are constructed by giving values for the
         <a href="#eventterm-typedliteral-literal-value"
         class="termref"><span class="arrow">·</span>literal-value<span
@@ -2886,8 +2885,8 @@
     </p></div></div>
 
     <p id="oldTerms-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-abouteach-error002">
+      ../../rdf11/rdf-xml/index.html#rdfms-abouteach-error001,
+      ../../rdf11/rdf-xml/index.html#rdfms-abouteach-error002">
       These are the names from the <a data-cite="RDF12-CONCEPTS#dfn-rdf-vocabulary">RDF Vocabulary</a>
     that have been withdrawn from the language.  See the resolutions of
     Issue <a href="https://www.w3.org/2000/03/rdf-tracking/#rdfms-aboutEach-on-object">rdfms-aboutEach-on-object</a>,
@@ -2986,20 +2985,20 @@
     <ul>
 
     <li id="nodeElement-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
-      rdf/rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
-      rdf/rdf11/rdf-xml/index.html#rdfms-rdf-id-error001,
-      rdf/rdf11/rdf-xml/index.html#xmlbase-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error004">
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error001,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error004">
       If there is an attribute <em>a</em> with
      <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:ID</code>, then
 
     <em>e</em>.<a href="#eventterm-element-subject">subject</a> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>))).</li>
 
     <li id="nodeElement-tests2" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test003">
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test003">
       If there is an attribute <em>a</em> with
      <em>a</em>.<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:nodeID</code>, then
 
@@ -3013,16 +3012,16 @@
     </ul>
 
     <p id="nodeElement-tests4" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error005,
-      rdf/rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error006">If <em>e</em>.<a href="#eventterm-element-subject">subject</a> is empty,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test003,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error001,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error002,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error003,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error004,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error005,
+      ../../rdf11/rdf-xml/index.html#rdfms-syntax-incomplete-error006">If <em>e</em>.<a href="#eventterm-element-subject">subject</a> is empty,
     then <em>e</em>.<a href="#eventterm-element-subject">subject</a> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()).</p>
 
 
@@ -3190,13 +3189,13 @@
     </p></div></div>
 
     <p id="literalPropertyElt-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#datatypes-test001,
-      rdf/rdf11/rdf-xml/index.html#datatypes-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test005,
-      rdf/rdf11/rdf-xml/index.html#rdfms-xmllang-test006,
-      rdf/rdf11/rdf-xml/index.html#rdfms-para196-test001">
+      ../../rdf11/rdf-xml/index.html#datatypes-test001,
+      ../../rdf11/rdf-xml/index.html#datatypes-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test003,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test005,
+      ../../rdf11/rdf-xml/index.html#rdfms-xmllang-test006,
+      ../../rdf11/rdf-xml/index.html#rdfms-para196-test001">
     Note that the empty literal case is defined in production
     <a href="#emptyPropertyElt">emptyPropertyElt</a>.</p>
 
@@ -3252,13 +3251,13 @@
 
 
     <p id="parseTypeLiteralPropertyElt-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error001,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test003,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test009,
-      rdf/rdf11/rdf-xml/index.html#xml-canon-test001">
+      ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error001,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error002,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error003,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test003,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test009,
+      ../../rdf11/rdf-xml/index.html#xml-canon-test001">
     For element <em>e</em> and the literal <em>l</em>
     that is the <code>rdf:parseType="Literal"</code> content.
     <em>l</em> is not transformed by the syntax data model mapping into events
@@ -3348,14 +3347,14 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p><em>n</em> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()).</p>
 
     <p id="parseTypeResourcePropertyElt-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004,
-      rdf/rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0005,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test006,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test010,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test012,
-      rdf/rdf11/rdf-xml/index.html#rdfms-seq-representation-test001,
-      rdf/rdf12/rdf-xml/eval/index.html#rdf12-xml-an-05">
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004,
+      ../../rdf11/rdf-xml/index.html#rdf-ns-prefix-confusion-test0005,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test006,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test010,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test012,
+      ../../rdf11/rdf-xml/index.html#rdfms-seq-representation-test001,
+      eval/index.html#rdf12-xml-an-05">
       Add the following statement to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:
     </p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -3475,7 +3474,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <em>s</em> to give a sequence of events.</p>
 
     <p id="parseTypeCollectionPropertyElt-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-seq-representation-test001">
+      ../../rdf11/rdf-xml/index.html#rdfms-seq-representation-test001">
       If <em>s</em> is not empty, <em>n</em> is the first event identifier in
     <em>s</em> and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -3585,8 +3584,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     </p></div></div>
 
     <p id="emptyPropertyElt-tests1" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005">
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test005">
       and then if <em>i</em> is given, the above statement is reified with
     iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
@@ -3623,8 +3622,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       </ul>
 
     <p id="emptyPropertyElt-tests2" data-tests="
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test013,
-      rdf/rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test014">
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test013,
+      ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test014">
       The following are done in any order:</p>
 
     <ul>
