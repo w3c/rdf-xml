@@ -3004,7 +3004,7 @@
     <a href="#literalPropertyElt">literalPropertyElt</a> |
     <a href="#parseTypeLiteralPropertyElt">parseTypeLiteralPropertyElt</a> |
     <a href="#parseTypeResourcePropertyElt">parseTypeResourcePropertyElt</a> |
-    <a href="#parseTypeResourcePropertyElt">parseTypeTriplePropertyElt</a> |
+    <a href="#parseTypeTriplePropertyElt">parseTypeTriplePropertyElt</a> |
     <a href="#parseTypeCollectionPropertyElt">parseTypeCollectionPropertyElt</a> |
 
     <a href="#parseTypeOtherPropertyElt">parseTypeOtherPropertyElt</a> |
@@ -3059,7 +3059,8 @@
       <a href="#section-Reification" class="sectionRef"></a>
       and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em></p>
 
-    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+    <p id="resourcePropertyElt-tests3" data-tests="eval#rdf12-xml-an-10">
+      If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
       the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
       and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
@@ -3104,10 +3105,14 @@
     statement is reified with
     <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
-
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
-    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+
+    <p id="literalPropertyElt-tests3" data-tests="
+      eval/index.html#rdf12-xml-an-01,
+      eval/index.html#rdf12-xml-an-02,
+      eval/index.html#rdf12-xml-an-03">
+      If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
       the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
       and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
@@ -3185,12 +3190,13 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>If the <code>rdf:ID</code> attribute <em>a</em> is given, the above
     statement is reified with
-
     <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
-    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+
+    <p id="parseTypeLiteralPropertyElt-tests3" data-tests="">
+      If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
       the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
       and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
@@ -3238,7 +3244,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <a href="#section-Reification" class="sectionRef"></a>
     and <em>e</em>.<a href="#eventterm-element-subject">subject</a> := <em>i</em>.</p>
 
-    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+    <p id="parseTypeResourcePropertyElt-tests3" data-tests="eval/index.html#rdf12-xml-an-05">
+      If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
       the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
       and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
@@ -3290,7 +3297,16 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>Then process the resulting sequence using production
     <a href="#nodeElementList">nodeElement</a>.</p>
 
-    <p>After processing the node sequence,
+    <p id="parseTypeTriplePropertyElt-tests1" data-tests="
+      eval/index.html#rdf12-xml-tt-01,
+      eval/index.html#rdf12-xml-tt-02,
+      eval/index.html#rdf12-xml-tt-03,
+      eval/index.html#rdf12-xml-tt-04,
+      eval/index.html#rdf12-xml-tt-05,
+      eval/index.html#rdf12-xml-tt-06,
+      eval/index.html#rdf12-xml-tt-07,
+      eval/index.html#rdf12-xml-tt-08">
+      After processing the node sequence,
       <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>
       MUST be an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> containing a single triple.</p>
 
@@ -3348,10 +3364,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     either of the the above statements is reified with
     <em>i</em> := iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>a</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
+    <a href="#section-Reification" class="sectionRef"></a>.</p>
 
-    <a href="#section-Reification" class="sectionRef"></a>.
-    </p>
-    <p>If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+    <p id="parseTypeCollectionPropertyElt-tests3" data-tests="">
+      If either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
       the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
       and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
@@ -3425,8 +3441,11 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <li>
     <p>If there are no attributes <strong>or</strong> only the
-    optional <code>rdf:ID</code> attribute <em>i</em>
-    then <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a>:="", <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>, <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
+    optional <code>rdf:ID</code> attribute <em>i</em>,
+    or the optional attributes `rdf:annotation` or `rdf:annotationNodeID` <em>a</em>,
+    then <em>o</em> := literal(<a href="#eventterm-literal-literal-value">literal-value</a>:="",
+    <a href="#eventterm-literal-literal-language">literal-language</a> := <em>e</em>.<a href="#eventterm-element-language">language</a>,
+    <a href="#eventterm-literal-literal-direction">literal-direction</a> := <em>e</em>.<a href="#eventterm-element-direction">direction</a>)
     and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
@@ -3438,6 +3457,16 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-attribute-string-value">string-value</a>)))
     using the reification rules in
     <a href="#section-Reification" class="sectionRef"></a>.</p>
+
+    <p id="emptyPropertyElt-tests3" data-tests="eval/index.html#rdf12-xml-an-04">
+      and then if <em>a</em> is given,
+      the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+      and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+    <div class="ntripleOuter"><div class="ntripleInner"><p>
+    &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+    </p></div></div>
 
     <p class="note"><strong>Test:</strong>
     Indicated by
@@ -3532,6 +3561,21 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       iri(<a href="#eventterm-identifier-identifier">identifier</a> := resolve(<em>e</em>, concat("#", <em>i</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a>)))
       using the reification rules in
       <a href="#section-Reification" class="sectionRef"></a>.</p>
+
+      <p id="emptyPropertyElt-tests3" data-tests="
+        eval/index.html#rdf12-xml-an-06,
+        eval/index.html#rdf12-xml-an-07,
+        eval/index.html#rdf12-xml-an-08,
+        eval/index.html#rdf12-xml-an-09,
+        eval/index.html#rdf12-xml-an-10">
+        and then if either the <code>rdf:annotation</code> or <code>rdf:annotationNodeID</code> attributes <em>a</em> are given,
+        the statement above is used to create a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a> <i>t</i>,
+        and the following statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
+
+      <div class="ntripleOuter"><div class="ntripleInner"><p>
+      &#160;&#160;<code> <em>a</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies&gt; <em>t</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> .</code>
+
+      </p></div></div>
 
     </li>
 
@@ -4049,7 +4093,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, nodeElement
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, nodeElement
       }
 
     literalPropertyElt =
@@ -4060,7 +4104,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr? , datatypeAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, text
+          idAttr? , (annotationAttr | annotationNodeIDAttr)?, datatypeAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, text
       }
 
     parseTypeLiteralPropertyElt =
@@ -4071,7 +4115,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, parseLiteral, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, literal
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, parseLiteral, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, literal
       }
 
     parseTypeResourcePropertyElt =
@@ -4082,7 +4126,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
       }
 
     parseTypeTriplePropertyElt =
@@ -4091,7 +4135,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, parseResource, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, propertyEltList
       }
 
     parseTypeCollectionPropertyElt =
@@ -4102,7 +4146,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseCollection, nodeElementList
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseCollection, nodeElementList
       }
 
     parseTypeOtherPropertyElt =
@@ -4113,7 +4157,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
                     its:dir | its:version |
                     rdf:Description | rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID |
                     xml:* ) {
-          idAttr?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseOther, any
+          idAttr?, (annotationAttr | annotationNodeIDAttr)?, xmllang?, xmlbase?, versionAttr?, dirAttr?, itsVersionAttr?, parseOther, any
       }
 
     emptyPropertyElt =
