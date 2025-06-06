@@ -892,7 +892,7 @@
       It is common for <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a> to have <code>rdf:type</code> predicates
     from subject nodes.  These are conventionally called <em>typed
     nodes</em> in the graph, or <em>typed node elements</em> in the
-    RDF/XML.  RDF/XML allows this triple to be expressed more concisely
+    RDF/XML.  RDF/XML allows such triples to be expressed more concisely
     by replacing the <code>rdf:Description</code> node element name with
     the namespaced-element corresponding to the
 
@@ -971,8 +971,8 @@
       ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-error1
       ">
       The <code>rdf:ID</code> attribute on a <a>node element</a>
-    (not <a>property element</a>,
-    that has another meaning) can be used instead of
+    (not on <a>property element</a>;
+    there it has another meaning) can be used instead of
     <code>rdf:about</code> and gives a <a data-cite="RDF12-CONCEPTS#dfn-relative-iri">relative IRI reference</a> equivalent to <code>#</code>
     concatenated with the <code>rdf:ID</code> attribute value.  So for
     example if <code>rdf:ID="name"</code>, that would be equivalent
@@ -1030,7 +1030,7 @@
       RDF has a set of container membership properties
     and corresponding <a>property elements</a> that are mostly used with
     instances of the
-    <code>rdf:Seq</code>, <code>rdf:Bag</code> and <code>rdf:Alt</code>
+    <code>rdf:Seq</code>, <code>rdf:Bag</code>, and <code>rdf:Alt</code>
     classes which may be written as typed node elements.  The list properties are
     <code>rdf:_1</code>, <code>rdf:_2</code> etc. and can be written
     as <a>property elements</a> or <a>property attributes</a> as shown in
@@ -1778,7 +1778,7 @@
     ../../rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test001,
     ../../rdf11/rdf-xml/index.html#unrecognised-xml-attributes-test002">
     Element information items with reserved XML Names
-    (See <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
+    (see <a data-cite="XML11#dt-name">Name</a> in [[[XML11]]])
     are not mapped to data model element events.
     These are all those with property [prefix] beginning with <code>xml</code>
     (case independent comparison) and all those with [prefix] property
