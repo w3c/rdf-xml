@@ -1091,9 +1091,7 @@
   <section id="section-Syntax-parsetype-Collection" class="informative">
     <h3>Collections: <code>rdf:parseType="Collection"</code></h3>
 
-    <p id="parsetype-collection-tests1" data-tests="
-      ../../rdf11/rdf-xml/index.html#rdfms-seq-representation-test001">
-      RDF/XML allows an <code>rdf:parseType="Collection"</code>
+    <p>RDF/XML allows an <code>rdf:parseType="Collection"</code>
 
     attribute on a <a>property element</a> to let it contain multiple node
     elements.  These contained <a>node elements</a> give the set of subject
@@ -1140,13 +1138,7 @@
   <section id="section-Syntax-reifying" class="informative">
     <h3>Reifying Statements: <code>rdf:ID</code></h3>
 
-    <p id="reifying-tests1" data-tests="
-      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
-      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test001,
-      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test002,
-      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
-      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005">
-      The <code>rdf:ID</code> attribute can be used on a property
+    <p>The <code>rdf:ID</code> attribute can be used on a property
     element to reify the triple that it generates (See
     <a href="#section-Reification" class="sectionRef"></a> for the
     full details).
@@ -1520,8 +1512,16 @@
     restricts which
     <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> can be made and the same IRI can be given in multiple ways.</p>
 
-    <p>
-    The <a href="#idAttr"><code>rdf:ID</code></a> values
+    <p id="rdf-id-tests2" data-tests="
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test1,
+      ../../rdf11/rdf-xml/index.html#rdfms-difference-between-ID-and-about-test2,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error001,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error002,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error003,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error004,
+      ../../rdf11/rdf-xml/index.html#rdfms-rdf-id-error005,
+      ../../rdf11/rdf-xml/index.html#xmlbase-test001">
+      The <a href="#idAttr"><code>rdf:ID</code></a> values
     are transformed into
     <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a>
     by appending the attribute value to the result of appending
@@ -3934,10 +3934,13 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <div class="ntripleOuter"><div class="ntripleInner"><p>
     <code><em>s</em> <em>p</em> <em>o</em>  .</code>
     </p></div></div>
-
     <p>add the following statements to the graph:</p>
     <div id="section-Reification-tests" class="ntripleOuter" data-tests="
-      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001">
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test001,
+      ../../rdf11/rdf-xml/index.html#rdfms-reification-required-test002,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test004,
+      ../../rdf11/rdf-xml/index.html#rdfms-not-id-and-resource-attr-test005">
       <div class="ntripleInner"><p>
     <code><em>r</em>.<a href="#eventterm-identifier-rdf-term">rdf-term</a> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#subject&gt; <em>s</em> .</code><br />
 
