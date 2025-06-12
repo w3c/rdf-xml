@@ -1337,7 +1337,13 @@
       (all lowercase, with a space character as the fourth letter).</p>
 
     <p>Features introduced in RDF 1.2 require a version announcement
-      on an in-scope <a>node element</a> with an `rdf:version` attribute with the value `"1.2"`.</p>
+      on an in-scope <a>node element</a> with an `rdf:version` attribute
+      with a defined value other than `"1.1"`.
+      Acceptable values for `rdf:version` are defined in
+      <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].
+      Parser behavior for version values is otherwise undefined and MAY be used
+      to signal errors or warnings.
+      </p>
 
     <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
   </section>
@@ -1879,7 +1885,7 @@
 
           <p>If the element has a
             <a href="#eventterm-element-version">version</a> accessor
-            with the value `"1.2"` or greater,
+            with the value `"1.2-basic"`, `"1.2"` or greater,
             this set contains an attribute information item
             <code>its:dir</code> ([namespace name] property with the value
             `"http://www.w3.org/2005/11/its"` and
@@ -1893,7 +1899,7 @@
 
           <p>If the element has a
             <a href="#eventterm-element-version">version</a> accessor
-            with the value `"1.2"` or greater,
+            with the value `"1.2-basic"`, `"1.2"` or greater,
             this set contains an attribute information item
             <code>its:version</code> ([namespace name] property with the value
             `"http://www.w3.org/2005/11/its"` and
@@ -3777,6 +3783,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-string-value">string-value</a> == string(<a href="#URI-reference">IRI</a>))
 
     </p></div></div>
+
+    <p>This production MAY be ignored unless
+      <a href="#eventterm-element-version"><code>rdf:version</code></a>
+      is `"1.2"` or greater.</p>
     </section>
 
     <!-- annotationNodeID attribute -->
@@ -3788,6 +3798,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     &#160;&#160;&#160;&#160;<a href="#eventterm-attribute-rdf-term">rdf-term</a> == bnodeid(<a href="#rdf-id">rdf-id</a>))
 
     </p></div></div>
+
+    <p>This production MAY be ignored unless
+      <a href="#eventterm-element-version"><code>rdf:version</code></a>
+      is `"1.2"` or greater.</p>
     </section>
 
     <!-- property attribute -->
