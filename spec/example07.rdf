@@ -5,8 +5,8 @@
   <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
          dc:title="RDF 1.2 XML Syntax">
     <ex:editor>
-      <rdf:Description ex:fullName="Dave Beckett">
-        <ex:homePage rdf:resource="http://purl.org/net/dajobe/" />
+      <rdf:Description ex:fullName="Gregg Kellogg">
+        <ex:homePage rdf:resource="https://greggkellogg.net/" />
       </rdf:Description>
     </ex:editor>
   </rdf:Description>

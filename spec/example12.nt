@@ -1,4 +1,4 @@
-<http://www.w3.org/TR/rdf-syntax-grammar> <http://purl.org/dc/elements/1.1/title> "RDF/XML Syntax Specification (Revised)" .
-<http://www.w3.org/TR/rdf-syntax-grammar> <http://example.org/stuff/1.0/editor> _:abc .
-_:abc <http://example.org/stuff/1.0/fullName> "Dave Beckett" .
-_:abc <http://example.org/stuff/1.0/homePage> <http://purl.org/net/dajobe/> .
+<https://www.w3.org/TR/rdf12-xml/> <http://purl.org/dc/elements/1.1/title> "RDF 1.2 XML Syntax" .
+<https://www.w3.org/TR/rdf12-xml/> <http://example.org/stuff/1.0/editor> _:abc .
+_:abc <http://example.org/stuff/1.0/fullName> "Gregg Kellogg" .
+_:abc <http://example.org/stuff/1.0/homePage> <https://greggkellogg.net/> .
