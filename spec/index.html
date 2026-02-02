@@ -259,8 +259,8 @@
          alt="One path through the graph for RDF/XML Example 4." />
       <figcaption id="figure2-alt">One Path Through the Graph
         described in <a href="#example4"></a>
-        highlighting the path from `&lt;http://www.w3.org/TR/rdf-syntax-grammar>`
-        to `&lt;http://purl.org/net/dajobe>`.
+        highlighting the path from `&lt;https://www.w3.org/TR/rdf12-xml/>`
+        to `&lt;https://greggkellogg.net/>`.
         Elements along the path are marked in <strong>bold text</strong>.
       </figcaption>
     </figure>
@@ -269,11 +269,11 @@
       graph corresponds to the node/predicate arc stripes:</p>
 
     <ol>
-      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://www.w3.org/TR/rdf-syntax-grammar</code></li>
+      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>https://www.w3.org/TR/rdf12-xml/</code></li>
       <li>Predicate Arc labeled with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://example.org/terms/editor</code></li>
       <li>Node with no <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a></li>
       <li>Predicate Arc labeled with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>  <code>http://example.org/terms/homePage</code></li>
-      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>http://purl.org/net/dajobe/</code></li>
+      <li>Node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a> <code>https://greggkellogg.net/</code></li>
     </ol>
 
     <p>In RDF/XML, the sequence of 5 nodes and predicate arcs on
@@ -312,11 +312,11 @@
        data-transform="updateExample"
        title="Node Elements with IRIs added">
     <!--
-    <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+    <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
       <ex:editor>
         <rdf:Description>
           <ex:homePage>
-            <rdf:Description rdf:about="http://purl.org/net/dajobe/">
+            <rdf:Description rdf:about="https://greggkellogg.net/">
             </rdf:Description>
           </ex:homePage>
         </rdf:Description>
@@ -337,26 +337,26 @@
        data-transform="updateExample"
        title="Complete description of all graph paths">
       <!--
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
             <ex:homePage>
-              <rdf:Description rdf:about="http://purl.org/net/dajobe/">
+              <rdf:Description rdf:about="https://greggkellogg.net/">
               </rdf:Description>
             </ex:homePage>
           </rdf:Description>
         </ex:editor>
       </rdf:Description>
 
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
-            <ex:fullName>Dave Beckett</ex:fullName>
+            <ex:fullName>Gregg Kellogg</ex:fullName>
           </rdf:Description>
         </ex:editor>
       </rdf:Description>
 
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <dc:title>RDF 1.2 XML Syntax</dc:title>
       </rdf:Description>
       -->
@@ -378,7 +378,7 @@
     <p>Taking <a href="#example3"></a>, there are
     two <a>node elements</a> that can take multiple <a>property elements</a>.
     The subject node with <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
-    <code>http://www.w3.org/TR/rdf-syntax-grammar</code>
+    <code>https://www.w3.org/TR/rdf12-xml/</code>
     has <a>property elements</a> <code>ex:editor</code> and <code>dc:title</code>
     and the <a>node element</a> for the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> can take <code>ex:homePage</code>
     and <code>ex:fullName</code>.  This abbreviation
@@ -389,14 +389,14 @@
           data-transform="updateExample"
           title="Using multiple property elements on a node element">
       <!--
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
             <ex:homePage>
-              <rdf:Description rdf:about="http://purl.org/net/dajobe/">
+              <rdf:Description rdf:about="https://greggkellogg.net/">
               </rdf:Description>
             </ex:homePage>
-            <ex:fullName>Dave Beckett</ex:fullName>
+            <ex:fullName>Gregg Kellogg</ex:fullName>
           </rdf:Description>
         </ex:editor>
         <dc:title>RDF 1.2 XML Syntax</dc:title>
@@ -422,7 +422,7 @@
 
     <p>In this example, the <a>property element</a> <code>ex:homePage</code>
     contains an empty <a>node element</a> with the <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
-    <code>http://purl.org/net/dajobe/</code>.  This can be replaced with
+    <code>https://greggkellogg.net/</code>.  This can be replaced with
     the empty <a>property element</a> form giving the result shown in
     <a href="#example5"></a>:</p>
 
@@ -430,11 +430,11 @@
          data-transform="updateExample"
          title="Empty property elements">
        <!--
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
-            <ex:homePage rdf:resource="http://purl.org/net/dajobe/"/>
-            <ex:fullName>Dave Beckett</ex:fullName>
+            <ex:homePage rdf:resource="https://greggkellogg.net/"/>
+            <ex:fullName>Gregg Kellogg</ex:fullName>
           </rdf:Description>
         </ex:editor>
         <dc:title>RDF 1.2 XML Syntax</dc:title>
@@ -475,11 +475,11 @@
          data-transform="updateExample"
          title="Replacing property elements with string literal content into property attributes">
       <!--
-      <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                  dc:title="RDF 1.2 XML Syntax">
         <ex:editor>
-          <rdf:Description ex:fullName="Dave Beckett">
-            <ex:homePage rdf:resource="http://purl.org/net/dajobe/"/>
+          <rdf:Description ex:fullName="Gregg Kellogg">
+            <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </rdf:Description>
         </ex:editor>
       </rdf:Description>
@@ -527,11 +527,11 @@
                    xmlns:dc="http://purl.org/dc/elements/1.1/"
                    xmlns:ex="http://example.org/stuff/1.0/">
 
-         <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+         <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                     dc:title="RDF 1.2 XML Syntax">
            <ex:editor>
-             <rdf:Description ex:fullName="Dave Beckett">
-               <ex:homePage rdf:resource="http://purl.org/net/dajobe/" />
+             <rdf:Description ex:fullName="Gregg Kellogg">
+               <ex:homePage rdf:resource="https://greggkellogg.net/" />
              </rdf:Description>
            </ex:editor>
          </rdf:Description>
@@ -579,7 +579,7 @@
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                  xmlns:dc="http://purl.org/dc/elements/1.1/">
 
-          <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
+          <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
             <dc:title>RDF 1.2 XML Syntax</dc:title>
             <dc:title xml:lang="en">RDF 1.2 XML Syntax</dc:title>
             <dc:title xml:lang="en-US">RDF 1.2 XML Syntax</dc:title>
@@ -779,13 +779,13 @@
                     xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:ex="http://example.org/stuff/1.0/">
 
-          <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+          <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                      dc:title="RDF 1.2 XML Syntax">
             <ex:editor rdf:nodeID="abc"/>
           </rdf:Description>
 
-          <rdf:Description rdf:nodeID="abc" ex:fullName="Dave Beckett">
-            <ex:homePage rdf:resource="http://purl.org/net/dajobe/"/>
+          <rdf:Description rdf:nodeID="abc" ex:fullName="Gregg Kellogg">
+            <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </rdf:Description>
 
         </rdf:RDF>
@@ -825,11 +825,11 @@
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:ex="http://example.org/stuff/1.0/">
-        <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+        <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                          dc:title="RDF 1.2 XML Syntax">
           <ex:editor rdf:parseType="Resource">
-            <ex:fullName>Dave Beckett</ex:fullName>
-            <ex:homePage rdf:resource="http://purl.org/net/dajobe/"/>
+            <ex:fullName>Gregg Kellogg</ex:fullName>
+            <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </ex:editor>
         </rdf:Description>
       </rdf:RDF>
@@ -878,9 +878,9 @@
                   xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:ex="http://example.org/stuff/1.0/"&gt;
 
-        &lt;rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+        &lt;rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                   dc:title="RDF 1.2 XML Syntax"&gt;
-          &lt;ex:editor ex:fullName="Dave Beckett" /&gt;
+          &lt;ex:editor ex:fullName="Gregg Kellogg" /&gt;
                   &lt;!-- Note the ex:homePage property has been ignored for this example --&gt;
         &lt;/rdf:Description&gt;
 
@@ -4146,6 +4146,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <li>Adds <a href="#section-Syntax-annotations"></a> and rules
       for creating <a data-cite="RDF12-CONCEPTS#dfn-reifier">reifiers</a> for <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple Terms</a>, allowing them
       to be used as the subject or object of other triples.</li>
+    <li>Unify the examples.</li>
   </ul>
 </section>
 
