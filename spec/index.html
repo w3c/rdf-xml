@@ -3300,7 +3300,6 @@
     end-element()
     </p></div></div>
 
-
     <p id="parseTypeLiteralPropertyElt-tests" data-tests="
       ../../rdf11/rdf-xml/index.html#rdf-containers-syntax-vs-schema-test004,
       ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-error001,
@@ -3309,13 +3308,13 @@
       ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test003,
       ../../rdf11/rdf-xml/index.html#rdfms-empty-property-elements-test009,
       ../../rdf11/rdf-xml/index.html#xml-canon-test001">
-    For element <em>e</em> and the literal <em>l</em>
+    For element <em>e</em> and the literal <em>lit</em>
     that is the <code>rdf:parseType="Literal"</code> content.
-    <em>l</em> is not transformed by the syntax data model mapping into events
+    <em>lit</em> is not transformed by the syntax data model mapping into events
     (as noted in section <a href="#section-Data-Model" class="sectionRef"></a>)
     but remains an XML Infoset of XML Information items.</p>
 
-    <p><em>l</em> is transformed into the lexical form of an
+    <p><em>lit</em> is transformed into the lexical form of an
     <a data-cite="RDF12-CONCEPTS#dfn-rdf-xmlliteral">XML literal</a>
     in the <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> <em>x</em> (a Unicode string)
     by the following algorithm.  This does not mandate any implementation
@@ -3323,7 +3322,7 @@
 
     <ol>
 <!-- old algorithm
-<li>Use <em>l</em> to construct an XPath <a
+<li>Use <em>lit</em> to construct an XPath <a
     data-cite="XPATH#infoset">node-set</a>
     (a <a data-cite="XML-EXC-C14N#def-document-subset">document
     subset</a>)</li>
@@ -3336,13 +3335,13 @@
     a UTF-8 encoding of some Unicode string <em>x</em> (sequence
     of Unicode characters)</li>
     -->
-    <li>Use <em>l</em> to construct an <a
+    <li>Use <em>lit</em> to construct an <a
     data-cite="XPATH-DATAMODEL-30#sequences">XPath
     sequence</a> [[XPATH-DATAMODEL-30]].</li>
     <li>Apply <a
 data-cite="XPATH-FUNCTIONS-30#func-serialize">https://www.w3.org/TR/xpath-functions-30/#func-serialize</a> [[XPATH-FUNCTIONS-30]]
 to this sequence to give an xsd:string <em>x</em>.</li>
-    <li>The Unicode string <em>x</em> is used as the lexical form of <em>l</em></li>
+    <li>The Unicode string <em>x</em> is used as the lexical form of <em>lit</em></li>
     <li>This Unicode string <em>x</em> SHOULD be in NFC Normal Form C [[NFC]]</li>
     </ol>
 
@@ -3518,10 +3517,10 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     <p>For element event <em>e</em> with possibly empty
 
-    <a href="#nodeElementList">nodeElementList</a> <em>l</em>.  Set
+    <a href="#nodeElementList">nodeElementList</a> <em>nel</em>.  Set
     <em>s</em>:=list().</p>
 
-    <p>For each element event <em>f</em> in <em>l</em>,
+    <p>For each element event <em>f</em> in <em>nel</em>,
     <em>n</em> := bnodeid(<a href="#eventterm-identifier-identifier">identifier</a> := generated-blank-node-id()) and append <em>n</em> to
 
     <em>s</em> to give a sequence of events.</p>
@@ -3564,7 +3563,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <p>If <em>s</em> is empty, no further work is performed.</p>
 
     <p>For each event <em>n</em> in <em>s</em> and the
-    corresponding element event <em>f</em> in <em>l</em>, the following
+    corresponding element event <em>f</em> in <em>nel</em>, the following
     statement is added to <em>e</em>.<a href="#eventterm-element-parent">parent</a>.<a href="#eventterm-element-graph">graph</a>:</p>
 
     <div class="ntripleOuter"><div class="ntripleInner"><p>
