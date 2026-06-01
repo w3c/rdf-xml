@@ -4157,8 +4157,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <h2>Parsing RDF/XML 1.2 with non-conforming RDF/XML 1.1 parsers</h2>
 
     <p>RDF Version 1.2 introduces support for the new <a data-cite="RDF12-CONCEPTS#dfn-triple-term">Triple Terms</a>.
-    A conforming RDF/XML 1.1 parser would not see these because it should have stopped with an error due to the introduction of new attributes on the ROOT element, which was illegal. A number of mostly compliant parsers exist and do not error out here, they instead
-    mis-interpret the <code>rdf:parseType="Triple"</code> parse type as the default <code>rdf:parseType=""</code>.
+    A conforming RDF/XML 1.1 parser would not see these because it should have stopped with an error due to the introduction of new attributes on the ROOT element, which was illegal. Some almost compliant parsers exist and do not error out here, they instead mis-interpret the <code>rdf:parseType="Triple"</code> parse type as the default <code>rdf:parseType=""</code>.
     </p>
 
     <pre class="example rdf" id="confusion_example1"
@@ -4198,7 +4197,31 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       -->
     </pre>
 
-    <p>This can be detected with the following SHACL shape</p>
+    <section class="informative" id="nonconforming-detect-using-shacl">
+    <h1>SHACL shape to detect some non-conforming parse results</h1>
+    <p>This can be detected with the <a href="shacl-detect-nonconforming">following</a> [[SHACL]] shape</p>
+    <pre class="example rdf"
+        data-transform="updateExample"
+        id="shacl-detect-nonconforming"
+         title="SHACL shape to detect mis-interpreted RDF/XML 1.2">
+         <!--
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sh="http://www.w3.org/ns/shacl#">
+  <sh:NodeShape>
+    <sh:property rdf:parseType="Resource">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+      <sh:name>rdf:annotation as a predicate instead of an XML attribute leading to a TripleTerm</sh:name>
+      <sh:path rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#annotation"/>
+    </sh:property>
+    <sh:targetSubjectsOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#annotation"/>
+  </sh:NodeShape>
+</rdf:RDF>
+         -->
+    </pre>
+    </section>
+
+
 </section>
 <!-- THIRTEENTH PART : Syntax Schemas -->
 <section id="section-Schemas" class="appendix informative">
