@@ -4359,6 +4359,16 @@ to this sequence to give an xsd:string <em>x</em>.</li>
           IRI
       }
 
+    annotationAttr =
+      attribute rdf:annotation {
+          IRI
+      }
+
+    annotationNodeIDAttr =
+      attribute rdf:annotationNodeID {
+          IDsymbol
+      }
+
     propertyAttr =
       attribute * - ( local:* | rdf:RDF | rdf:ID |
                       rdf:annotation | rdf:annotationNodeID |
