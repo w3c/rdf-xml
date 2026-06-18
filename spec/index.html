@@ -4360,13 +4360,25 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       }
 
     propertyAttr =
-      attribute * - ( local:* | rdf:RDF | rdf:ID |
-                      rdf:annotation | rdf:annotationNodeID |
-                      rdf:about | rdf:parseType |
-                      rdf:resource | rdf:nodeID | rdf:datatype | rdf:version |
-                      rdf:li | its:dir | | its:version
-                      rdf:Description | rdf:aboutEach |
-                      rdf:aboutEachPrefix | rdf:bagID |
+      attribute * - (
+                      local:* |
+                      rdf:RDF |
+                      rdf:ID |
+                      rdf:annotation |
+                      rdf:annotationNodeID |
+                      rdf:about |
+                      rdf:parseType |
+                      rdf:resource |
+                      rdf:nodeID |
+                      rdf:datatype |
+                      rdf:version |
+                      rdf:li |
+                      its:dir |
+                      its:version |
+                      rdf:Description |
+                      rdf:aboutEach |
+                      rdf:aboutEachPrefix |
+                      rdf:bagID |
                       xml:* ) {
           string
       }
