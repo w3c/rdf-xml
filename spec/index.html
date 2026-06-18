@@ -2801,7 +2801,7 @@
     <td><a href="#parseOther"></a></td> <td>attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,
 
     <a
-    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )</td>
+    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection" | "Triple") )</td>
     </tr>
     <tr>
     <td><a href="#URI-reference"></a></td> <td>An <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>.</td>
@@ -3894,7 +3894,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     <div class="productionOuter"><div class="productionInner"><p>
     attribute(<a href="#eventterm-attribute-URI">IRI</a> == <code>rdf:parseType</code>,<br />
     &#160;&#160;&#160;&#160;<a
-    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection") )
+    href="#eventterm-attribute-string-value">string-value</a> == <a>anyString</a> - ("Resource" | "Literal" | "Collection" | "Triple") )
 
     </p></div></div>
     </section>
@@ -4403,7 +4403,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     parseOther =
       attribute rdf:parseType {
-          text
+          xsd:string - ( "Resource" | "Literal" | "Collection" | "Triple" )
       }
 
     versionAttr =
