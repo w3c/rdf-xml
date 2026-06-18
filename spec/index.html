@@ -4209,12 +4209,19 @@ to this sequence to give an xsd:string <em>x</em>.</li>
     # and to forbid every other xml:* attribute, element
 
     doc =
-      RDF | nodeElement
+      RDF | topLevelNodeElement
 
     RDF =
       element rdf:RDF {
-         xmllang?, xmlbase?, nodeElementList
+         xmllang?, xmlbase?, itsVersionAttr?, nodeElementList
     }
+
+    topLevelNodeElement =
+      element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:li |
+                    rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID ) {
+          (idAttr | nodeIdAttr | aboutAttr )?, xmllang?, xmlbase?, itsVersionAttr?, propertyAttr*, propertyEltList
+      }
 
     nodeElementList =
       nodeElement*
@@ -4418,7 +4425,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     itsVersionAttr =
       attribute its:version {
-          text
+          "2.0"
       }
 
     IRI =
