@@ -4213,7 +4213,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     RDF =
       element rdf:RDF {
-         xmllang?, xmlbase?, nodeElementList
+         xmllang?, xmlbase?, versionAttr?, nodeElementList
     }
 
     nodeElementList =
@@ -4225,9 +4225,9 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     nodeElement =
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
-                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:li |
+                    rdf:resource | rdf:nodeID | rdf:datatype | rdf:version | rdf:li |
                     rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID ) {
-          (idAttr | nodeIdAttr | aboutAttr )?, xmllang?, xmlbase?, propertyAttr*, propertyEltList
+          (idAttr | nodeIdAttr | aboutAttr )?, xmllang?, xmlbase?, versionAttr?, propertyAttr*, propertyEltList
       }
 
       # It is not possible to say "and not things
