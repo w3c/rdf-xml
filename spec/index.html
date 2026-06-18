@@ -611,8 +611,9 @@
       This is specified by adding the `its:dir` attribute on any
       <a>node element</a> or <a>property element</a>, where `its` is the typical prefix
       used for the ITS namespace `http://www.w3.org/2005/11/its`.
-      The supported values for `its:dir` are `"ltr"`, and `"rtl"`
-      as required for <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>.</p>
+      The supported values for `its:dir` are `"ltr"` and `"rtl"`
+      as required for <a data-cite="RDF12-CONCEPTS#dfn-dir-lang-string">directional language-tagged strings</a>;
+      the empty string is also allowed to clear an inherited base direction.</p>
 
     <p>Some examples of marking base direction for RDF properties are shown in
       <a href="#example9"></a>:</p>
@@ -4227,7 +4228,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       element * - ( local:* | rdf:RDF | rdf:ID | rdf:about | rdf:parseType |
                     rdf:resource | rdf:nodeID | rdf:datatype | rdf:li |
                     rdf:aboutEach | rdf:aboutEachPrefix | rdf:bagID ) {
-          (idAttr | nodeIdAttr | aboutAttr )?, xmllang?, xmlbase?, propertyAttr*, propertyEltList
+          (idAttr | nodeIdAttr | aboutAttr )?, xmllang?, xmlbase?, dirAttr?, propertyAttr*, propertyEltList
       }
 
       # It is not possible to say "and not things
@@ -4413,7 +4414,7 @@ to this sequence to give an xsd:string <em>x</em>.</li>
 
     dirAttr =
       attribute its:dir {
-          text
+          "ltr" | "rtl" | ""
       }
 
     itsVersionAttr =
