@@ -1355,6 +1355,16 @@
     <p>The `application/rdf+xml` media type has been registered at IANA as [[RFC3870]].</p>
   </section>
 
+  
+  <section id="non-conformant-documents">
+    <h3>Non-conformant Documents</h3>
+  <p> If the target of a parsing process does not conform to the requirements specified in <a href="#section-MIME-Type">RDF media type</a>, the result
+    is not defined by this specification.
+    Error detection, reporting, and recovery are left to implementors,
+    because the appropriate behavior depends on the application interfaces and protocols within which the parser is used.
+    </p>
+  </section>
+
   <section class="informative" id="privacy-considerations">
     <h2>Privacy Considerations</h2>
     <p>The RDF/XML format is used to express arbitrary application data,
