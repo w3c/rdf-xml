@@ -289,21 +289,19 @@
       <code>ex:editor</code> and <code>ex:homePage</code> are the two
       <a>property elements</a>.</p>
 
-    <pre class="example rdf" id="example1"
+    <pre class="example xml rdf" id="example1"
          data-transform="updateExample"
          title="Striped RDF/XML (nodes and predicate arcs)">
-      <!--
-      ****<rdf:Description>****
+      <!--<rdf:Description>
       <ex:editor>
-        ****<rdf:Description>****
+        <rdf:Description>
           <ex:homePage>
             <rdf:Description>
             </rdf:Description>
           </ex:homePage>
-        ****</rdf:Description>****
+        </rdf:Description>
       </ex:editor>
-      ****</rdf:Description>****
-      -->
+      </rdf:Description>-->
     </pre>
 
     <p>The <a href="#figure2"></a> graph consists of some nodes
@@ -311,11 +309,10 @@
       to the RDF/XML using the <code>rdf:about</code> attribute on node
       elements to give the result in <a href="#example2"></a>:</p>
 
-    <pre class="example rdf" id="example2"
+    <pre class="example xml rdf" id="example2"
        data-transform="updateExample"
        title="Node Elements with IRIs added">
-    <!--
-    <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
+    <!--<rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
       <ex:editor>
         <rdf:Description>
           <ex:homePage>
@@ -324,8 +321,7 @@
           </ex:homePage>
         </rdf:Description>
       </ex:editor>
-    </rdf:Description>
-    -->
+    </rdf:Description>-->
     </pre>
 
     <p>Adding the other two paths through the <a href="#figure1"></a>
@@ -336,11 +332,10 @@
       shared between the two paths,
       see <a href="#section-Syntax-blank-nodes" class="sectionRef"></a>):</p>
 
-    <pre class="example rdf" id="example3"
+    <pre class="example xml rdf" id="example3"
        data-transform="updateExample"
        title="Complete description of all graph paths">
-      <!--
-      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
+      <!--<rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
             <ex:homePage>
@@ -361,8 +356,7 @@
 
       <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <dc:title>RDF 1.2 XML Syntax</dc:title>
-      </rdf:Description>
-      -->
+      </rdf:Description>-->
     </pre>
   </section>
 
@@ -388,11 +382,10 @@
     gives the result shown in <a href="#example4"></a>
     (this example does show that there is a single blank node):</p>
 
-    <pre class="example rdf" id="example4"
+    <pre class="example xml rdf" id="example4"
           data-transform="updateExample"
           title="Using multiple property elements on a node element">
-      <!--
-      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
+      <!--<rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
             <ex:homePage>
@@ -403,8 +396,7 @@
           </rdf:Description>
         </ex:editor>
         <dc:title>RDF 1.2 XML Syntax</dc:title>
-      </rdf:Description>
-      -->
+      </rdf:Description>-->
     </pre>
 
   </section>
@@ -429,11 +421,10 @@
     the empty <a>property element</a> form giving the result shown in
     <a href="#example5"></a>:</p>
 
-    <pre class="example rdf" id="example5"
+    <pre class="example xml rdf" id="example5"
          data-transform="updateExample"
          title="Empty property elements">
-       <!--
-      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
+       <!--<rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/">
         <ex:editor>
           <rdf:Description>
             <ex:homePage rdf:resource="https://greggkellogg.net/"/>
@@ -441,8 +432,7 @@
           </rdf:Description>
         </ex:editor>
         <dc:title>RDF 1.2 XML Syntax</dc:title>
-      </rdf:Description>
-       -->
+      </rdf:Description>-->
     </pre>
 
   </section>
@@ -474,19 +464,17 @@
     <a>property elements</a>.  These can be replaced with <a>property attributes</a>
     giving the result shown in <a href="#example6"></a>:</p>
 
-    <pre class="example rdf" id="example6"
+    <pre class="example xml rdf" id="example6"
          data-transform="updateExample"
          title="Replacing property elements with string literal content into property attributes">
-      <!--
-      <rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
+      <!--<rdf:Description rdf:about="https://www.w3.org/TR/rdf12-xml/"
                  dc:title="RDF 1.2 XML Syntax">
         <ex:editor>
           <rdf:Description ex:fullName="Gregg Kellogg">
             <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </rdf:Description>
         </ex:editor>
-      </rdf:Description>
-      -->
+      </rdf:Description>-->
     </pre>
 
   </section>
@@ -523,9 +511,8 @@
         (<a href="example07.rdf">example07.rdf</a>,
         output
         <a href="example07.nt">example07.nt</a>).</p>
-      <pre class="rdf" data-transform="updateExample">
-       <!--
-       <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+       <!--<?xml version="1.0"?>
        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                    xmlns:dc="http://purl.org/dc/elements/1.1/"
                    xmlns:ex="http://example.org/stuff/1.0/">
@@ -539,8 +526,7 @@
            </ex:editor>
          </rdf:Description>
 
-       </rdf:RDF>
-       -->
+       </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -576,9 +562,8 @@
       <p><strong>Complete example of <code>xml:lang</code>
         (<a href="example08.rdf">example08.rdf</a>, output <a href="example08.nt">example08.nt</a>)</strong></p>
 
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0" encoding="utf-8"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0" encoding="utf-8"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                  xmlns:dc="http://purl.org/dc/elements/1.1/">
 
@@ -594,8 +579,7 @@
             <dc:title xml:lang="en">The Tree</dc:title>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -622,9 +606,8 @@
       <p><strong>Complete example of <code>its:dir</code>
         (<a href="example09.rdf">example09.rdf</a>, output <a href="example09.nt">example09.nt</a>)</strong></p>
 
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0" encoding="utf-8"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0" encoding="utf-8"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
                  xmlns:show="http://example.org/vocab/show/"
@@ -637,8 +620,7 @@
             <show:unrelatedName xml:lang="he" its:dir="rtl">HTML היא שפת סימון.</show:unrelatedName>
             <show:localName xml:lang="en-US" its:dir="ltr">That Seventies Show</show:localName>
           </rdf:Description>
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -673,9 +655,8 @@
     <aside class="example" id="example10" title="Complete example of rdf:parseType=Literal">
     <strong>Complete example of <code>rdf:parseType="Literal"</code>
       (<a href="example10.rdf">example10.rdf</a>, output <a href="example10.nt">example10.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                  xmlns:ex="http://example.org/stuff/1.0/">
 
@@ -688,8 +669,7 @@
             </ex:prop>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -728,9 +708,8 @@
     <aside class="example" id="example11" title="Complete example of rdf:datatype">
       <strong>Complete example of <code>rdf:datatype</code>
       (<a href="example11.rdf">example11.rdf</a>,  output <a href="example11.nt">example11.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:ex="http://example.org/stuff/1.0/">
 
@@ -738,8 +717,7 @@
             <ex:size rdf:datatype="http://www.w3.org/2001/XMLSchema#int">123</ex:size>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -775,9 +753,8 @@
     <aside class="example" id="example12" title="Complete RDF/XML description of graph using rdf:nodeID">
       <strong>Complete RDF/XML description of graph using <code>rdf:nodeID</code> identifying the <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>
       (<a href="example12.rdf">example12.rdf</a>, output <a href="example12.nt">example12.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:ex="http://example.org/stuff/1.0/">
@@ -791,8 +768,7 @@
             <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -822,9 +798,8 @@
     <aside class="example" id="example13" title="Complete example using rdf:parseType=Resource">
     <strong>Complete example using <code>rdf:parseType="Resource"</code>
     (<a href="example13.rdf">example13.rdf</a>, output: <a href="example13.nt">example13.nt</a>)</strong>
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-      <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+      <!--<?xml version="1.0"?>
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:ex="http://example.org/stuff/1.0/">
@@ -835,8 +810,7 @@
             <ex:homePage rdf:resource="https://greggkellogg.net/"/>
           </ex:editor>
         </rdf:Description>
-      </rdf:RDF>
-      -->
+      </rdf:RDF>-->
     </pre>
     </aside>
 
@@ -875,7 +849,7 @@
     <aside class="example" id="example14" title="Complete example of property attributes on an empty property element">
     <strong>Complete example of <a>property attributes</a> on an empty <a>property element</a>
     (<a href="example14.rdf">example14.rdf</a>, output <a href="example14.nt">example14.nt</a>)</strong>
-    <pre class="rdf">
+    <pre class="xml rdf">
       &lt;?xml version="1.0"?&gt;
       &lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -926,9 +900,8 @@
     <aside class="example" id="example15">
       <strong>Complete example with <code>rdf:type</code>
       (<a href="example15.rdf">example15.rdf</a>, output <a href="example15.nt">example15.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:ex="http://example.org/stuff/1.0/">
@@ -937,8 +910,7 @@
             <rdf:type rdf:resource="http://example.org/stuff/1.0/Document"/>
             <dc:title>A marvelous thing</dc:title>
           </rdf:Description>
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
 
     </aside>
@@ -946,9 +918,8 @@
     <aside class="example" id="example16">
       <strong>Complete example using a typed node element to replace an <code>rdf:type</code>
       (<a href="example16.rdf">example16.rdf</a>, output <a href="example16.nt">example16.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:ex="http://example.org/stuff/1.0/">
@@ -957,8 +928,7 @@
             <dc:title>A marvelous thing</dc:title>
           </ex:Document>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -1008,9 +978,8 @@
     <aside class="example" id="example17" title="Complete example using rdf:ID> and xml:base">
       <strong>Complete example using <code>rdf:ID</code> and <code>xml:base</code> for shortening IRIs
       (<a href="example17.rdf">example17.rdf</a>, output <a href="example17.nt">example17.nt</a>)</strong>
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:ex="http://example.org/stuff/1.0/"
                     xml:base="http://example.org/here/">
@@ -1019,8 +988,7 @@
             <ex:prop rdf:resource="fruit/apple"/>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -1060,9 +1028,8 @@
     <strong>Complex example using RDF list properties
     (<a href="example18.rdf">example18.rdf</a>, output <a href="example18.nt">example18.nt</a>)</strong>
 
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-    <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+    <!--<?xml version="1.0"?>
     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
       <rdf:Seq rdf:about="http://example.org/favourite-fruit">
@@ -1071,8 +1038,7 @@
         <rdf:_3 rdf:resource="http://example.org/pear"/>
       </rdf:Seq>
 
-    </rdf:RDF>
-      -->
+    </rdf:RDF>-->
     </pre>
     </aside>
 
@@ -1080,9 +1046,8 @@
     <strong>Complete example using <code>rdf:li</code> property element for list properties
     (<a href="example19.rdf">example19.rdf</a>, output <a href="example19.nt">example19.nt</a>)</strong>
 
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-      <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+      <!--<?xml version="1.0"?>
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
         <rdf:Seq rdf:about="http://example.org/favourite-fruit">
@@ -1091,8 +1056,7 @@
           <rdf:li rdf:resource="http://example.org/pear"/>
         </rdf:Seq>
 
-      </rdf:RDF>
-      -->
+      </rdf:RDF>-->
     </pre>
     </aside>
 
@@ -1124,9 +1088,8 @@
       <strong>Complete example of a RDF collection of nodes using <code>rdf:parseType="Collection"</code>
       (<a href="example20.rdf">example20.rdf</a>, output <a href="example20.nt">example20.nt</a>)</strong>
 
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:ex="http://example.org/stuff/1.0/">
 
@@ -1138,8 +1101,7 @@
             </ex:hasFruit>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -1175,9 +1137,8 @@
       <strong>Complete example of <code>rdf:ID</code> reifying a <a>property element</a>
       (<a href="example21.rdf">example21.rdf</a>, output <a href="example21.nt">example21.nt</a>)</strong>
 
-      <pre class="rdf" data-transform="updateExample">
-        <!--
-        <?xml version="1.0"?>
+      <pre class="xml rdf" data-transform="updateExample">
+        <!--<?xml version="1.0"?>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                     xmlns:ex="http://example.org/stuff/1.0/"
                     xml:base="http://example.org/triples/">
@@ -1185,8 +1146,7 @@
             <ex:prop rdf:ID="triple1">blah</ex:prop>
           </rdf:Description>
 
-        </rdf:RDF>
-        -->
+        </rdf:RDF>-->
       </pre>
     </aside>
 
@@ -1210,9 +1170,8 @@
     <aside class="example" id="example22" title="Complete example using rdf:parseType=Triple">
     <strong>Complete example using <code>rdf:parseType="Triple"</code>
     (<a href="example22.rdf">example22.rdf</a>, output: <a href="example22.nt">example22.nt</a>)</strong>
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-      <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+      <!--<?xml version="1.0"?>
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                xmlns:ex="http://example.org/stuff/1.0/"
                xml:base="http://example.org/triples/"
@@ -1224,8 +1183,7 @@
             </rdf:Description>
           </ex:prop>
         </rdf:Description>
-      </rdf:RDF>
-      -->
+      </rdf:RDF>-->
     </pre>
     </aside>
 
@@ -1264,9 +1222,8 @@
     <aside class="example" id="example23" title="Complete example using rdf:annotation">
     <strong>Complete example using <code>rdf:annotation</code>
     (<a href="example23.rdf">example23.rdf</a>, output: <a href="example23.nt">example23.nt</a>)</strong>
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-      <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+      <!--<?xml version="1.0"?>
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                xmlns:ex="http://example.org/stuff/1.0/"
                xml:base="http://example.org/triples/">
@@ -1276,8 +1233,7 @@
         <rdf:Description rdf:about="http://example.org/triple1">
           <ex:prop>foo</ex:prop>
         </rdf:Description>
-      </rdf:RDF>
-      -->
+      </rdf:RDF>-->
     </pre>
     </aside>
 
@@ -1285,9 +1241,8 @@
     <aside class="example" id="example24" title="Complete example using rdf:annotationNodeID">
     <strong>Complete example using <code>rdf:annotationNodeID</code>
     (<a href="example24.rdf">example24.rdf</a>, output: <a href="example24.nt">example24.nt</a>)</strong>
-    <pre class="rdf" data-transform="updateExample">
-      <!--
-      <?xml version="1.0"?>
+    <pre class="xml rdf" data-transform="updateExample">
+      <!--<?xml version="1.0"?>
       <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                xmlns:ex="http://example.org/stuff/1.0/"
                xml:base="http://example.org/triples/">
@@ -1297,8 +1252,7 @@
         <rdf:Description rdf:nodeID="triple1">
           <ex:prop>foo</ex:prop>
         </rdf:Description>
-      </rdf:RDF>
-      -->
+      </rdf:RDF>-->
     </pre>
     </aside>
   </section>
