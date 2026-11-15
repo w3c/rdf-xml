@@ -3966,8 +3966,8 @@ to this sequence to give an xsd:string <em>x</em>.</li>
       It is recommended that implementors of RDF serializers, in order to
       break a URI into a <a>namespace name</a> and a <a data-cite="XML-NAMES#NT-LocalPart">local name</a>, split it after
       the last XML non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
-      character, ensuring that the first character of the name is a
-      <a data-cite="XML11#NT-Letter">Letter</a> or '_'.
+      character, ensuring that the first character of the local name is an XML
+      <a data-cite="XML11#NT-NameStartChar">NameStartChar</a> other than `:`.
       If the URI ends in a
       non-<a data-cite="XML-NAMES/#NT-NCName">NCName</a>
       character then throw a "this graph cannot be serialized in RDF/XML"
